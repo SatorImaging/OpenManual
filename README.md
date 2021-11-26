@@ -1,15 +1,18 @@
 ---
-title:
-description:
+title:""
+description:""
 ---
 
 
 # How to Update
+
 Document is written in markdown format.
 
+Note that table of contents is automatically hidden when print.
+If you want to add page break for print explicitly, insert: <div class="page-break"></div>
 
-## Add New Page
-Here is template for new page.
+
+## Template for New Page
 
 ```html
 ---
@@ -20,7 +23,4 @@ author:
 ---
 
 # Contents written in Markdown
-
-Note that table of contents is automatically hidden when print.
-If you want to add page break explicitly when print, insert: <div class="page-break"></div>
 ```
