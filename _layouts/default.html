@@ -185,6 +185,7 @@
       <div class="col-3"></div>
       <nav class="col-3      my-5  pl-0 pr-5 pt-2  text-right  position-fixed  print--hidden">
         <ul></ul>
+        <small>Edit on <a target="_blank" href="{{ site.github.repository_url }}">GitHub</a></small>
       </nav>
       <section class="col-6  my-5  -border">
         {%- if false -%}
@@ -228,7 +229,7 @@
     <footer class="bg-light  fixed-bottom  -row  text-secondary  -border-top  py-3">
       <p class="px-5  my-1  text-center  text-truncate">Copyright &copy; {{ site.time | date: "%Y" }} Sator Imaging, all rights reserved.</p>
       <p class="px-5  my-1  text-center  text-truncate  print--hidden">
-        <small>{{ site.github.project_tagline }} &mdash; <a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a></small>
+        <small><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> &mdash; {{ site.github.project_tagline }}</small>
       </p>
     </footer>
 
