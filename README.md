@@ -1,6 +1,5 @@
 ---
-layout: default
-date: 2021-11-27
+lang ja
 ---
 
 
@@ -10,11 +9,14 @@ date: 2021-11-27
 ### How to Update
 
 Document is written in markdown format.  
-Quick reference for markdown: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+Cheatsheet: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 
-Note that table of contents is automatically hidden when print.
-If you want to add page break for print explicitly,  
-insert: `<div class="page-break"></div>`
+
+#### Controls for PDF Output
+
+You can use `class="print--hidden"` to hide content from "Print to PDF" output.
+
+If you want to add page break for PDF explicitly, use: `<div class="print--page-break"></div>`
 
 
 ### Template for New Page
