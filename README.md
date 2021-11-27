@@ -1,3 +1,8 @@
+---
+date: 2021-11-27
+---
+
+
 # Open Manuals
 
 
@@ -16,6 +21,7 @@ insert: `<div class="page-break"></div>`
 ```yaml
 ---
 title: "Page Title"
+lang: en
 date: 2021-12-02
 author:
 - "You"
