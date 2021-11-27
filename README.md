@@ -1,3 +1,9 @@
+---
+title:
+author:
+- Sator Imaging
+---
+
 # Open Manuals
 
 
