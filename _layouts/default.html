@@ -7,7 +7,9 @@
 
     {% seo %}
 
+    <!-- disable jekyll theme.
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    -->
     <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
     <![endif]-->
@@ -17,6 +19,7 @@
     <script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
     <script>
       // https://github.com/pages-themes/leap-day/blob/master/assets/js/main.js
+      /*
       var sectionHeight = function() {
         var total    = $(window).height(),
             $section = $('section').css('height','auto');
@@ -28,8 +31,8 @@
           $section.css('height','auto');
         }
       }
-
       $(window).resize(sectionHeight);
+      */
 
       $(function() {
         $("section h1, section h2, section h3").each(function(){
@@ -46,58 +49,190 @@
           event.preventDefault();
         });
 
-        sectionHeight();
-
-        $('img').on('load', sectionHeight);
+        //sectionHeight();
+        //$('img').on('load', sectionHeight);
       });
     </script>
+
+    <!-- TODO: Font Awesome CDN update if required -->
+    <script crossorigin='anonymous' src='https://kit.fontawesome.com/a54fde8722.js'></script>
+
+    <!-- TODO: Bootstrap CDN update if required -->
+    <link crossorigin='anonymous' rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' />
+
+    <!-- TODO: Highlight.js CDN update if required -->
+    <link crossorigin='anonymous' rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/androidstudio.min.css' integrity='sha512-nYbQs5UCQzIbeZHRhf8IAt2Ve/2ZINrkGYaoUGSWbOyPvYHu+wDGN7EzR3SGapW5Nqmeb19FYJQ2vpdwN5yQMQ==' />
+    <script crossorigin='anonymous' src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js'></script>
+    <!-- additional languages -->
+    <script crossorigin='anonymous' src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/mel.min.js' integrity='sha512-2jgV/8JPKH1ACV6MXCXdFGjPCtR4I4+MRQ88r/iJanoWkvYJFv+OpLlPJfUY0kbAq0EaGBS1Dll4ylU0DgfO/w=='></script>
+    <script crossorigin='anonymous' src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/dos.min.js' integrity='sha512-LRcU/W7unzxQuTXoNa9NeNEoRXpWF/VQox8aCXnYPJHr21ymV27zmTXxxPALiMvDuFVMMBLHHUGXCiYFiR2uZg=='></script>
+    <!-- initialize highlight.js -->
+    <script>
+      // do not use this due to remove new-line character at start of PRE tag.
+      //hljs.initHighlightingOnLoad();
+
+      // the equivalent of calling initHighlightingOnLoad using only vanilla JS from highlight.js official website
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre code').forEach((block) => {
+          // remove new-line at first.
+          block.innerHTML = block.innerHTML.replace(/^(?:\r\n|\r|\n)/, '');
+          
+          hljs.highlightBlock(block);
+        });
+      });
+    </script>
+    <!-- stylesheet -->
     <style>
+      /*
+      code.hljs
+      {
+        position: relative;
+        padding: 0.5em 1.25em;
+        border-radius: 0.25rem;
+      }
+      code.hljs.language-dos::before,
+      code.hljs.language-mel::before
+      {
+        position: absolute;
+        font-weight: 100;
+        font-family: 'M PLUS 1p', sans-serif;
+        font-size: 1.2em;
+        top: 0px;
+        right: 0px;
+        padding: 0px 10px;
+        opacity: 0.8;
+        color: #fff;
+        background-color: #00a59d;
+        border-bottom-left-radius: 4px;
+      }
+      code.hljs.language-dos::before
+      {
+        content: 'Windows DOS';
+      }
+      code.hljs.language-mel::before
+      {
+        content: 'Maya Embedded Language';
+      }
+      */
+    </style>
+
+    <!-- TODO: Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600;900&display=swap" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100;300;600;900&display=swap' rel='stylesheet' />
+    <!-- stylesheet -->
+    <style type='text/css'>
+      body
+      {
+        font-weight: 300;
+        font-family: 'Montserrat', 'M PLUS 1p', sans-serif;
+      }
+      section
+      {
+        position: relative;
+      }
+      .bg-light-transparent
+      {
+        background-color: #fffd !important;
+      }
+      .font-ja-thin
+      {
+        font-weight: 100;
+        font-family: 'M PLUS 1p', sans-serif;
+      }
+      .font-ja-light
+      {
+        font-weight: 300;
+        font-family: 'M PLUS 1p', sans-serif;
+      }
+      ins.adsbygoogle
+      {
+        width: 100%;
+      }
+      .tooltip[role='tooltip'],
+      .tooltip[role='tooltip'] .tooltip-inner
+      {
+        width: initial !important;
+        min-width: initial !important;
+        max-width: initial !important;
+      }
+    </style>
+
+
+
+    <style>
+      NAV UL LI
+      {
+        list-style: none;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      SECTION H1,
+      SECTION H2,
+      SECTION H3,
+      SECTION H4,
+      SECTION H5,
+      SECTION H6
+      {
+        font-weight: 600;
+        -font-family: 'Montserrat', 'M PLUS 1p', sans-serif;
+        color: #495057; /*#343a40;*/
+        background: linear-gradient(transparent 80%, #abc7 80%);
+        width: fit-content;
+      }
+      @media screen
+      {
+
+      }
       @media print
       {
-        NAV
-        {
-          display: none;
-        }
-        .page-break
-        {
-          page-break-before: always;
-        }
+        .hide-when-print { visibility: hidden; }
+        .page-break { page-break-before: always; }
       }
     </style>
   </head>
   <body>
 
-    <header>
-      <h1>{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
-      <p>{{ page.description | default: site.description | default: site.github.project_tagline }}</p>
-    </header>
-
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
-      <section>
-      {{ content }}
-      </section>
-    </div>
-
-    <footer>
-      <p>Copyright &copy; {{ site.time | date: "%Y" }} Sator Imaging, all rights reserved.</p>
-      <p>{{ site.github.project_tagline }}: <a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a></p>
-      <p>
+    <header class="fixed-top   -border-bottom  py-5">
+      <div style='position: absolute; top: 0px; right: 5%; padding: 30px 0px 10px; border-radius: 0px 0px 5% 5% ; background: #00cce4;'>
+        <img style='width: 111px;' src='https://dl.dropboxusercontent.com/s/tqed1ld9oitzmyt/logo-transparent.png' />
+      </div>
+      <h1 class="w-75  my-2 mx-auto  px-5   font-weight-light  text-secondary  text-truncate">
+        {{ page.title | default: site.title }}
+      </h1>
+      <p class="w-75  my-1 mx-auto  px-5   font-weight-light  text-secondary  text-truncate  text-right">
+        written by
         {%- if page.author -%}
           {% for author in page.author %}
             <span itemprop="author" itemscope itemtype="http://schema.org/Person">
               <span itemprop="name">{{ author }}</span>
             </span>
-             {%- if forloop.last == false %}, {% endif -%}
+            {%- if forloop.last == false %}, {% endif -%}
           {% endfor %}
         {%- endif -%}
+        @
         <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
           {{ page.date | date: "%B %-d %Y" }}
         </time>
       </p>
-      <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/mattgraham">mattgraham</a></small></p>
+    </header>
+
+    <div class="my-5 py-5   row no-gutters">
+      <div class="col-3"></div>
+      <nav class="col-3 my-5  pl-0 pr-5 pt-2  text-right  position-fixed  hide-when-print">
+        <ul></ul>
+      </nav>
+      <section class="col-6  my-5  -border">
+        <h1>テストTest</h1>
+        {{ content }}
+      </section>
+    </div>
+
+    <footer class="fixed-bottom  -row  text-secondary  -border-top  py-3">
+      <p class="px-5  my-1  text-center  text-truncate">Copyright &copy; {{ site.time | date: "%Y" }} Sator Imaging, all rights reserved.</p>
+      <p class="px-5  my-1  text-center  text-truncate  hide-when-print">{{ site.github.project_tagline }}: <a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a></p>
     </footer>
 
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
