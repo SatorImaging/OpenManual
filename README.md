@@ -16,6 +16,7 @@ insert: `<div class="page-break"></div>`
 ```yaml
 ---
 title: "Page Title"
+date: 2021-12-02
 author:
 - "You"
 - "Prior to You"
