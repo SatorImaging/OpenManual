@@ -1,5 +1,5 @@
 ---
-lang ja
+lang: ja
 ---
 
 
