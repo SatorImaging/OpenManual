@@ -179,7 +179,7 @@
         font-weight: 600;
         -font-family: 'Montserrat', 'M PLUS 1p', sans-serif;
         color: #495057; /*#343a40;*/
-        background: linear-gradient(transparent 80%, #abc7 80%);
+        background: linear-gradient(transparent 70%, #abc7 70%);
         width: fit-content;
       }
       @media screen
@@ -195,7 +195,7 @@
   </head>
   <body class='bg-light'>
 
-    <header class="bg-light  fixed-top   -border-bottom  py-5">
+    <header class="bg-light  fixed-top   -border-bottom  pt-5">
       <div style='position: absolute; top: 0px; right: 5%; padding: 30px 0px 10px; border-radius: 0px 0px 5% 5% ; background: #00cce4;'>
         <img style='width: 111px;' src='https://dl.dropboxusercontent.com/s/tqed1ld9oitzmyt/logo-transparent.png' />
       </div>
@@ -214,7 +214,7 @@
         {%- endif -%}
         @
         <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-          {{ page.date | date: "%B %-d %Y" }}
+          {{ page.last_modified_at | date: "%B %-d %Y" }}
         </time>
       </p>
     </header>
@@ -225,6 +225,10 @@
         <ul></ul>
       </nav>
       <section class="col-6  my-5  -border">
+        {%- if false -%}
+          <h1>Test for Heading 1</h1>
+          <h2>ヘディング２のテスト</h2>
+        {%- endif -%}
         {{ content }}
       </section>
     </div>
