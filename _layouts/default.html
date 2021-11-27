@@ -132,10 +132,6 @@
       {
         position: relative;
       }
-      .bg-light-transparent
-      {
-        background-color: #fffd !important;
-      }
       .font-ja-thin
       {
         font-weight: 100;
@@ -146,41 +142,36 @@
         font-weight: 300;
         font-family: 'M PLUS 1p', sans-serif;
       }
-      ins.adsbygoogle
-      {
-        width: 100%;
-      }
-      .tooltip[role='tooltip'],
-      .tooltip[role='tooltip'] .tooltip-inner
-      {
-        width: initial !important;
-        min-width: initial !important;
-        max-width: initial !important;
-      }
     </style>
 
 
 
     <style>
-      NAV UL LI
+      nav ul li
       {
         list-style: none;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
       }
-      SECTION H1,
-      SECTION H2,
-      SECTION H3,
-      SECTION H4,
-      SECTION H5,
-      SECTION H6
+      section h1,
+      section h2,
+      section h3,
+      section h4,
+      section h5,
+      section h6
       {
         font-weight: 600;
         -font-family: 'Montserrat', 'M PLUS 1p', sans-serif;
         color: #495057; /*#343a40;*/
         background: linear-gradient(transparent 70%, #abc7 70%);
         width: fit-content;
+        margin-top: 2.0rem;
+        margin-bottom: 1.0rem;
+      }
+      section *:first-child
+      {
+        margin-top: 0.0rem;
       }
       @media screen
       {
@@ -197,14 +188,16 @@
 
     <header class="bg-light  fixed-top   -border-bottom  pt-5">
       <div style='position: absolute; top: 0px; right: 5%; padding: 30px 0px 10px; border-radius: 0px 0px 5% 5% ; background: #00cce4;'>
-        <img style='width: 111px;' src='https://dl.dropboxusercontent.com/s/tqed1ld9oitzmyt/logo-transparent.png' />
+        <a href="https://www.sator-imaging.com/">
+          <img style='width: 111px;' src='https://dl.dropboxusercontent.com/s/tqed1ld9oitzmyt/logo-transparent.png' />
+        </a>
       </div>
       <h1 class="w-75  my-2 mx-auto  px-5   font-weight-light  text-secondary  text-truncate">
         {{ page.title | default: site.title }}
       </h1>
       <p class="w-75  my-1 mx-auto  px-5   font-weight-light  text-secondary  text-truncate  text-right">
-        written by
         {%- if page.author -%}
+          written by
           {% for author in page.author %}
             <span itemprop="author" itemscope itemtype="http://schema.org/Person">
               <span itemprop="name">{{ author }}</span>
@@ -212,10 +205,12 @@
             {%- if forloop.last == false %}, {% endif -%}
           {% endfor %}
         {%- endif -%}
-        @
-        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-          {{ page.last_modified_at | date: "%B %-d %Y" }}
-        </time>
+        {%- if page.date -%}
+          @
+          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+            {{ page.date | date: "%B %-d %Y" }}
+          </time>
+        {%- endif -%}
       </p>
     </header>
 
@@ -226,8 +221,13 @@
       </nav>
       <section class="col-6  my-5  -border">
         {%- if false -%}
-          <h1>Test for Heading 1</h1>
-          <h2>ヘディング２のテスト</h2>
+          <h1>Heading 1 ヘディング１</h1>
+          Test Body
+          <h2>Heading 2 ヘディング２</h2>
+          テスト本文
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
         {%- endif -%}
         {{ content }}
       </section>
