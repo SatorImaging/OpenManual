@@ -152,11 +152,12 @@
         font-weight: 300;
         font-family: 'M PLUS 1p', sans-serif;
       }
-    </style>
 
-
-
-    <style>
+      header h1
+      {
+        font-weight: 100;
+        -font-family: 'M PLUS 1p', sans-serif;
+      }
       nav ul li
       {
         list-style: none;
@@ -202,10 +203,10 @@
           <img style='width: 7rem;' src='https://dl.dropboxusercontent.com/s/tqed1ld9oitzmyt/logo-transparent.png' />
         </a>
       </div>
-      <h1 class="w-75  my-2 mx-auto  px-5   font-weight-light  text-secondary  text-truncate">
+      <h1 class="w-75  my-2 mx-auto  px-5   text-secondary  text-truncate">
         {{ page.title | default: site.title }}
       </h1>
-      <p class="w-75  my-1 mx-auto  px-5   font-weight-light  text-secondary  text-truncate  text-right">
+      <p class="w-75  my-1 mx-auto  px-5    text-secondary  text-truncate  text-right">
         {%- if page.author -%}
           written by
           {% for author in page.author %}
