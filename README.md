@@ -1,5 +1,4 @@
 ---
-title:
 author:
 - Sator Imaging
 ---
