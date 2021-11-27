@@ -1,10 +1,3 @@
----
-layout: default
-title: "TEST"
-author:
-- "Sator Imaging"
----
-
 # Open Manuals
 
 
