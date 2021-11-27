@@ -12,7 +12,8 @@ Document is written in Markdown.
 
 #### Controls for PDF Output
 
-You can use `class="print--hidden"` to hide content from "Print to PDF" output.
+You can use `class="print--hidden"` to hide content from "Print to PDF" output.  
+`class="print--d-none"` is also available, note that this will change page layout.
 
 If you want to add page break for PDF explicitly, use: `<div class="print--page-break"></div>`
 
