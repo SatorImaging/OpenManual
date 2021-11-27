@@ -3,6 +3,8 @@ title:
 description: 
 show_downloads: false
 google_analytics: 
+plugins:
+  - jekyll-last-modified-at
 defaults:
   -
     scope:
