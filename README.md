@@ -1,10 +1,13 @@
-# Open Manual
+# The Open Manual Repository
+
 
 
 ### How to Update
 
-Document is written in markdown format.  
-Cheatsheet: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+Document is written in Markdown.
+[Quick Reference](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
+[Basic Tutorial on GitHub](https://docs.github.com/en/get-started/quickstart/contributing-to-projects)
 
 
 #### Controls for PDF Output
