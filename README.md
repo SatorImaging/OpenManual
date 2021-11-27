@@ -1,9 +1,4 @@
----
-lang: ja
----
-
-
-# Open Manuals
+# Open Manual
 
 
 ### How to Update
