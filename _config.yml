@@ -5,6 +5,9 @@ show_downloads: false
 google_analytics: 
 plugins:
   - jekyll-last-modified-at # plugins can be loaded if it's in whitelist
+kramdown:
+  syntax_highlighter_opts:
+    disable : true
 defaults:
   -
     scope:
