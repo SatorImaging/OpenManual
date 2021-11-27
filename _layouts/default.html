@@ -18,14 +18,16 @@
     <script>
       // remove jekyll codes from body.innerText
       document.addEventListener('DOMContentLoaded', (event) => {
-        for(let node of document.querySelector('body').childNodes.values())
-        {
-          if(node.nodeType == Node.TEXT_NODE && node.textContent.match(/[^\s]+/))
+        document.querySelectorAll('body,section').forEach((e) => {
+          for(let node of e.childNodes.values())
           {
-            //alert(node.textContent);
-            node.textContent = '';
+            if(node.nodeType == Node.TEXT_NODE && node.textContent.match(/[^\s]+/))
+            {
+              //alert(node.textContent);
+              node.textContent = '';
+            }
           }
-        }
+        })
       });
     </script>
     {%- endif -%}
@@ -111,7 +113,7 @@
         background: linear-gradient(transparent 70%, #abc7 70%);
         width: fit-content;
         margin-top: 2.0rem;
-        margin-bottom: 1.0rem;
+        margin-bottom: 1.25rem;
       }
       section *:first-child
       {
@@ -146,7 +148,7 @@
   <body class='bg-light'>
 
     <header class="bg-light  fixed-top   -border-bottom   py-5  mb-2">
-      <div style='position: absolute; top: 0px; right: 5%; padding: 1.5rem 0px 1rem; border-radius: 0px 0px 5% 5% ; background: #00cce4;'>
+      <div style='position: absolute; top: 0px; right: 3%; padding: 1.5rem 0px 1rem; border-radius: 0px 0px 5% 5% ; background: #00cce4;'>
         <a target="_blank" href="https://www.sator-imaging.com/">
           <img style='width: 7rem;' src='https://dl.dropboxusercontent.com/s/tqed1ld9oitzmyt/logo-transparent.png' />
         </a>
@@ -176,25 +178,30 @@
     </header>
 
     <!-- spacer -->
-    <div class="py-5  mt-4 mb-1"></div>
+    <div class="py-5  mt-4 mb-2"></div>
 
     <div class="py-5   row no-gutters">
       <!-- spacer behind table of contents, need to place main section next to toc -->
       <div class="col-3"></div>
-      <nav class="col-3      my-5  pl-0 pr-5 pt-5  text-right  position-fixed  print--hidden">
+      <nav class="col-3      my-5  pl-0 pr-5 pt-2  text-right  position-fixed  print--hidden">
         <ul></ul>
       </nav>
       <section class="col-6  my-5  -border">
         {%- if false -%}
           <h1>Heading 1 ヘディング１</h1>
-          Test Body
+          <p>Test Body</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <p>Test Body</p>
+          <p>Test Body</p>
           <h2>Heading 2 ヘディング２</h2>
-          テスト本文
+          <p>テスト本文</p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </p>
           <p>
-            Rouge <code class="language-plaintext highlighter-rouge">inline-code</code>
+            <p>Rouge <code class="language-plaintext highlighter-rouge">inline-code</code></p>
             <div class="language-yaml highlighter-rouge"><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**</span>
 <span class="cm"> * Does a thing</span>
 <span class="cm"> */</span>
