@@ -10,7 +10,7 @@ Document is written in Markdown and deployed with Jekyll.
 |
 [Basic Tutorial on GitHub](https://docs.github.com/en/get-started/quickstart/contributing-to-projects)
 |
-[About GitHub Pages and Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll)
+[GitHub Pages and Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll)
 
 
 #### Controls for PDF Output
