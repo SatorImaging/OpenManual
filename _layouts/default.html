@@ -42,7 +42,7 @@
         });
 
         $("nav ul li").on("click", "a", function(event) {
-          var position = $($(this).attr("href")).offset().top - 190;
+          var position = $($(this).attr("href")).offset().top - $("header").outerHeight(true);
           $("html, body").animate({scrollTop: position}, 400);
           $("nav ul li a").parent().removeClass("active");
           $(this).parent().addClass("active");
@@ -204,13 +204,14 @@
       @media print
       {
         .print--hidden { visibility: hidden; }
+        .print--d-none { display: none; }
         .print--page-break { page-break-before: always; }
       }
     </style>
   </head>
   <body class='bg-light'>
 
-    <header class="bg-light  fixed-top   -border-bottom  pt-5">
+    <header class="bg-light  fixed-top   -border-bottom   py-5  mb-2">
       <div style='position: absolute; top: 0px; right: 5%; padding: 2rem 0px 1rem; border-radius: 0px 0px 5% 5% ; background: #00cce4;'>
         <a href="https://www.sator-imaging.com/">
           <img style='width: 7rem;' src='https://dl.dropboxusercontent.com/s/tqed1ld9oitzmyt/logo-transparent.png' />
@@ -236,15 +237,17 @@
           </time>
         {%- endif -%}
       </p>
+      <!-- spacer -->
+      <div class="py-2"></div>
     </header>
 
     <!-- spacer -->
-    <div class="pt-5"></div>
+    <div class="py-5 my-0"></div>
 
-    <div class="my-5 py-5   row no-gutters">
+    <div class="py-5   row no-gutters">
       <!-- spacer behind table of contents, need to place main section next to toc -->
       <div class="col-3"></div>
-      <nav class="col-3 my-5  pl-0 pr-5 pt-2  text-right  position-fixed  print--hidden">
+      <nav class="col-3      my-5  pl-0 pr-5 pt-1  text-right  position-fixed  print--hidden">
         <ul></ul>
       </nav>
       <section class="col-6  my-5  -border">
@@ -276,6 +279,8 @@
           </p>
         {%- endif -%}
         {{ content }}
+        <!-- spacer for screen -->
+        <div class="print--d-none  h-100"></div>
       </section>
     </div>
 
@@ -286,6 +291,15 @@
       </p>
     </footer>
 
+    <!--
+    <div class="print--hidden   fixed-bottom  text-right  px-2  small">
+      <a href="javascript: window.open(location.href, '_blank', 'innerWidth=905, innerHeight=1280')">905x1280</a>
+      |
+      <a href="javascript: window.open(location.href, '_blank', 'innerWidth=1280, innerHeight=1280')">1280x1280</a>
+      |
+      <a href='javascript: $("body").css("overflow", $("body").css("overflow") != "hidden" ? "hidden" : "unset");'>Scrollbar</a>
+    </div>
+    -->
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
 
   </body>
