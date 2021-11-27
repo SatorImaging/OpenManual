@@ -1,6 +1,6 @@
 ---
 author:
-- Sator Imaging
+- "Sator Imaging"
 ---
 
 # Open Manuals
@@ -22,8 +22,8 @@ insert: `<div class="page-break"></div>`
 ---
 title: "Page Title"
 author:
-- You
-- Prior to You
+- "You"
+- "Prior to You"
 ---
 
 # Contents written in Markdown
