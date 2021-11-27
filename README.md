@@ -13,7 +13,7 @@ insert: `<div class="page-break"></div>`
 
 ### Template for New Page
 
-```html
+```yaml
 ---
 title: "Page Title"
 author:
