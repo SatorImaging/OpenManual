@@ -13,15 +13,14 @@
 
     {% include head-custom.html %}
 
-    <!-- jekyll codes are rendered as text in local environment so that remove text from body element for consistent layout in any environment. -->
+    <!-- jekyll commands are rendered as plain text in local environment so that remove those text from body and content element to achieve consistent layout in any environment. -->
     {%- if false -%}
     <script>
-      // remove jekyll codes from body.innerText
       document.addEventListener('DOMContentLoaded', (event) => {
         document.querySelectorAll('body,section').forEach((e) => {
           for(let node of e.childNodes.values())
           {
-            if(node.nodeType == Node.TEXT_NODE && node.textContent.match(/[^\s]+/))
+            if(node.nodeType == Node.TEXT_NODE && -1 < node.textContent.search(/[^\s]+/))
             {
               //alert(node.textContent);
               node.textContent = '';
@@ -229,16 +228,20 @@
     <footer class="bg-light  fixed-bottom  -row  text-secondary  -border-top  py-3">
       <p class="px-5  my-1  text-center  text-truncate">Copyright &copy; {{ site.time | date: "%Y" }} Sator Imaging, all rights reserved.</p>
       <p class="px-5  my-1  text-center  text-truncate  print--hidden">
-        <small><a target="_blank" href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> &mdash; {{ site.github.project_tagline }}</small>
+        <small><a target="_blank" href="{{ site.github.repository_url }}">{{ site.github.repository_nwo }}</a> &mdash; {{ site.github.project_tagline }}</small>
       </p>
     </footer>
 
-    <div class="print--hidden   fixed-bottom  text-right  px-2  small">
-      <a href="javascript: window.open(location.href, '_blank', 'innerWidth=905, innerHeight=1280')">905x1280</a>
+    <div class="print--hidden   fixed-bottom  text-right  px-2  small  text-black-50">
+      <a href="javascript:window.open(location.href,'_blank','innerWidth=905,innerHeight=1280')">A4</a>
       |
-      <a href="javascript: window.open(location.href, '_blank', 'innerWidth=1280, innerHeight=1280')">1280x1280</a>
+      <a href="javascript:window.open(location.href,'_blank','innerWidth=1280,innerHeight=1280')">1x1</a>
       |
-      <a href='javascript: $("body").css("overflow", $("body").css("overflow") != "hidden" ? "hidden" : "unset");'>Scrollbar</a>
+      <a href="javascript:window.open(location.href,'_blank','innerWidth=1600,innerHeight=1200')">4x3</a>
+      |
+      <a href="javascript:window.open(location.href,'_blank','innerWidth=1920,innerHeight=1080')">16x9</a>
+      |
+      <a href='javascript:$("body").css("overflow",$("body").css("overflow")!="hidden"?"hidden":"unset")'>Scrollbar</a>
     </div>
 
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
