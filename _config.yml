@@ -4,7 +4,7 @@ description:
 show_downloads: false
 google_analytics: 
 plugins:
-  - jekyll-last-modified-at
+  - jekyll-last-modified-at # plugins can be loaded if it's in whitelist
 defaults:
   -
     scope:
