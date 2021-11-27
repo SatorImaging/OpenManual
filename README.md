@@ -1,4 +1,5 @@
 ---
+layout: default
 title: "TEST"
 author:
 - "Sator Imaging"
