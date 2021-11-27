@@ -77,7 +77,7 @@
           // remove new-line at first.
           block.innerHTML = block.innerHTML.replace(/^(?:\r\n|\r|\n)/, '');
           
-          hljs.highlightBlock(block);
+          ////////hljs.highlightBlock(block);
         });
       });
     </script>
@@ -179,8 +179,8 @@
       }
       @media print
       {
-        .hide-when-print { visibility: hidden; }
-        .page-break { page-break-before: always; }
+        .print--hidden { visibility: hidden; }
+        .print--page-break { page-break-before: always; }
       }
     </style>
   </head>
@@ -216,7 +216,7 @@
 
     <div class="my-5 py-5   row no-gutters">
       <div class="col-3"></div>
-      <nav class="col-3 my-5  pl-0 pr-5 pt-2  text-right  position-fixed  hide-when-print">
+      <nav class="col-3 my-5  pl-0 pr-5 pt-2  text-right  position-fixed  print--hidden">
         <ul></ul>
       </nav>
       <section class="col-6  my-5  -border">
@@ -235,7 +235,9 @@
 
     <footer class="bg-light  fixed-bottom  -row  text-secondary  -border-top  py-3">
       <p class="px-5  my-1  text-center  text-truncate">Copyright &copy; {{ site.time | date: "%Y" }} Sator Imaging, all rights reserved.</p>
-      <p class="px-5  my-1  text-center  text-truncate  hide-when-print">{{ site.github.project_tagline }}: <a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a></p>
+      <p class="px-5  my-1  text-center  text-truncate  print--hidden">
+        <small>{{ site.github.project_tagline }} &mdash; <a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a></small>
+      </p>
     </footer>
 
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
