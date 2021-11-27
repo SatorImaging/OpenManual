@@ -181,9 +181,17 @@
 
       section .highlighter-rouge
       {
-        padding: 0.5em 1.25em;
         border-radius: 0.25em;
         background-color: #ddd7;
+      }
+      section code.highlighter-rouge
+      {
+        display: inline-block;
+        padding: 0em 0.4em;
+      }
+      section div.highlighter-rouge
+      {
+        padding: 0.5em 1.25em;
       }
 
       @media screen
@@ -244,6 +252,24 @@
           テスト本文
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <p>
+            Rouge <code class="language-plaintext highlighter-rouge">inline-code</code>
+            <div class="language-yaml highlighter-rouge"><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**</span>
+<span class="cm"> * Does a thing</span>
+<span class="cm"> */</span>
+<span class="kd">function</span> <span class="nx">helloWorld</span><span class="p">(</span><span class="nx">param1</span><span class="p">,</span> <span class="nx">param2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">something</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">// Do something</span>
+  <span class="k">if</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="nx">something</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// @TODO comment</span>
+<span class="p">}</span></code></pre></div></div>
           </p>
         {%- endif -%}
         {{ content }}
