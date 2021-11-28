@@ -159,10 +159,10 @@
           </a>
         </div>
       {%- endif -%}
-      <h1 class="w-75  my-2 mx-auto  px-5   text-secondary  text-truncate">
+      <h1 class="col-12 col-md-9 col-lg-8  my-2  mx-0 mx-md-auto  px-5   text-secondary  text-truncate">
         {{ page.title | default: site.title }}
       </h1>
-      <p class="w-75  my-1 mx-auto  px-5    text-secondary  text-truncate  text-right">
+      <p class=" col-12 col-md-9 col-lg-8  my-1  mx-0 mx-md-auto  px-5   text-secondary  text-truncate  text-right">
         {%- if page.author -%}
           written by
           {% for author in page.author %}
@@ -183,17 +183,17 @@
       <div class="py-3"></div>
     </header>
 
-    <!-- spacer -->
+    <!-- spacer - keep same height with header + spacer in header -->
     <div class="py-5  mb-2  my-3"></div>
 
     <div class="py-5   row no-gutters">
       <!-- spacer behind table of contents, need to place main section next to toc -->
-      <div class="col-3"></div>
-      <nav class="col-3      my-5  pl-0 pr-5 pt-2  text-right  position-fixed  print--hidden">
+      <div class="d-none d-md-block  col-2 col-lg-3"></div>
+      <nav class="d-none d-md-block  col-2 col-lg-3   my-5  p-2  text-right  position-fixed  print--hidden">
         <ul></ul>
         <small>Edit on <a target="_blank" href="https://github.dev/{{ site.github.repository_nwo }}">GitHub.dev</a></small>
       </nav>
-      <section class="col-6  my-5  -border">
+      <section class="col-12 col-md-8 col-lg-6  my-5  -border  px-5 px-md-3 px-lg-4">
         {%- if false -%}
           <h1>Heading 1 : 見出し１</h1>
           <p>Test Body</p>
