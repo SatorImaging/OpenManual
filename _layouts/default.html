@@ -153,16 +153,16 @@
     <header class="bg-light  fixed-top   -border-bottom   py-5  mb-2">
       {%- if page.logo_src or site.logo_src -%}
         {%- assign logo_background = page.logo_background | default: site.logo_background | default: "#00cce4" -%}
-        <div style='position: absolute; top: 0px; right: 3%; padding: 1.5rem 0px 1rem; border-radius: 0px 0px 5% 5% ; background: {{ logo_background }};'>
+        <div style='position: absolute; top: 0px; right: 2.5%; padding: 1.5rem 0px 1rem; border-radius: 0px 0px 5% 5% ; background: {{ logo_background }};'>
           <a target="_blank" href='{{ page.logo_href | default: site.logo_href | default: "https://www.sator-imaging.com/" | relative_url }}'>
             <img style='width: 7rem;' src='{{ page.logo_src | default: site.logo_src | relative_url }}' />
           </a>
         </div>
       {%- endif -%}
-      <h1 class="col-12 col-sm-12 col-md-11 col-lg-8  my-2  mx-0 mx-md-auto  px-5   text-secondary  text-truncate">
+      <h1 class="col-10 col-sm-10 col-md-11 col-lg-8  my-2  mx-0 mx-md-auto  px-5   text-secondary  text-truncate">
         {{ page.title | default: site.title }}
       </h1>
-      <p class=" col-12 col-sm-12 col-md-11 col-lg-8  my-1  mx-0 mx-md-auto  px-5   text-secondary  text-truncate  text-right">
+      <p class=" col-10 col-sm-10 col-md-9  col-lg-8  my-1  mx-0 mx-md-auto  px-5   text-secondary  text-truncate  text-right">
         {%- if page.author -%}
           written by
           {% for author in page.author %}
@@ -241,7 +241,7 @@
 
     <div class="print--hidden   fixed-bottom  text-right  px-2  small  text-black-50">
       <script>
-        let res = {"A4":[905,1280],"1x1":[1280,1280],"4x3":[1600,1200],"16x9":[1920,1080]};
+        let res = {"Mobile":[576,1280],"Tablet":[768,1280],"A4":[905,1280],"Laptop":[1200,1200],"4x3":[1600,1200],"16x9":[1920,1080]};
         for(let key in res)
         {
           document.write("<a href=\"javascript:window.open(location.href,'_blank','innerWidth="+res[key][0]+",innerHeight="+res[key][1]+",left="+Math.ceil((screen.width-res[key][0])*0.5)+"')\">"+key+"</a> | ");
