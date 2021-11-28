@@ -13,8 +13,8 @@
 
     {% include head-custom.html %}
 
-    <!-- jekyll commands are rendered as plain text in local environment so that remove those text from body and content element to achieve consistent layout in any environment. -->
     {%- if false -%}
+      <!-- jekyll commands are rendered as plain text in local environment so that remove those text from body and content element to achieve consistent layout in any environment. -->
       <script>
         document.addEventListener('DOMContentLoaded', (event) => {
           document.querySelectorAll('body,header,section').forEach((e) => {
@@ -56,7 +56,7 @@
     <!-- TODO: Bootstrap CDN update if required -->
     <link crossorigin='anonymous' rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' />
 
-    <!-- syntax hilighter style -->
+    <!-- syntax hilighter style, no CDN distribution -->
     <!-- https://jwarby.github.io/jekyll-pygments-themes/languages/javascript.html -->
     <style>
 .highlight .hll{background-color:#ffc}.highlight .c{color:#60a0b0;font-style:italic}.highlight .err{border:1px solid red}.highlight .k{color:#007020;font-weight:700}.highlight .o{color:#666}.highlight .cm{color:#60a0b0;font-style:italic}.highlight .cp{color:#007020}.highlight .c1{color:#60a0b0;font-style:italic}.highlight .cs{color:#60a0b0;background-color:#fff0f0}.highlight .gd{color:#a00000}.highlight .ge{font-style:italic}.highlight .gr{color:red}.highlight .gh{color:navy;font-weight:700}.highlight .gi{color:#00a000}.highlight .go{color:gray}.highlight .gp{color:#c65d09;font-weight:700}.highlight .gs{font-weight:700}.highlight .gu{color:purple;font-weight:700}.highlight .gt{color:#0040d0}.highlight .kc{color:#007020;font-weight:700}.highlight .kd{color:#007020;font-weight:700}.highlight .kn{color:#007020;font-weight:700}.highlight .kp{color:#007020}.highlight .kr{color:#007020;font-weight:700}.highlight .kt{color:#902000}.highlight .m{color:#40a070}.highlight .s{color:#4070a0}.highlight .na{color:#4070a0}
@@ -69,6 +69,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600;900&display=swap" rel="stylesheet" />
     <link href='https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100;300;600;900&display=swap' rel='stylesheet' />
+
+
     <!-- stylesheet -->
     <style type='text/css'>
       body
