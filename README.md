@@ -21,10 +21,21 @@ You can use `class="print--hidden"` to hide content from "Print to PDF" output.
 
 If you want to add page break for PDF explicitly, use: `<div class="print--page-break"></div>`
 
+##### Note for HTML tag and Markdown
+
+Page break using HTML tag and you need to have attention to use it in Markdown text.
+
+> HTML tag must be in independent HTML block, because of that page break will hide trailing content in same HTML block. In Markdown context, it requires empty line before and after.
+
+See Markdown source of this page for example.
+<div class="print--page-break"></div>
+THIS TEXT IS SHOWN IN MARKDOWN PREVIEW BUT NOT IN RESULTING PAGE
+
 
 ### Template for New Page
 
-File extension must be `.md`
+File extension must be `.md`.
+It's good to have additional language extension before file extension. ex: `FileName.en.md`
 
 ```yaml
 ---
