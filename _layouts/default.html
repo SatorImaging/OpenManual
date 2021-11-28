@@ -236,14 +236,13 @@
     </footer>
 
     <div class="print--hidden   fixed-bottom  text-right  px-2  small  text-black-50">
-      <a href="javascript:window.open(location.href,'_blank','innerWidth=905,innerHeight=1280')">A4</a>
-      |
-      <a href="javascript:window.open(location.href,'_blank','innerWidth=1280,innerHeight=1280')">1x1</a>
-      |
-      <a href="javascript:window.open(location.href,'_blank','innerWidth=1600,innerHeight=1200')">4x3</a>
-      |
-      <a href="javascript:window.open(location.href,'_blank','innerWidth=1920,innerHeight=1080')">16x9</a>
-      |
+      <script>
+        let res = {"A4":[905,1280],"1x1":[1280,1280],"4x3":[1600,1200],"16x9":[1920,1080]};
+        for(let key in res)
+        {
+          document.write("<a href=\"javascript:window.open(location.href,'_blank','innerWidth="+res[key][0]+",innerHeight="+res[key][1]+"')\">"+key+"</a> | ");
+        };
+      </script>
       <a href='javascript:$("body").css("overflow",$("body").css("overflow")!="hidden"?"hidden":"unset")'>Scrollbar</a>
     </div>
 
