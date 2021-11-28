@@ -24,7 +24,7 @@ If you want to add page break for PDF explicitly, use: `<div class="print--page-
 ##### Note for HTML tag and Markdown
 
 Page break using HTML tag and you need to have attention to use it in Markdown text.
-> HTML tag must be in independent HTML block, because of that page break will hide trailing content in same HTML block. In Markdown context, it requires empty line before and after.
+> HTML tag must be in independent HTML block, because of that page break will hide rest of inline contents in same HTML block. In Markdown context, it requires empty line before and after.
 
 See Markdown source of this page for example.
 <div class="print--page-break"></div><strike>THIS TEXT IS SHOWN
