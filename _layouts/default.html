@@ -105,10 +105,10 @@
         overflow: hidden;
         font-weight: 600;
         color: #495057; /*#343a40;*/
-        background: linear-gradient(transparent 70%, #abc7 70%);
+        background: linear-gradient(transparent 70%, #cde7 70%);
         width: fit-content;
         margin-top: 2.0rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.6rem;
       }
       section *:first-child {
         margin-top: 0.0rem;
@@ -189,8 +189,8 @@
         .print--page-break::before {
           content: ""; /* empty string required */
           display: block;
-          height: var(--header-height);
-          margin-bottom: 6.0rem; /* wapper margin+padding + section margin+padding */
+          height: 6.0rem; /* wapper margin+padding + section margin+padding */
+          margin-bottom: var(--header-height);
         }
         .print--page-break { break-before: page; }
         .print--hidden { visibility: hidden; }
