@@ -242,7 +242,7 @@
         let res = {"A4":[905,1280],"1x1":[1280,1280],"4x3":[1600,1200],"16x9":[1920,1080]};
         for(let key in res)
         {
-          document.write("<a href=\"javascript:window.open(location.href,'_blank','innerWidth="+res[key][0]+",innerHeight="+res[key][1]+"')\">"+key+"</a> | ");
+          document.write("<a href=\"javascript:window.open(location.href,'_blank','innerWidth="+res[key][0]+",innerHeight="+res[key][1]+",left="+Math.ceil((screen.width-res[key][0])*0.5)+"')\">"+key+"</a> | ");
         };
       </script>
       <a href='javascript:$("body").css("overflow",$("body").css("overflow")!="hidden"?"hidden":"unset")'>Scrollbar</a>
