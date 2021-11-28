@@ -139,16 +139,51 @@
       /* for Print to PDF */
       section pre { border: none; }
 
-      @media screen {}
+
+      :root
+      {
+          /* need offset: header + spacer in header */
+          /* m-1/p-1: 0.25rem  2: 0.5rem  3: 1.0rem  4: 1.5rem  5: 3.0rem */
+          --header-height: 8.5rem;
+      }
+      .header-spacer
+      {
+          margin-bottom: var(--header-height);
+      }
+      @media screen {
+        .print--page-break::before
+        {
+          content: "------ 8< ------ PAGE BREAK FOR PDF ------ 8< ------";
+          width: 100%;
+          display: block;
+          text-align: center;
+          font-size: 0.5rem;
+          color: #abc;
+          border: 1px dashed #cde;
+          border-width: 1px 0px;
+          padding: 0.25rem 0px;
+        }
+      }
       @media print
       {
+        .print--page-break::before
+        {
+          content: ""; /* empty string required */
+          display: block;
+          height: var(--header-height);
+          margin-bottom: 6.0rem; /* wapper margin+padding + section margin+padding */
+        }
+        .print--page-break { break-before: page; }
         .print--hidden { visibility: hidden; }
         .print--d-none { display: none; }
-        .print--page-break { page-break-before: always; }
       }
     </style>
   </head>
-  <body class='bg-light'>
+  <body>
+
+    <!-- background fill need for PDF print -->
+    <div class="vw-100 vh-100 bg-light  position-fixed"></div>
+
 
     <header class="bg-light  fixed-top   -border-bottom   py-5  mb-2">
       {%- if page.logo_src or site.logo_src -%}
@@ -183,9 +218,11 @@
       <div class="py-3"></div>
     </header>
 
-    <!-- spacer - keep same height with header + spacer in header -->
-    <div class="py-5  mb-2  my-3"></div>
 
+    <!-- spacer - keep same height with header + spacer in header -->
+    <div class="header-spacer"></div>
+
+    
     <div class="py-5   row no-gutters">
       <!-- spacer behind table of contents, need to place main section next to toc -->
       <div class="col-0 col-sm-0 col-md-1 col-lg-3"></div>
@@ -202,6 +239,10 @@
           </p>
           <p>Test Body</p>
           <p>Test Body</p>
+          <p>
+            Here is page break for print.
+            <div class="print--page-break"></div>
+          </p>
           <h2>Heading 2 : 見出し２</h2>
           <p>テスト本文</p>
           <p>
