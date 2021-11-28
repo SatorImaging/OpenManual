@@ -149,11 +149,11 @@
   <body class='bg-light'>
 
     <header class="bg-light  fixed-top   -border-bottom   py-5  mb-2">
-      {%- if "" != page.logo_src | site.logo_src -%}
-        {%- assign logo_background = page.logo_background | site.logo_background | default: "#00cce4" -%}
+      {%- if page.logo_src | default: site.logo_src -%}
+        {%- assign logo_background = page.logo_background | default: site.logo_background | default: "#00cce4" -%}
         <div style='position: absolute; top: 0px; right: 3%; padding: 1.5rem 0px 1rem; border-radius: 0px 0px 5% 5% ; background: {{ logo_background }};'>
-          <a target="_blank" href='{{ page.logo_href | site.logo_href | default: "https://www.sator-imaging.com/" | relative_url }}'>
-            <img style='width: 7rem;' src='{{ page.logo_src | site.logo_src | relative_url }}' />
+          <a target="_blank" href='{{ page.logo_href | default: site.logo_href | default: "https://www.sator-imaging.com/" | relative_url }}'>
+            <img style='width: 7rem;' src='{{ page.logo_src | default: site.logo_src | relative_url }}' />
           </a>
         </div>
       {%- endif -%}
