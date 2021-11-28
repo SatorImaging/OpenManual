@@ -1,13 +1,18 @@
 theme: jekyll-theme-minimal
+plugins:
+  - jekyll-last-modified-at # plugins can be loaded if it's in whitelist, this is not in.
+kramdown:
+  syntax_highlighter_opts:
+    guess_lang: true
+
 title: 
 description: 
 show_downloads: false
 google_analytics: 
-plugins:
-  - jekyll-last-modified-at # plugins can be loaded if it's in whitelist
-kramdown:
-  syntax_highlighter_opts:
-    guess_lang: true
+logo_src: "https://avatars.githubusercontent.com/u/45192683"
+logo_href: 
+logo_background: 
+
 defaults:
   -
     scope:
