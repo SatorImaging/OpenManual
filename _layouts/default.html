@@ -133,7 +133,7 @@
       blockquote {
         position: relative;
         border-radius: 0.25rem;
-        padding: 1em 1.5em 0.5em 4em;
+        padding: 1em 1.5em 0.1em 4em;
         margin-bottom: 1.5em;
         box-sizing: border-box;
         font-style: italic;
@@ -157,6 +157,7 @@
         text-align: right;
         color: #b0b4b8;
         font-size: 0.9em;
+        margin-bottom: 0.5em;
       }
 
 
@@ -206,7 +207,7 @@
     <header class="bg-light  fixed-top   -border-bottom   py-5  mb-2">
       {%- if page.logo_src or site.logo_src -%}
         {%- assign logo_background = page.logo_background | default: site.logo_background | default: "#00cce4" -%}
-        <div style='position: absolute; top: 0px; right: 2.5%; padding: 1.5rem 0px 1rem; border-radius: 0px 0px 5% 5% ; background: {{ logo_background }};'>
+        <div style='position: absolute; top: 0px; right: 3%; padding: 1.5rem 0px 1rem; border-radius: 0px 0px 5% 5% ; background: {{ logo_background }};'>
           <a target="_blank" href='{{ page.logo_href | default: site.logo_href | default: "https://www.sator-imaging.com/" | relative_url }}'>
             <img style='width: 7rem;' src='{{ page.logo_src | default: site.logo_src | relative_url }}' />
           </a>
