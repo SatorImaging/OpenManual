@@ -231,9 +231,9 @@
       </div>
       {%- if page.logo_src or site.logo_src -%}
         {%- assign logo_background = page.logo_background | default: site.logo_background | default: "#00cce4" -%}
-        <div class="col-2 col-sm-2 col-md-2 col-lg-2   pl-0 pl-sm-1 pl-md-0">
+        <div class="col-2 col-sm-2 col-md-2 col-lg-2   pl-0 pl-sm-0 pl-md-0">
           <a target="_blank" href='{{ page.logo_href | default: site.logo_href | default: "https://www.sator-imaging.com/" | relative_url }}'>
-            <div class="pt-3 pt-md-4  px-0  pb-2 pb-md-3   ml-2 ml-md-3 ml-lg-4" style='position: fixed; top: 0px; border-radius: 0px 0px 5% 5% ; background: {{ logo_background }};'>
+            <div class="pt-3 pt-md-4  px-0  pb-2 pb-md-3   ml-0 ml-md-2 ml-lg-2" style='position: fixed; top: 0px; border-radius: 0px 0px 5% 5% ; background: {{ logo_background }};'>
               <img style='width: 12.5vw; max-width: 7rem;' src='{{ page.logo_src | default: site.logo_src | relative_url }}' />
             </div>
           </a>
