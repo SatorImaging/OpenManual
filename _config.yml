@@ -11,7 +11,7 @@ show_downloads: false
 google_analytics: 
 logo_src: "https://avatars.githubusercontent.com/u/45192683"
 logo_href: 
-logo_background: "red"
+logo_background: 
 
 defaults:
   -
