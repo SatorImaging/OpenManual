@@ -39,7 +39,7 @@
           $("nav ul li:first-child a").parent().addClass("active");
         });
         $("nav ul li").on("click", "a", function(event) {
-          var position = $($(this).attr("href")).offset().top - $("header").outerHeight(true);
+          var position = $($(this).attr("href")).offset().top - $("header").outerHeight(true) - 4;
           $("html, body").animate({scrollTop: position}, 400);
           $("nav ul li a").parent().removeClass("active");
           $(this).parent().addClass("active");
@@ -204,37 +204,50 @@
     <div class="vw-100 vh-100 bg-light  position-fixed"></div>
 
 
-    <header class="bg-light  fixed-top   -border-bottom   py-5  mb-2">
+    <header class="bg-light  fixed-top   py-5  mb-2   row no-gutters   -border-bottom">
+      <!-- spacer same with toc -->
+      <div class="col-0 col-sm-0 col-md-1 col-lg-2"></div>
+      <div class="col-10 col-sm-10 col-md-9 col-lg-8   px-5 px-md-3 px-lg-4   -border">
+        <h1 class="my-2   text-secondary  text-truncate   text-left">
+          {{ page.title | default: site.title }}
+        </h1>
+        <p class="my-1    text-secondary  text-truncate  text-right">
+          {%- if page.author -%}
+            written by
+            {% for author in page.author %}
+              <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <span itemprop="name">{{ author }}</span>
+              </span>
+              {%- if forloop.last == false %}, {% endif -%}
+            {% endfor %}
+          {%- endif -%}
+          {%- if page.date -%}
+            @
+            <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+              {{ page.date | date: "%B %-d %Y" }}
+            </time>
+          {%- endif -%}
+        </p>
+      </div>
       {%- if page.logo_src or site.logo_src -%}
         {%- assign logo_background = page.logo_background | default: site.logo_background | default: "#00cce4" -%}
-        <div style='position: absolute; top: 0px; right: 3%; padding: 1.5rem 0px 1rem; border-radius: 0px 0px 5% 5% ; background: {{ logo_background }};'>
+        <div class="col-2 col-sm-2 col-md-2 col-lg-2   pl-0 pl-sm-1 pl-md-0">
           <a target="_blank" href='{{ page.logo_href | default: site.logo_href | default: "https://www.sator-imaging.com/" | relative_url }}'>
-            <img style='width: 7rem;' src='{{ page.logo_src | default: site.logo_src | relative_url }}' />
+            <div class="pt-3 pt-md-4  px-0  pb-2 pb-md-3   ml-2 ml-md-3 ml-lg-4" style='position: fixed; top: 0px; border-radius: 0px 0px 5% 5% ; background: {{ logo_background }};'>
+              <img style='width: 12.5vw; max-width: 7rem;' src='{{ page.logo_src | default: site.logo_src | relative_url }}' />
+            </div>
           </a>
         </div>
       {%- endif -%}
-      <h1 class="col-10 col-sm-10 col-md-11 col-lg-8   my-2  mx-0 mx-md-auto  px-5   text-secondary  text-truncate">
-        {{ page.title | default: site.title }}
-      </h1>
-      <p class="col-9 col-sm-10 col-md-9 col-lg-8 col-xl-9  my-1  mx-0 mx-md-auto  px-5   text-secondary  text-truncate  text-right">
-        {%- if page.author -%}
-          written by
-          {% for author in page.author %}
-            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-              <span itemprop="name">{{ author }}</span>
-            </span>
-            {%- if forloop.last == false %}, {% endif -%}
-          {% endfor %}
-        {%- endif -%}
-        {%- if page.date -%}
-          @
-          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-            {{ page.date | date: "%B %-d %Y" }}
-          </time>
-        {%- endif -%}
-      </p>
+      {%- if false -%}
+        <script>
+          let img = $("img")[$("img").length-1];
+          img.src = 'https://avatars.githubusercontent.com/u/45192683';
+          $(img).parent().css("background", "#00cce4");
+        </script>
+      {%- endif -%}
       <!-- spacer -->
-      <div class="py-3"></div>
+      <div class="w-100  py-3"></div>
     </header>
 
 
@@ -249,7 +262,7 @@
         <ul></ul>
         <small>Edit on <a target="_blank" href="https://github.dev/{{ site.github.repository_nwo }}">GitHub.dev</a></small>
       </nav>
-      <section class="col-12 col-sm-12 col-md-10 col-lg-7  my-5  -border  px-5 px-md-3 px-lg-4">
+      <section class="col-12 col-sm-12 col-md-10 col-lg-7  px-5 px-md-3 px-lg-4   my-5 -border">
         {%- if false -%}
         <h1>Heading 1 : 見出し１</h1>
         <p>Test Body</p>
