@@ -214,14 +214,8 @@
         </h1>
         <p class="my-1    text-secondary  text-truncate  text-right">
           <span class="d-none  d-md-inline-block">
-            <small>Version:</small>
+            <small>version:</small>
             <a href="{{ site.github.url }}{{ page.url }}">Latest</a>
-            {%- if false -%}
-              <script>
-                var test_url = 'https://satorimaging.github.io/OpenManual/index.en.html';
-                var test_lang = 'en';
-              </script>
-            {%- endif -%}
             <script>
               // check url existance
               // https://stackoverflow.com/questions/333634/http-head-request-in-javascript-ajax
@@ -237,8 +231,9 @@
                 http.send();
               }
               // write links
-              let surl = new URL(test_url ?? '{{ site.github.url }}{{ page.url }}');
-              let slang = test_lang ?? '{{ page.lang | default: site.lang | default: "en-US" }}';
+              let testMode = location.href.protocol == "file:";
+              let surl = new URL(testMode ? 'https://satorimaging.github.io/OpenManual/index.en.html' : '{{ site.github.url }}{{ page.url }}');
+              let slang = testMode ? 'en' : '{{ page.lang | default: site.lang | default: "en-US" }}';
               for(let lang_country of ["en-US", "ja-JP", "zh-CN"])
               {
                 let [tlang, tcountry] = lang_country.split('-');
@@ -364,7 +359,9 @@
           <h1>Online Manuals</h1>
           <ul>
           {%- for page in site.pages -%}
-            <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a></li>
+            {%- if page.title -%}
+              <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a></li>
+            {%- endif -%}
           {% endfor %}
           </ul>
         {%- endif -%}
