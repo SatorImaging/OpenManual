@@ -233,7 +233,7 @@
         <p class="my-1    text-secondary  text-truncate  text-right">
           <span class="d-none  d-md-inline-block">
             <small>View Online:</small>
-            <a href="{{ site.github.url }}{{ page.url }}">Latest</a>
+            <a href="{{ site.github.url }}{{ page.url }}">Latest Version</a>
             <script>
               // check url existance
               // https://stackoverflow.com/questions/333634/http-head-request-in-javascript-ajax
@@ -257,7 +257,7 @@
               {
                 let [tlang, tcountry] = lang_country.split('-');
                 let turl = surl.protocol + '//' + surl.hostname.split('.').join('-') + '.translate.goog' + surl.pathname + '?_x_tr_sl=' + slang + '&_x_tr_tl=' + tlang;
-                document.write('<span id="header--lang-'+tlang+'" class="print--d-none">   <a href="'+turl+'"><span class="flag-icon flag-icon-'+tcountry.toLowerCase()+' -flag-icon-squared"></span></a></span>');
+                document.write('<span id="header--lang-'+tlang+'" class="print--d-none">   <a href="'+turl+'"><span class="flag-icon flag-icon-'+tcountry.toLowerCase()+' -flag-icon-squared" style="vertical-align: 0.08em;"></span></a></span>');
                 // replace google translate to github page
                 let turl_github = surl.href.replace(/\.[^\/]+$/, '') + '.' + tlang + '.md';
                 UrlExists(turl_github, (isExists) => {
