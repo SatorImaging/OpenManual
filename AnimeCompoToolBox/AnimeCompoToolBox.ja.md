@@ -44,26 +44,26 @@ author:
 
 
 
-### マニュアル
+## マニュアル
 
 - [Anime Compo Tool Box 取扱説明書](https://satorimaging.github.io/OpenManual/AnimeCompoToolBox/AnimeCompoToolBox.ja.html)
 
 
 
-### ダウンロード
+## ダウンロード
 
 - [Sator Imaging - BOOTH](https://sator-imaging.booth.pm/items/1994425)
 
 
 
-### 更新履歴
+## 更新履歴
 
 - v1.0.0
     - After Effects CS6 で動作確認
 
 
 
-### ライセンス
+## ライセンス
 
 Copyright © Sator Imaging, all rights reserved.
 
@@ -71,7 +71,7 @@ Copyright © Sator Imaging, all rights reserved.
 
 
 
-### もくじ
+## もくじ
 
 
 
@@ -87,7 +87,7 @@ Copyright © Sator Imaging, all rights reserved.
 
 
 
-## インストール方法
+# インストール方法
 
 
 ダウンロードした `.jsxbin` ファイルを `ScriptUI Panels` フォルダーに保存します。
@@ -100,7 +100,7 @@ After Effects CS6 の既定のインストールフォルダーはこちら。
 
 
 
-## 起動方法
+# 起動方法
 
 
 Anime Compo Tool Box はドッキング可能なパネルとしても、通常のウインドウとしても動作します。
@@ -119,7 +119,7 @@ Anime Compo Tool Box はドッキング可能なパネルとしても、通常�
 
 
 
-## 使用方法
+# 使用方法
 
 
 Anime Compo Tool Box を使用した基本的なワークフローは、
@@ -136,7 +136,7 @@ Anime Compo Tool Box を使用した基本的なワークフローは、
 
 
 
-## ツールオプション
+# ツールオプション
 
 各オプションの詳細は以下の通りです。
 
