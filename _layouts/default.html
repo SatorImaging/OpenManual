@@ -230,7 +230,7 @@
   <body>
 
     <!-- background fill need for PDF print -->
-    <div class="w-100 h-100 bg-light  position-fixed"></div>
+    <div id="background-fill" class="w-100 h-100 bg-light  position-fixed"></div>
 
 
     {%- if page.logo_src or site.logo_src -%}
@@ -446,7 +446,8 @@
 
     <div class="print--hidden   fixed-bottom  text-right  px-2  small  text-black-50">
       <script>
-        let res = {"Mobile":[576,1280],"Tablet":[768,1280],"A4(75%)":[678,960],"A4":[905,1280],"Laptop":[1200,1200],"4x3":[1600,1200],"16x9":[1920,1080]};
+        alert(window.innerWidth + ' / ' + $('#background-fill').outerHeight(true));
+        let res = {"Mobile":[576,1280],"Tablet":[768,1280],"A4(75%)":[678,1280],"A4":[905,1280],"Laptop":[1200,1200],"4x3":[1600,1200],"16x9":[1920,1080]};
         for(let key in res) {
           document.write("<a href=\"javascript:window.open(location.href,'_blank','innerWidth="+res[key][0]+",innerHeight="+res[key][1]+",left="+Math.ceil((screen.width-res[key][0])*0.5)+"')\">"+key+"</a> | ");
         };
