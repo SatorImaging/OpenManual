@@ -166,8 +166,6 @@ Anime Compo Tool Box を使用した基本的なワークフローは、
     フレーム数は Fps を超えても良いので、24 fps で 2 秒 72 コマに設定した場合、コンポ尺は 5 秒に設定されます。
 
 
-<div class="print--page-break"></div>
-
 
 - **Layer Fit**  
     コンポ内の全てのレイヤーを新しいコンポ設定に合わせて調整します。
@@ -184,6 +182,9 @@ Anime Compo Tool Box を使用した基本的なワークフローは、
 
     - **Solid**  
         ~~平面レイヤーのサイズをコンポサイズに合わせて更新します。~~（未実装）
+
+
+<div class="print--page-break"></div>
 
 
 
@@ -213,10 +214,6 @@ Anime Compo Tool Box を使用した基本的なワークフローは、
 
 
 
-<div class="print--page-break"></div>
-
-
-
 ## Koma-uchi Time Remap
 
 2コマ打ち、3コマ打ち等々、アニメ特有のタイムリマップアニメーションを生成します。
@@ -237,6 +234,8 @@ Anime Compo Tool Box を使用した基本的なワークフローは、
 
 
 
+<div class="print--page-break"></div>
+
 
 
 ## Footage Control
@@ -251,13 +250,12 @@ Pencil+ でレンダリングしたライン素材がカラー素材と同名で
 ![](https://github.com/SatorImaging/OpenManual/raw/master/AnimeCompoToolBox/images/FootageControl_FileNameDisplay_Project.png)
 
 
-
-<div class="print--page-break"></div>
-
-
-
 ※ コンポのソース名の表示も変わる  
 ![](https://github.com/SatorImaging/OpenManual/raw/master/AnimeCompoToolBox/images/FootageControl_FileNameDisplay_Comp.png)
+
+
+
+<div class="print--page-break"></div>
 
 
 
