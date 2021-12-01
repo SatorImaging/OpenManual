@@ -106,6 +106,13 @@
       }
 
 
+
+      .flag-icon
+      {
+        vertical-align: 0.08em;
+        border: 1px solid #ddd;
+      }
+
       section img { max-width: 100%; }
       section h1,
       section h2,
@@ -273,7 +280,7 @@
               {
                 let [tlang, tcountry] = lang_country.split('-');
                 let turl = surl.protocol + '//' + surl.hostname.split('.').join('-') + '.translate.goog' + surl.pathname + '?_x_tr_sl=' + slang + '&_x_tr_tl=' + tlang;
-                document.write('<span id="header--lang-'+tlang+'" class="print--d-none">   <a href="'+turl+'"><span class="flag-icon flag-icon-'+tcountry.toLowerCase()+' -flag-icon-squared" style="vertical-align: 0.08em;"></span></a></span>');
+                document.write('<span id="header--lang-'+tlang+'" class="print--d-none">   <a href="'+turl+'"><span class="flag-icon flag-icon-'+tcountry.toLowerCase()+' -flag-icon-squared"></span></a></span>');
                 // replace from google translate to github page
                 let turl_github = surl.href.replace(/\.[^\/]+$/, '') + '.' + tlang + '.html'; // not .md
                 UrlExists(turl_github, (isExists) => {
@@ -351,7 +358,7 @@
               }
               let linkEl = document.createElement('li');
               let country = {'en':'us','ja':'jp','zh':'cn'}[lang] ?? 'un';
-              linkEl.innerHTML = '<a href="'+url+'">' + title + '</a>&nbsp;   <span class="flag-icon flag-icon-'+country+'" style="vertical-align: 0.08em;"></span>   <small class="text-black-50">'+date+'</small><br /><small>' + snippet + '</small>';
+              linkEl.innerHTML = '<a href="'+url+'">' + title + '</a>&nbsp;   <span class="flag-icon flag-icon-'+country+'"></span>   <small class="text-black-50">'+date+'</small><br /><small>' + snippet + '</small>';
               dirEl.appendChild(linkEl);
             }
           </script>
