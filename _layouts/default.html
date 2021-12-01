@@ -380,9 +380,9 @@
           {%- for page in site.pages -%}
             {%- if page.title -%}
               <script>
-                let dir = '{{ page.dir }}';
+                let dir = '{{ page.dir }}'.replace(/^\//, '').replace(/\/$/, '') ?? "ROOT";
                 let url = '{{ page.url | relative_url }}';
-                let date = '{{ page.date | date: "%Y-%m-%d" }}';
+                let date = '{{ page.date | date: "%b-%d-%Y" }}';
                 let title = '{{ page.title }}';
                 let snippet = '{{ page.excerpt }}';
                 //
@@ -391,7 +391,7 @@
                 let dirEl = document.querySelector(dirId);
                 if(!dirEl) {
                   let dirLi = document.createElement('li');
-                  dirLi.innerText = dir;
+                  dirLi.innerText = dir != "ROOT" ? dir : "/";
                   rootEl.appendChild(dirLi);
                   dirEl = document.createElement('ul');
                   dirEl.id = dirId;
