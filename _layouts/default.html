@@ -44,7 +44,7 @@
           let targetEl = $($(this).attr("href"));
           if(0 == targetEl.length) {
             let anchorString = escape($(this).attr("href").substr(1).toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,'');
-            targetEl = $(anchorString);
+            targetEl = $('#'+anchorString);
           }
           var position = $(targetEl).offset().top - $("header").outerHeight(true) - 4; // magic number
           $("html, body").animate({scrollTop: position}, 400);
@@ -265,12 +265,12 @@
                 let [tlang, tcountry] = lang_country.split('-');
                 let turl = surl.protocol + '//' + surl.hostname.split('.').join('-') + '.translate.goog' + surl.pathname + '?_x_tr_sl=' + slang + '&_x_tr_tl=' + tlang;
                 document.write('<span id="header--lang-'+tlang+'" class="print--d-none">   <a href="'+turl+'"><span class="flag-icon flag-icon-'+tcountry.toLowerCase()+' -flag-icon-squared" style="vertical-align: 0.08em;"></span></a></span>');
-                // replace google translate to github page
+                // replace from google translate to github page
                 let turl_github = surl.href.replace(/\.[^\/]+$/, '') + '.' + tlang + '.html'; // not .md
                 UrlExists(turl_github, (isExists) => {
                   if(isExists) {
                     let rootel = $('#header--lang-'+tlang);
-                    $(rootel).removeClass('print--d-none');
+                    $(rootel).removeClass('print--d-none');  // show link in PDF.
                     $(rootel).children('a')[0].url = turl_github;
                   }
                 });
