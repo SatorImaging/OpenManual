@@ -142,7 +142,7 @@ Anime Compo Tool Box を使用した基本的なワークフローは、
 
 
 
-### Comp Settings
+## Comp Settings
 
 このオプションの適用範囲は、選択しているコンポと選択しているフォルダーに含まれるすべてのコンポ（サブフォルダー含む）です。
 
@@ -211,7 +211,7 @@ Anime Compo Tool Box を使用した基本的なワークフローは、
 
 
 
-### Koma-uchi Time Remap
+## Koma-uchi Time Remap
 
 2コマ打ち、3コマ打ち等々、アニメ特有のタイムリマップアニメーションを生成します。
 
@@ -232,7 +232,7 @@ Anime Compo Tool Box を使用した基本的なワークフローは、
 
 
 
-### Footage Control
+## Footage Control
 
 
 Pencil+ でレンダリングしたライン素材がカラー素材と同名で判りづらい問題の解消や、コンポのレイヤー表示を見やすくする、フッテージを AEP ファイルからの相対パスに書き換える（未実装）等を行います。
