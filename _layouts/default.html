@@ -185,6 +185,9 @@
       }
       @media print
       {
+        @page {
+          margin: 0px;
+        }
         .print--page-break::before {
           content: ""; /* empty string required */
           display: block;
@@ -200,9 +203,26 @@
   <body>
 
     <!-- background fill need for PDF print -->
-    <div class="vw-100 vh-100 bg-light  position-fixed"></div>
+    <div class="w-100 h-100 bg-light  position-fixed"></div>
 
 
+    {%- if page.logo_src or site.logo_src -%}
+      {%- assign logo_background = page.logo_background | default: site.logo_background | default: "#00cce4" -%}
+      <div class="col-2 col-sm-2 col-md-2 col-lg-2   pl-0 pl-sm-0 pl-md-0   fixed-top   ml-auto"  style="z-index: 9999;">
+        <a target="_blank" href='{{ page.logo_href | default: site.logo_href | default: "https://www.sator-imaging.com/" | relative_url }}'>
+          <div class="pt-3 pt-md-4  px-0  pb-2 pb-md-3   ml-0 ml-md-2 ml-lg-2" style='width: fit-content; border-radius: 0px 0px 5% 5%; overflow: hidden; background: {{ logo_background }};'>
+            <img style='width: 12.5vw; max-width: 7rem;' src='{{ page.logo_src | default: site.logo_src | relative_url }}' />
+          </div>
+        </a>
+      </div>
+      {%- if false -%}
+        <script>
+          let img = $("img")[$("img").length-1];
+          img.src = 'https://avatars.githubusercontent.com/u/45192683';
+          $(img).parent().css("background", "#00cce4");
+        </script>
+      {%- endif -%}
+    {%- endif -%}
     <header class="bg-light   fixed-top   pt-5  mb-2   row no-gutters   -border-bottom">
       <!-- spacer same with toc -->
       <div class="col-0 col-sm-0 col-md-1 col-lg-2"></div>
@@ -212,7 +232,7 @@
         </h1>
         <p class="my-1    text-secondary  text-truncate  text-right">
           <span class="d-none  d-md-inline-block">
-            <small>version:</small>
+            <small>View Online:</small>
             <a href="{{ site.github.url }}{{ page.url }}">Latest</a>
             <script>
               // check url existance
@@ -271,23 +291,6 @@
           {%- endif -%}
         </p>
       </div>
-      {%- if page.logo_src or site.logo_src -%}
-        {%- assign logo_background = page.logo_background | default: site.logo_background | default: "#00cce4" -%}
-        <div class="col-2 col-sm-2 col-md-2 col-lg-2   pl-0 pl-sm-0 pl-md-0">
-          <a target="_blank" href='{{ page.logo_href | default: site.logo_href | default: "https://www.sator-imaging.com/" | relative_url }}'>
-            <div class="pt-3 pt-md-4  px-0  pb-2 pb-md-3   ml-0 ml-md-2 ml-lg-2" style='position: fixed; top: 0px; border-radius: 0px 0px 5% 5% ; background: {{ logo_background }};'>
-              <img style='width: 12.5vw; max-width: 7rem;' src='{{ page.logo_src | default: site.logo_src | relative_url }}' />
-            </div>
-          </a>
-        </div>
-      {%- endif -%}
-      {%- if false -%}
-        <script>
-          let img = $("img")[$("img").length-1];
-          img.src = 'https://avatars.githubusercontent.com/u/45192683';
-          $(img).parent().css("background", "#00cce4");
-        </script>
-      {%- endif -%}
       <!-- spacer -->
       <div class="d-block d-md-none  w-100  my-3"></div>
       <div class="d-none d-md-block  w-100  my-3   pb-5  bg-light"></div>
