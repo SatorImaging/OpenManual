@@ -43,7 +43,7 @@
         $("nav ul li, section").on("click", "a", function(event) {
           let targetEl = $($(this).attr("href"));
           if(null == targetEl) {
-            let anchorString = unescape(escape($(this).attr("href").toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,''));
+            let anchorString = unescape(escape($(this).attr("href").substr(1).toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,''));
             targetEl = $(anchorString);
           }
           var position = $(targetEl).offset().top - $("header").outerHeight(true) - 4; // magic number
