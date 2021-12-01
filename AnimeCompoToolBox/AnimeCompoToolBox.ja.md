@@ -27,10 +27,8 @@ author:
 
 
 
-<!--more-->
+<div class="print--page-break"></div>
 
-
---
 
 
 コレと After Effects CS6（電話すればまだ買えるらしい）、Trapcode・Optical Flare・[OLM Open Tools](https://olm.co.jp/rd/technology/tools/) があれば最低限動ける、というツールです。
@@ -85,6 +83,8 @@ Copyright © Sator Imaging, all rights reserved.
 
 
 
+<div class="print--page-break"></div>
+
 
 
 # インストール方法
@@ -116,6 +116,9 @@ Anime Compo Tool Box はドッキング可能なパネルとしても、通常�
 ※ ウインドウとして起動した状態  
 ![](https://github.com/SatorImaging/OpenManual/raw/master/AnimeCompoToolBox/images/Stmg_AnimeCompoToolBox_Window.png)
 
+
+
+<div class="print--page-break"></div>
 
 
 
@@ -163,6 +166,9 @@ Anime Compo Tool Box を使用した基本的なワークフローは、
     フレーム数は Fps を超えても良いので、24 fps で 2 秒 72 コマに設定した場合、コンポ尺は 5 秒に設定されます。
 
 
+<div class="print--page-break"></div>
+
+
 - **Layer Fit**  
     コンポ内の全てのレイヤーを新しいコンポ設定に合わせて調整します。
 
@@ -207,7 +213,7 @@ Anime Compo Tool Box を使用した基本的なワークフローは、
 
 
 
-
+<div class="print--page-break"></div>
 
 
 
@@ -232,6 +238,7 @@ Anime Compo Tool Box を使用した基本的なワークフローは、
 
 
 
+
 ## Footage Control
 
 
@@ -242,6 +249,11 @@ Pencil+ でレンダリングしたライン素材がカラー素材と同名で
 
 ※ 左：Pencil+ でサブフォルダに書き出す設定をした素材　右：表示名を更新  
 ![](https://github.com/SatorImaging/OpenManual/raw/master/AnimeCompoToolBox/images/FootageControl_FileNameDisplay_Project.png)
+
+
+
+<div class="print--page-break"></div>
+
 
 
 ※ コンポのソース名の表示も変わる  
