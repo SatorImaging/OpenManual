@@ -324,8 +324,34 @@
         <small>Edit on <a target="_blank" href="https://github.dev/{{ site.github.repository_nwo }}">GitHub.dev</a></small>
       </nav>
       <section class="col-12 col-sm-12 col-md-10 col-lg-7  px-5 px-md-3 px-lg-4   my-5 -border">
+        {%- if page.url == '/' -%}
+          <div id="page-links"></div>
+          <script>
+            function AddLink(dir, url, date, title, snippet) {
+              dir = dir.replace(/^\//, '').replace(/\/$/, '') ?? "Miscellaneous";
+              let rootEl = document.querySelector('#page-links');
+              let dirId = '#page-links--'+escape(dir.toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,'');
+              let dirEl = document.querySelector(dirId);
+              if(!dirEl) {
+                dirEl = document.createElement('div');
+                dirEl.id = dirId;
+                rootEl.appendChild(dirEl);
+                let dirLabel = document.createElement('h1');
+                dirLabel.innerText = dir;
+                dirEl.appendChild(dirLabel);
+              }
+              let linkEl = document.createElement('p');
+              linkEl.innerHTML = '<a href="'+url+'">' + title + '</a><small class="text-black-50">&nbsp; '+date+'</small><br />' + snippet;
+              dirEl.appendChild(linkEl);
+            }
+          </script>
+          {%- for page in site.pages -%}
+            {%- if page.title -%}
+              <script>AddLink('{{ page.dir }}', '{{ page.url | relative_url }}', '{{ page.date | date: "%b-%d-%Y" }}', '{{ page.title }}', '{{ page.excerpt }}')</script>
+            {%- endif -%}
+          {% endfor %}
+        {%- endif -%}
         {%- if false -%}
-        <p>This line is for auto-anchor generation function test.</p>
         <h1>Heading 1 : 見出し１</h1>
         <p>Test Body</p>
         <p>
@@ -372,37 +398,6 @@
         <p>
           The third page.
         </p>
-        {%- endif -%}
-        {%- if page.url == '/' -%}
-          <h1>Online Manuals</h1>
-          <ul id="page-links">
-          </ul>
-          {%- for page in site.pages -%}
-            {%- if page.title -%}
-              <script>
-                let dir = '{{ page.dir }}'.replace(/^\//, '').replace(/\/$/, '') ?? "ROOT";
-                let url = '{{ page.url | relative_url }}';
-                let date = '{{ page.date | date: "%b-%d-%Y" }}';
-                let title = '{{ page.title }}';
-                let snippet = '{{ page.excerpt }}';
-                //
-                let rootEl = document.querySelector('#page-links');
-                let dirId = '#page-links--'+escape(dir.toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,'');
-                let dirEl = document.querySelector(dirId);
-                if(!dirEl) {
-                  let dirLi = document.createElement('li');
-                  dirLi.innerText = dir != "ROOT" ? dir : "/";
-                  rootEl.appendChild(dirLi);
-                  dirEl = document.createElement('ul');
-                  dirEl.id = dirId;
-                  rootEl.appendChild(dirEl);
-                }
-                let linkEl = document.createElement('li');
-                linkEl.innerHTML = '<a href="'+url+'">' + title + '</a><small class="text-black-50">&nbsp; '+date+'</small><br />' + snippet;
-                dirEl.appendChild(linkEl);
-              </script>
-            {%- endif -%}
-          {% endfor %}
         {%- endif -%}
         {{ content }}
         <!-- spacer for screen -->
