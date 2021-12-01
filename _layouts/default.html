@@ -34,6 +34,12 @@
       // https://github.com/pages-themes/leap-day/blob/master/assets/js/main.js
       // modified to support non-english characters.
       $(function() {
+        if(0 > document.querySelector('section').children[0].tagName.search(/[hH][1-6]/)) {
+          let topEl = document.createElement('h1');
+          topEl.innerText = '↑ Page Top';
+          topEl.classList.add('d-none');
+          document.querySelector('section').insertBefore(topEl, document.querySelector('section').children[0]);
+        }
         $("section h1, section h2, section h3, section h4, section h5, section h6").each(function() {
           let anchorString = escape(this.innerText.toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,'');
           $("nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='#" + anchorString + "'>" + $(this).text() + "</a></li>");
@@ -317,6 +323,7 @@
       </nav>
       <section class="col-12 col-sm-12 col-md-10 col-lg-7  px-5 px-md-3 px-lg-4   my-5 -border">
         {%- if false -%}
+        <p>This line is for auto-anchor generation function test.</p>
         <h1>Heading 1 : 見出し１</h1>
         <p>Test Body</p>
         <p>
