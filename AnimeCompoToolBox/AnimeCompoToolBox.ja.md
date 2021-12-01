@@ -43,7 +43,7 @@ author:
 
 ### マニュアル
 
-- [Anime Compo Tool Box 取扱説明書](#もくじ)
+- [Anime Compo Tool Box 取扱説明書](https://satorimaging.github.io/OpenManual/AnimeCompoToolBox/AnimeCompoToolBox.ja.html)
 
 
 
