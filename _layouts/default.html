@@ -351,7 +351,16 @@
           </script>
           {%- for page in site.pages -%}
             {%- if page.title -%}
-              <script>AddLink('{{ page.dir }}', '{{ page.url | relative_url }}', '{{ page.date | date: "%b-%d-%Y" }}', '{{ page.title }}', '{{ page.excerpt | default: page.content | strip_html | truncatewords: 10 }}')</script>
+              <script>
+                AddLink('{{ page.dir }}',
+                        '{{ page.url | relative_url }}',
+                        '{{ page.date | date: "%b-%d-%Y" }}',
+                        '{{ page.title }}',
+                        "{{ page.lang | default: site.lang | default: 'en-US' }}".split('-')[0] == 'en'
+                          ? '{{ page.excerpt | default: page.content | strip_html | truncatewords: 30 }}'
+                          : '{{ page.excerpt | default: page.content | strip_html | truncatewords: 5 }}'
+                );
+              </script>
             {%- endif -%}
           {% endfor %}
           <p class="py-5"></p>
