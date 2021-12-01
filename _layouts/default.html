@@ -225,9 +225,9 @@
     {%- if page.logo_src or site.logo_src -%}
       {%- assign logo_background = page.logo_background | default: site.logo_background | default: "#00cce4" -%}
       <div class="col-2 col-sm-2 col-md-2 col-lg-2   pl-0 pl-sm-0 pl-md-0   fixed-top   ml-auto"  style="z-index: 9999;">
-        <a target="_blank" href='{{ page.logo_href | default: site.logo_href | default: "https://www.sator-imaging.com/" | relative_url }}'>
+        <a target="_blank" href='{{ page.logo_href | default: site.logo_href | default: "https://www.sator-imaging.com/" }}'>
           <div class="pt-3 pt-md-4  px-0  pb-2 pb-md-3   ml-0 ml-md-2 ml-lg-2" style='width: fit-content; border-radius: 0px 0px 5% 5%; overflow: hidden; background: {{ logo_background }};'>
-            <img style='width: 12.5vw; max-width: 7rem;' src='{{ page.logo_src | default: site.logo_src | relative_url }}' />
+            <img style='width: 12.5vw; max-width: 7rem;' src='{{ page.logo_src | default: site.logo_src }}' />
           </div>
         </a>
       </div>
@@ -322,7 +322,11 @@
       <div class="col-0 col-sm-0 col-md-1 col-lg-3"></div>
       <nav class="d-none d-lg-block  col-3   my-5  p-2  text-right  position-fixed  print--hidden">
         <ul></ul>
-        <small>Edit on <a target="_blank" href="https://github.dev/{{ site.github.repository_nwo }}">GitHub.dev</a></small>
+        <small>
+          <a href="{{ site.github.url }}/">Catalogue</a>
+          |
+          Edit on <a target="_blank" href="https://github.dev/{{ site.github.repository_nwo }}">GitHub.dev</a>
+        </small>
       </nav>
       <section class="col-12 col-sm-12 col-md-10 col-lg-7  px-5 px-md-3 px-lg-4   my-5 -border">
         {%- if page.url == '/' -%}
@@ -353,7 +357,7 @@
             {%- if page.title -%}
               <script>
                 AddLink('{{ page.dir }}',
-                        '{{ page.url | relative_url }}',
+                        '{{ site.github.url }}{{ page.url }}',
                         '{{ page.date | date: "%b-%d-%Y" }}',
                         '{{ page.title }}',
                         "{{ page.lang | default: site.lang | default: 'en-US' }}".split('-')[0] == 'en'
