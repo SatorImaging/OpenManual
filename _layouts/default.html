@@ -35,22 +35,22 @@
       // modified to support non-english characters.
       $(function() {
         if(0 > document.querySelector('section').children[0].tagName.search(/[hH][1-6]/)) {
-          let topEl = document.createElement('h1');
-          topEl.innerText = '↑ Page Top';
-          topEl.classList.add('d-none');
-          document.querySelector('section').insertBefore(topEl, document.querySelector('section').children[0]);
+          let topAnchorEl = document.createElement('h1');
+          topAnchorEl.innerText = '↑ Page Top';
+          topAnchorEl.classList.add('d-none');
+          document.querySelector('section').insertBefore(topAnchorEl, document.querySelector('section').children[0]);
         }
         $("section h1, section h2, section h3, section h4, section h5, section h6").each(function() {
-          let anchorString = '#'+escape(this.innerText.toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,'');
-          $("nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='" + anchorString + "'>" + $(this).text() + "</a></li>");
-          $(this).attr("id",anchorString);
+          let anchorName = escape(this.innerText.toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,'');
+          $("nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='#" + anchorName + "'>" + $(this).text() + "</a></li>");
+          $(this).attr("id",anchorName);
           $("nav ul li:first-child a").parent().addClass("active");
         });
         $("nav ul li, section").on("click", "a", function(event) {
           let targetEl = $($(this).attr("href"));
           if(0 == targetEl.length) {
-            let anchorString = '#'+escape($(this).attr("href").substr(1).toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,'');
-            targetEl = $(anchorString);
+            let anchorId = '#'+escape($(this).attr("href").substr(1).toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,'');
+            targetEl = $(anchorId);
           }
           var position = $(targetEl).offset().top - $("header").outerHeight(true) - 4; // magic number
           $("html, body").animate({scrollTop: position}, 400);
