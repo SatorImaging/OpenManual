@@ -352,7 +352,7 @@
               let linkEl = document.createElement('li');
               $(linkEl).css('list-style', 'none');
               let country = {'en':'us','ja':'jp','zh':'cn'}[lang] ?? 'un';
-              linkEl.innerHTML = '<span class="flag-icon flag-icon-'+country+'" style="position: absolute; left: 2em; margin-top: 0.1em; width: 1.6em; height: 1.2em;"></span><a href="'+url+'">' + title + '</a>&nbsp; <small class="text-black-50">'+date+'</small><br /><small>' + snippet + '</small>';
+              linkEl.innerHTML = '<span class="flag-icon flag-icon-'+country+'" style="position: absolute; left: 1.9em; margin-top: 0.1em; width: 1.6em; height: 1.2em;"></span><a href="'+url+'">' + title + '</a>&nbsp; <small class="text-black-50">'+date+'</small><br /><small>' + snippet + '</small>';
               dirEl.appendChild(linkEl);
             }
           </script>
