@@ -351,7 +351,7 @@
           </script>
           {%- for page in site.pages -%}
             {%- if page.title -%}
-              <script>AddLink('{{ page.dir }}', '{{ page.url | relative_url }}', '{{ page.date | date: "%b-%d-%Y" }}', '{{ page.title }}', '{{ page.excerpt | default: page.content | strip_html | truncatewords: 25 }}')</script>
+              <script>AddLink('{{ page.dir }}', '{{ page.url | relative_url }}', '{{ page.date | date: "%b-%d-%Y" }}', '{{ page.title }}', '{{ page.excerpt | default: page.content | strip_html | truncatewords: 10 }}')</script>
             {%- endif -%}
           {% endfor %}
           <p class="py-5"></p>
