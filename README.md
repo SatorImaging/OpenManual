@@ -1,4 +1,4 @@
-## About This Repository
+## The Open Manual Repository
 
 Our software manuals are maintained as open-source and be able to be updated/translated on GitHub.
 
