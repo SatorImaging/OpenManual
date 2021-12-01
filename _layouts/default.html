@@ -351,7 +351,7 @@
               }
               let linkEl = document.createElement('li');
               let country = {'en':'us','ja':'jp','zh':'cn'}[lang] ?? 'un';
-              linkEl.innerHTML = '<a href="'+url+'">' + title + '</a>&nbsp;   <small class="text-black-50"><span class="flag-icon flag-icon-'+country+'"></span>   '+date+'</small><br /><small>' + snippet + '</small>';
+              linkEl.innerHTML = '<a href="'+url+'">' + title + '</a>&nbsp;   <span class="flag-icon flag-icon-'+country+'" style="vertical-align: 0.08em;"></span>   <small class="text-black-50">'+date+'</small><br /><small>' + snippet + '</small>';
               dirEl.appendChild(linkEl);
             }
           </script>
