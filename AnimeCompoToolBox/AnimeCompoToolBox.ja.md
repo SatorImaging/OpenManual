@@ -7,6 +7,9 @@ author:
 ---
 
 
+![](https://github.com/SatorImaging/OpenManual/raw/master/AnimeCompoToolBox/images/Stmg_AnimeCompoToolBox_OGP.png)
+
+
 大判などでカット毎にコンポサイズが違う、ラインのコンポのみ２倍サイズで作業、等々、アニメ撮影特有のコンポジット（主にCG）を行う際に必要になる、最低限の機能をまとめた After Effects 用のツールです。
 
 
