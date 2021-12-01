@@ -357,8 +357,8 @@
                         '{{ page.date | date: "%b-%d-%Y" }}',
                         '{{ page.title }}',
                         "{{ page.lang | default: site.lang | default: 'en-US' }}".split('-')[0] == 'en'
-                          ? '{{ page.excerpt | default: page.content | strip_html | truncatewords: 30 }}'
-                          : '{{ page.excerpt | default: page.content | strip_html | truncatewords: 5 }}'
+                          ? '{{ page.excerpt | default: page.content | strip_html | truncatewords: 15 }}'
+                          : '{{ page.excerpt | default: page.content | strip_html | truncatewords: 3 }}'
                 );
               </script>
             {%- endif -%}
