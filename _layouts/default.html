@@ -247,7 +247,7 @@
         </h1>
         <p class="my-1    text-secondary  text-truncate  text-right">
           <span class="d-none  d-md-inline-block">
-            <small>View Online:</small>
+            <small></small>
             <a href="{{ site.github.url }}{{ page.url }}">Latest Version</a>
             <script>
               // check url existance
@@ -300,7 +300,7 @@
             <span class="d-inline-block  ml-3">
               <small>Date:</small>
               <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-                {{ page.date | date: "%b %-d %Y" }}
+                {{ page.date | date: "%b %-d, %Y" }}
               </time>
             </span>
           {%- endif -%}
