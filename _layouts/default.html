@@ -34,7 +34,7 @@
       // https://github.com/pages-themes/leap-day/blob/master/assets/js/main.js
       // modified to support non-english characters.
       $(function() {
-        if(0 > document.querySelector('section').children[0].tagName.search(/[hH][1-6]/)) {
+        if(-1 < document.querySelector('section').children[0].tagName.search(/[pP]/)) {
           let topAnchorEl = document.createElement('h1');
           topAnchorEl.innerText = '↑ Page Top';
           topAnchorEl.classList.add('d-none');
@@ -328,19 +328,22 @@
           <div id="page-links"></div>
           <script>
             function AddLink(dir, url, date, title, snippet) {
-              dir = dir.replace(/^\//, '').replace(/\/$/, '') ?? "Miscellaneous";
+              dir = dir.replace(/^\//, '').replace(/\/$/, '');
+              dir = dir == "" ? "Miscellaneous" : dir;
               let rootEl = document.querySelector('#page-links');
               let dirId = '#page-links--'+escape(dir.toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,'');
               let dirEl = document.querySelector(dirId);
               if(!dirEl) {
-                dirEl = document.createElement('div');
-                dirEl.id = dirId;
-                rootEl.appendChild(dirEl);
+                let dirParentEl = document.createElement('div');
+                rootEl.appendChild(dirParentEl);
                 let dirLabel = document.createElement('h1');
                 dirLabel.innerText = dir;
-                dirEl.appendChild(dirLabel);
+                dirParentEl.appendChild(dirLabel);
+                dirEl = document.createElement('ol');
+                dirEl.id = dirId;
+                dirParentEl.appendChild(dirEl);
               }
-              let linkEl = document.createElement('p');
+              let linkEl = document.createElement('li');
               linkEl.innerHTML = '<a href="'+url+'">' + title + '</a><small class="text-black-50">&nbsp; '+date+'</small><br />' + snippet;
               dirEl.appendChild(linkEl);
             }
