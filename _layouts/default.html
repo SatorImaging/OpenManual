@@ -235,7 +235,7 @@
   <body>
 
     <!-- background fill need for PDF print -->
-    <div id="background-fill" class="w-100 h-100 bg-light  position-fixed"></div>
+    <div id="background-fill" class="w-100 h-100 bg-light  position-fixed" style="top: 0px; left: 0px;"></div>
 
 
     {%- if page.logo_src or site.logo_src -%}
@@ -337,7 +337,7 @@
     <div class="header-spacer"></div>
 
     
-    <div class="py-5   row no-gutters">
+    <div id="section-contents" class="py-5   row no-gutters">
       <!-- spacer behind table of contents, need to place main section next to toc -->
       <div class="col-0 col-sm-0 col-md-1 col-lg-3"></div>
       <nav class="d-none d-lg-block  col-3   my-5  p-2  text-right  position-fixed  print--hidden">
@@ -455,7 +455,7 @@
 
     <div class="print--hidden   fixed-bottom  text-right  px-2  small  text-black-50">
       <script>
-        let res = {"Mobile":[576,1280],"Tablet":[768,1280],"Laptop":[1200,1200],"A4 Print":[905,1280]};//magicnumber = 678 * 1.8,"A4 Print set zoom to 75%":[678,1220],"4x3":[1600,1200],"16x9":[1920,1080]
+        let res = {"Mobile":[576,1280],"Tablet":[768,1280],"Laptop":[1200,1200],"A4 Print":[905,1280]};//[678,960][905,1280],"4x3":[1600,1200],"16x9":[1920,1080]
         for(let key in res) {
           document.write("<a href=\"javascript:window.open(location.href+'?m=" + key.replace(/ /g, '-').toLowerCase() + "','_blank','innerWidth="+res[key][0]+",innerHeight="+res[key][1]+",left="+Math.floor((screen.width-res[key][0])*0.5)+"')\">"+key+"</a>");
           if(key != Object.keys(res)[Object.keys(res).length-1]) document.write(' | ');
@@ -465,6 +465,29 @@
       <a href='javascript:$("body").css("overflow",$("body").css("overflow")!="hidden"?"hidden":"unset")'>Scrollbar</a>
       -->
     </div>
+
+    <!-- scale page 75% (72dpi to 96dpi, screen to css) -->
+    <script>
+      let options = {};
+      location.search.substring(1).split('&').forEach(x => {
+        let [k,v] = x.split('=');
+        options[k] = v;
+      });
+      if(options['m'] == 'a4-print') {
+        $('*').each(function() {
+          for(let p of ['font-size', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left']) {
+            if('font-size' == p && !['body','h1','h2','h3','h4','h5','h6'].includes(this.tagName.toLowerCase())) {
+              //console.log("NO FONT SIZE");
+              return;
+            }
+            let value = $(this).css(p).replace(/[^0-9]*$/, '');
+            let unit = $(this).css(p).replace(/^[0-9]*/, '');
+            $(this).css(p, (value*0.775) + unit); // 72dpi to 96dpi, 0.75 + magic number 0.025
+            //console.log(value + ' * 0.75 = ' + Math.floor(value*0.75) + unit);
+          }
+        });
+      }
+    </script>
 
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
 
