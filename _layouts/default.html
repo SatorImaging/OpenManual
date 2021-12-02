@@ -485,9 +485,10 @@
             $(this).css(p, (value*0.775) + unit); // 72dpi to 96dpi, 0.75 + magic number 0.025
           }
         });
-        $('img').each(function(){
-          $(this).css('width', $(this).outerWidth(true)*0.75+'px');
-          $(this).css('height', $(this).outerHeight(true)*0.75+'px');
+        $('img').each(function() {
+          this.addEventListener("load", x => {
+            $(this).css('width', $(this).outerWidth(true)*0.75+'px');
+          });
         });
       }
     </script>
