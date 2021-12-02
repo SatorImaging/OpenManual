@@ -475,12 +475,16 @@
       });
       if(options['m'] == 'a4-print') {
         $('*').each(function() {
-          for(let p of ['font-size', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left']) {
+          for(let p of ['font-size', 'width', 'height', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left']) {
             if('font-size' == p && !['body','h1','h2','h3','h4','h5','h6'].includes(this.tagName.toLowerCase())) {
+              continue;
+            }
+            if(['width','height'].includes(p) && 'img' != this.tagName.toLowerCase()) {
               continue;
             }
             let value = $(this).css(p).replace(/[^0-9]*$/, '');
             let unit = $(this).css(p).replace(/^[0-9]*/, '');
+            if(0 == value) continue;
             $(this).css(p, (value*0.775) + unit); // 72dpi to 96dpi, 0.75 + magic number 0.025
           }
         });
