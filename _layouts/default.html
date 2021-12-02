@@ -97,6 +97,10 @@
         -font-family: 'M PLUS 1p', sans-serif;
       }
 
+      .header--lang {
+        text-decoration: none;
+      }
+
       .spacer,
       nav ul li {
         list-style: none;
@@ -285,7 +289,7 @@
               {
                 let [tlang, tcountry] = lang_country.split('-');
                 let turl = surl.protocol + '//' + surl.hostname.split('.').join('-') + '.translate.goog' + surl.pathname + '?_x_tr_sl=' + slang + '&_x_tr_tl=' + tlang;
-                document.write('<span id="header--lang-'+tlang+'" class="print--d-none">   <a href="'+turl+'"><span class="flag-icon flag-icon-'+tcountry.toLowerCase()+' -flag-icon-squared"></span></a></span>');
+                document.write('<span id="header--lang-'+tlang+'" class="print--d-none  header--lang">   <a href="'+turl+'"><span class="flag-icon flag-icon-'+tcountry.toLowerCase()+' -flag-icon-squared"></span></a></span>');
                 // replace from google translate to github page
                 let turl_github = surl.href.replace(/\.[^\/]+$/, '') + '.' + tlang + '.html'; // not .md
                 UrlExists(turl_github, (isExists) => {
