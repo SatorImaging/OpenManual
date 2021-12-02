@@ -486,9 +486,9 @@
           }
         });
         $('img').each(function() {
-          this.addEventListener("load", x => { setTimeout(x => {
-            $(this).css('width', $(this).outerWidth(true)*0.875+'px');
-          }, 128)});
+          let fn = function() { $(this).css('width', $(this).outerWidth(true)*0.875+'px'); }
+          if (0 < this.width) fn();
+          else this.addEventListener("load", fn);
         });
       }
     </script>
