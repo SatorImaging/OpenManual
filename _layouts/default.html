@@ -486,7 +486,9 @@
           }
         });
         $('img').each(function() {
-          let fn = function() { $(this).css('width', $(this).outerWidth(true)*0.875+'px'); }
+          let fn = function() { setTimeout(x => {
+            $(this).css('width', $(this).outerWidth(true)*0.875+'px');
+          }, 128)};
           fn();
           this.addEventListener("load", fn);
         });
