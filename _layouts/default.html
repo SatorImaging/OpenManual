@@ -266,7 +266,9 @@
           <span class="d-none  d-md-inline-block">
             <small class="screen--d-none">View Online:</small>
             <small class="print--d-none">Version:</small>
-            <a href="{{ site.github.url }}{{ page.url }}">Latest</a>
+            <a href="{{ site.github.url }}{{ page.url }}">
+              <i class="fas fa-cloud-download-alt  mr-1"></i><small>Latest</small>
+            </a>
             <script>
               // check url existance
               // https://stackoverflow.com/questions/333634/http-head-request-in-javascript-ajax
@@ -290,7 +292,7 @@
               {
                 let [tlang, tcountry] = lang_country.split('-');
                 let turl = surl.protocol + '//' + surl.hostname.split('.').join('-') + '.translate.goog' + surl.pathname + '?_x_tr_sl=' + slang + '&_x_tr_tl=' + tlang;
-                document.write('<span id="header--lang-'+tlang+'" class="print--d-none  header--lang">   <a href="'+turl+'"><span class="flag-icon flag-icon-'+tcountry.toLowerCase()+' -flag-icon-squared"></span></a></span>');
+                document.write('<span id="header--lang-'+tlang+'" class="print--d-none  header--lang"><a href="'+turl+'"><span class="flag-icon flag-icon-'+tcountry.toLowerCase()+' -flag-icon-squared"></span></a></span>');
                 // replace from google translate to github page
                 let turl_github = surl.href.replace(/\.[^\/]+$/, '') + '.' + tlang + '.html'; // not .md
                 UrlExists(turl_github, (isExists) => {
@@ -298,7 +300,7 @@
                     let rootEl = $('#header--lang-'+tlang);
                     $(rootEl).removeClass('print--d-none');  // show link in PDF.
                     $(rootEl).children('a')[0].url = turl_github;
-                    $($(rootEl).children('a')[0]).append('<small> ' + tlang.toUpperCase() + '</small>');
+                    $($(rootEl).children('a')[0]).append('<small class="ml-1">' + tlang.toUpperCase() + '</small>');
                   }
                 });
               }
