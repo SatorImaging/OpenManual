@@ -297,7 +297,7 @@
                     let rootEl = $('#header--lang-'+tlang);
                     $(rootEl).removeClass('print--d-none');  // show link in PDF.
                     $(rootEl).children('a')[0].url = turl_github;
-                    $(rootEl).children('a')[0].append(' ' + tlang.toUpperCase());
+                    $(rootEl).children('a')[0].append(' <small>' + tlang.toUpperCase()+'</small>');
                   }
                 });
               }
