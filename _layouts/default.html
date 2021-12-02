@@ -487,8 +487,8 @@
         });
         $('img').each(function() {
           let fn = function() { $(this).css('width', $(this).outerWidth(true)*0.875+'px'); }
-          if (0 < this.width) fn();
-          else this.addEventListener("load", fn);
+          fn();
+          this.addEventListener("load", fn);
         });
       }
     </script>
