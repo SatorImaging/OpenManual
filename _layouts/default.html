@@ -457,7 +457,7 @@
       <script>
         let res = {"Mobile":[576,1280],"Tablet":[768,1280],"Laptop":[1200,1200],"A4 Print":[905,1280]};//[678,960][905,1280],"4x3":[1600,1200],"16x9":[1920,1080]
         for(let key in res) {
-          document.write("<a href=\"javascript:window.open(location.href+'?m=" + key.replace(/ /g, '-').toLowerCase() + "','_blank','innerWidth="+res[key][0]+",innerHeight="+res[key][1]+",left="+Math.floor((screen.width-res[key][0])*0.5)+"')\">"+key+"</a>");
+          document.write("<a href=\"javascript: url=new URL(location); url.search='?m=" + key.replace(/ /g, '-').toLowerCase() + "'; window.open(url,'_blank','innerWidth="+res[key][0]+",innerHeight="+res[key][1]+",left="+Math.floor((screen.width-res[key][0])*0.5)+"')\">"+key+"</a>");
           if(key != Object.keys(res)[Object.keys(res).length-1]) document.write(' | ');
         };
       </script>
@@ -466,7 +466,7 @@
       -->
     </div>
 
-    <!-- scale page 75% (72dpi to 96dpi, screen to css) -->
+    <!-- scale page 75% for print preview (72dpi to 96dpi, screen to css dpi for print) -->
     <script>
       let options = {};
       location.search.substring(1).split('&').forEach(x => {
@@ -477,13 +477,11 @@
         $('*').each(function() {
           for(let p of ['font-size', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left']) {
             if('font-size' == p && !['body','h1','h2','h3','h4','h5','h6'].includes(this.tagName.toLowerCase())) {
-              //console.log("NO FONT SIZE");
-              return;
+              continue;
             }
             let value = $(this).css(p).replace(/[^0-9]*$/, '');
             let unit = $(this).css(p).replace(/^[0-9]*/, '');
             $(this).css(p, (value*0.775) + unit); // 72dpi to 96dpi, 0.75 + magic number 0.025
-            //console.log(value + ' * 0.75 = ' + Math.floor(value*0.75) + unit);
           }
         });
       }
