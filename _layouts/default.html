@@ -316,8 +316,8 @@
             </span>
           {%- endif -%}
           {%- if page.date -%}
-            <span class="d-inline-block  ml-2">
-              <small>On:</small>
+            <span class="d-inline-block  ml-3">
+              <small>on</small>
               <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
                 {{ page.date | date: "%b %-d, %Y" }}
               </time>
