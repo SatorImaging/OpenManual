@@ -98,7 +98,7 @@
       }
 
       .header--lang  a {
-        text-decoration: none;
+        -text-decoration: none;
       }
 
       .spacer,
@@ -266,9 +266,7 @@
           <span class="d-none  d-md-inline-block">
             <small class="screen--d-none">View Online:</small>
             <small class="print--d-none">Version:</small>
-            <a href="{{ site.github.url }}{{ page.url }}">
-              <i class="fas fa-external-link-alt  mr-1  text-black-50"></i><small>Latest</small>
-            </a>
+            <a href="{{ site.github.url }}{{ page.url }}"><i class="fas fa-external-link-alt  mr-1  text-black-50"></i><small>Latest</small></a>
             <script>
               // check url existance
               // https://stackoverflow.com/questions/333634/http-head-request-in-javascript-ajax
