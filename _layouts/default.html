@@ -343,6 +343,17 @@
         <small>
           Go to <a href="{{ site.github.url }}/">Index</a>
           <br />
+          <script>
+            let editUrl = '{{ page.url }}';
+            if (editUrl.search(/\.html$/i) > -1) {
+              editUrl = editUrl.replace(/\.html$/i, '.md');
+            } else {
+              editUrl += 'README.md';
+            }
+            editUrl = editUrl.replace(/^\/{{ site.github.repository_name }}/, '');
+            editUrl = 'https://github.com/{{ site.github.repository_nwo }}/edit/master' + editUrl;
+            document.write('Edit <a href="'+editUrl+'">Markdown</a><br />');
+          </script>
           Edit on <a href="https://github.dev/{{ site.github.repository_nwo }}">GitHub.dev</a>
         </small>
       </nav>
