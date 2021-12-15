@@ -13,7 +13,10 @@
 
     {% include head-custom.html %}
 
-    <link rel='icon' type='image/x-icon' href='https://www.sator-imaging.com/favicon.ico' />
+    {%- if page.favicon or site.favicon -%}
+      {%- assign favicon_href = page.favicon | default: site.favicon -%}
+      <link rel='icon' type='image/x-icon' href='{{ favicon_href }}' />
+    {%- endif -%}
 
     {%- if false -%}
       <!-- jekyll commands are rendered as plain text in local environment so that remove those text from body and content element to achieve consistent layout in any environment. -->
