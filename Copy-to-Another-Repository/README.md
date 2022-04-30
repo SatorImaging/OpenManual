@@ -3,6 +3,7 @@
 `Copy-to-Another-Repository` is reusable workflow to copy selected file to another repository and create Pull Request (PR) to merge.
 
 
+
 ## Usage
 
 Create GitHub Actions like as follows.
@@ -13,12 +14,14 @@ See [action.yml](https://github.com/sator-imaging/Copy-to-Another-Repository/blo
 name: GitHub-Actions-Name
 
 on:
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
   push:
-    branches: [ master ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
+    branches: [ main ]
+    branches-ignore:
+    tags:
+    tags-ignore:
+    paths:
+      - 'README.md'   # limit trigger to the target-filepath
 
 jobs:
   main:
@@ -38,10 +41,23 @@ jobs:
           output-directory: "${{ github.event.repository.name }}"   # copy file into sub directory
           pr-branch-prefix: "actions/${{ github.event.repository.name }}"   # branch name prefix followed by date and time
           pr-title: "GitHub Actions: ${{ github.event.repository.name }}"
-          pr-message: "${{ github.repositoryUrl }}\\n${{ github.workflow }}${{ github.action }}"
+          pr-message: "${{ github.workflow }} on ${{ github.server_url }}/${{ github.repository }}"   # followed by action repository
           git-name: "${{ github.actor }}"
           git-email: 'your-email-address@users.noreply.github.com'   # user icon is not displayed if not set
 ```
+
+
+
+## Learning Resources
+
+- [Metadata syntax for GitHub Actions](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions)
+  - [`runs` for composite actions](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#runs-for-composite-actions)
+- [Contexts](https://docs.github.com/en/actions/learn-github-actions/contexts)
+- [Environment variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables)
+  - [Default environment variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables)
+- [Webhook events and payloads](https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads)
+- [Workflow commands for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions)
+
 
 
 ## Copyright
