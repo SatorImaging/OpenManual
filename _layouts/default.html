@@ -405,8 +405,10 @@
           <script>
             function AddLink(dir, url, date, title, lang, snippet) {
               dir = dir.replace(/^\//, '').replace(/\/$/, '');
+
               // ignore root README.md
-              if (dir == "") return;
+              let isRootIndex = false;
+              if (dir == "") isRootIndex = true;
 
               dir = dir == "" ? "Miscellaneous" : dir;
               lang = lang.split('-')[0];
@@ -433,6 +435,11 @@
               let country = {'en':'us','ja':'jp','zh':'cn'}[lang] ?? 'un';
               linkEl.innerHTML = '<a href="'+url+'">' + title + '</a>&nbsp;   <span class="flag-icon flag-icon-'+country+'"></span>   <small class="text-black-50">'+date+'</small><br /><small>' + snippet + '</small>';
               dirEl.appendChild(linkEl);
+              
+              // remove root index.
+              if (isRootIndex) {
+                dirEl.remove();
+              }
             }
           </script>
           <ul id="page-links--default">
