@@ -473,7 +473,7 @@
           The third page.
         </p>
         {%- endif -%}
-        {{ content | prepend: "{% raw %}" | append: "{% endraw %}" }}
+        {{ content | escape }}
         <!-- spacer for screen -->
         <div class="print--d-none  vh-100"></div>
       </section>
