@@ -473,7 +473,7 @@
           The third page.
         </p>
         {%- endif -%}
-        {{ content }}
+        {{ content | replace: "{", "&lbrace;" | replace: "}", "&rbrace;" }}
         <!-- spacer for screen -->
         <div class="print--d-none  vh-100"></div>
       </section>
