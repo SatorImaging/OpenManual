@@ -4,6 +4,7 @@ plugins:
 kramdown:
   syntax_highlighter_opts:
     guess_lang: true
+timezone: 'Asia/Tokyo'
 
 title: 
 description: 

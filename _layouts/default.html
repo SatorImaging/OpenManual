@@ -15,7 +15,7 @@
 
     {%- if page.favicon or site.favicon -%}
       {%- assign favicon_href = page.favicon | default: site.favicon -%}
-      <link rel='icon' type='image/x-icon' href='{{ favicon_href }}'  />
+      <link rel='icon' type='image/x-icon' href='{{ favicon_href }}' />
     {%- endif -%}
 
     {%- if false -%}
@@ -108,6 +108,7 @@
       header h1 {
         font-weight: 100;
         -font-family: 'M PLUS 1p', sans-serif;
+        font-size: 2.5rem;
       }
 
       .header--lang  a {
@@ -117,7 +118,9 @@
       .spacer,
       nav ul li {
         list-style: none;
-        white-space: nowrap;
+        -white-space: nowrap;
+        line-height: 1.1em;
+        margin-bottom: 0.4em;
         text-overflow: ellipsis;
         overflow: hidden;
       }
@@ -151,12 +154,23 @@
         background: linear-gradient(transparent 70%, #cde7 70%);
         width: fit-content;
         margin-top: 2.0rem;
-        margin-bottom: 1.6rem;
+        margin-bottom: 1.3rem;
       }
+      section h1 { font-size: 1.8rem; }
+      section h2 { font-size: 1.6rem; }
+      section h3 { font-size: 1.4rem; }
+      section h4 { font-size: 1.3rem; }
+      section h5 { font-size: 1.2rem; }
+      section h6 { font-size: 1.1rem; }
       section *:first-child {
         margin-top: 0.0rem;
       }
 
+      #page-links ul,
+      #page-links ol
+      {
+        margin-bottom: 2rem;
+      }
 
       section .highlighter-rouge {
         border-radius: 0.25em;
@@ -298,19 +312,32 @@
               let testMode = location.protocol == 'file:';
               let surl = new URL(testMode ? 'https://satorimaging.github.io/OpenManual/index.en.html' : '{{ site.github.url }}{{ page.url }}');
               let slang = testMode ? 'en' : '{{ page.lang | default: site.lang | default: "en-US" }}';
+              
+              //
+              //  TODO: multi-language in one document
+              //    Add class="lang--ja" to support multilingual visibility function.
+              //    To create multilingual document, set lang in FrontMatter to comma separated value: 'ja, en-US, zh-CN'
+              //
+              slang = slang.split(',');
+              for (let i = 0; i < slang.length; i++) {
+                slang[i] = slang[i].trim();
+              }
+              slang = slang[0];
+              // not yet implemented
+
               slang = slang.split('-')[0]; // no country code.
               for(let lang_country of ["en-US", "ja-JP", "zh-CN"])
               {
                 let [tlang, tcountry] = lang_country.split('-');
                 let turl = surl.protocol + '//' + surl.hostname.split('.').join('-') + '.translate.goog' + surl.pathname + '?_x_tr_sl=' + slang + '&_x_tr_tl=' + tlang;
                 document.write('   <span id="header--lang-'+tlang+'" class="print--d-none  header--lang"><a href="'+turl+'"><span class="flag-icon flag-icon-'+tcountry.toLowerCase()+' -flag-icon-squared"></span></a></span>');
-                // replace from google translate to github page
+                // replace from google translate to github page if exists.
                 let turl_github = surl.href.replace(/\.[^\/]+$/, '') + '.' + tlang + '.html'; // not .md
                 UrlExists(turl_github, (isExists) => {
                   if(isExists) {
                     let rootEl = $('#header--lang-'+tlang);
                     $(rootEl).removeClass('print--d-none');  // show link in PDF.
-                    $(rootEl).children('a')[0].url = turl_github;
+                    $(rootEl).children('a')[0].href = turl_github;
                     $($(rootEl).children('a')[0]).append('<small class="ml-1">' + tlang.toUpperCase() + '</small>');
                   }
                 });
@@ -378,6 +405,9 @@
           <script>
             function AddLink(dir, url, date, title, lang, snippet) {
               dir = dir.replace(/^\//, '').replace(/\/$/, '');
+              // ignore root README.md
+              if (dir == "") return;
+
               dir = dir == "" ? "Miscellaneous" : dir;
               lang = lang.split('-')[0];
               // remove default heading
@@ -389,7 +419,7 @@
               if(!dirEl) {
                 let dirParentEl = document.createElement('div');
                 rootEl.appendChild(dirParentEl);
-                let dirLabel = document.createElement('h4');
+                let dirLabel = document.createElement('h1');
                 dirLabel.innerText = dir;
                 dirParentEl.appendChild(dirLabel);
                 dirEl = document.createElement('ul');
@@ -473,7 +503,7 @@
           The third page.
         </p>
         {%- endif -%}
-        {{ content | replace: "{", "$lbrace;" }}
+        {{ content }}
         <!-- spacer for screen -->
         <div class="print--d-none  vh-100"></div>
       </section>
