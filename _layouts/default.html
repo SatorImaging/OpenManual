@@ -421,7 +421,7 @@
               if(!dirEl) {
                 let dirParentEl = document.createElement('div');
                 rootEl.appendChild(dirParentEl);
-                let dirLabel = document.createElement('h1');
+                let dirLabel = document.createElement('h3');
                 dirLabel.innerText = dir.replace(/-/g, ' ').replace(/\s*([A-Z0-9]+)/g, ' $1').trim();
                 dirParentEl.appendChild(dirLabel);
                 dirEl = document.createElement('ul');
