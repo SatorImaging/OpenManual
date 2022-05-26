@@ -174,7 +174,7 @@
       section ul,
       section ol
       {
-        -margin-top: 0.5em;
+        margin-top: 0.5em;
       }
       #page-links li,
       section li
@@ -231,7 +231,7 @@
       :root {
           /* need offset: header + spacer in header */
           /* m-1/p-1: 0.25rem  2: 0.5rem  3: 1.0rem  4: 1.5rem  5: 3.0rem */
-          --header-height: 8.5rem;
+          --header-height: 11.5rem;  /* 8.5 + 3 */
       }
       .header-spacer {
           margin-bottom: var(--header-height);
@@ -388,7 +388,7 @@
     <div id="section-contents" class="py-5   row no-gutters">
       <!-- spacer behind table of contents, need to place main section next to toc -->
       <div class="col-0 col-sm-0 col-md-1 col-lg-3"></div>
-      <nav class="d-none d-lg-block  col-3   my-5  p-2  text-right  position-fixed  print--hidden">
+      <nav class="d-none d-lg-block  col-3   -my-5  p-2  text-right  position-fixed  print--hidden">
         <ul></ul>
         <small>
           Go to <a href="{{ site.github.url }}/">Index</a>
@@ -407,7 +407,6 @@
           VS Code on <a href="https://github.dev/{{ site.github.repository_nwo }}">Repository</a>
         </small>
       </nav>
-      <div class="p-0 m-0  mt-5"></div><!-- spacer for #anchors -->
       <section class="col-12 col-sm-12 col-md-10 col-lg-7  px-5 px-md-3 px-lg-4   -my-5 -border">
         {%- if page.url == '/' -%}
           <div id="page-links">
