@@ -270,8 +270,8 @@
         .print--page-break::before {
           content: ""; /* empty string required */
           display: block;
-          height: 0px; /* 6.0rem???? wapper margin+padding + section margin+padding */
-          margin-bottom: var(--header-height);
+          height: var(--header-height);  /* 6.0rem???? wapper margin+padding + section margin+padding */
+          -margin-bottom: var(--header-height);
         }
         .print--page-break { break-before: page; }
         .print--hidden { visibility: hidden; }
@@ -429,6 +429,9 @@
       </nav>
       <section class="col-12 col-sm-12 col-md-10 col-lg-7  px-5 px-md-3 px-lg-4   -my-5 -border">
         {%- if page.url == '/' -%}
+          <div id="page-links"><!-- this div tag must be the first child of section tag -->
+            <h1 id="page-links--older-smartphone">Open Manual Index</h1>
+          </div>
           <script> // auto-generate page index
             function AddLink(dir, url, date, title, lang, snippet) {
               dir = dir.replace(/^\//, '').replace(/\/$/, '');
@@ -439,9 +442,10 @@
 
               dir = dir == "" ? "Miscellaneous" : dir;
               lang = lang.split('-')[0];
-              // remove default heading
+              // remove default h1 tag
               let defaultEl = document.querySelector('#page-links--older-smartphone');
               if (defaultEl) defaultEl.remove();
+
               let rootEl = document.querySelector('#page-links');
               let dirId = 'page-links--'+escape(dir.toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,'');
               let dirEl = document.querySelector('#'+dirId);
@@ -459,8 +463,9 @@
                 dirParentEl.appendChild(dirEl);
               }
               // remove default and create new one
-              let linkEl = document.querySelector('#page-links--default').getElementsByTagName('li')[0];
+              let linkEl = document.querySelector('#page-links--default');//.getElementsByTagName('li')[0];
               if (linkEl) linkEl.remove();
+
               linkEl = document.createElement('li');
               let country = {'en':'us','ja':'jp','zh':'cn'}[lang] ?? 'un';
               linkEl.innerHTML = '<a href="'+url+'">' + title + '</a>&nbsp;   <span class="flag-icon flag-icon-'+country+'"></span>   <small class="text-black-50">'+date+'</small><br /><small>' + snippet + '</small>';
@@ -472,9 +477,6 @@
               }
             }
           </script>
-          <div id="page-links">
-            <h1 id="page-links--older-smartphone">Open Manual Index</h1>
-          </div>
           <ul id="page-links--default">
             {%- for page in site.pages -%}
               {%- if page.title -%}
