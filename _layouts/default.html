@@ -270,7 +270,7 @@
         .print--page-break::before {
           content: ""; /* empty string required */
           display: block;
-          -height: 6.0rem; /* ???? wapper margin+padding + section margin+padding */
+          height: 1px; /* 6.0rem???? wapper margin+padding + section margin+padding */
           -margin-bottom: var(--header-height);
         }
         .print--page-break { break-before: page; }
@@ -398,7 +398,7 @@
     <div id="section-contents" class="-py-5   row no-gutters">
       <!-- spacer behind table of contents, need to place main section next to toc -->
       <div class="col-0 col-sm-0 col-md-1 col-lg-3"></div>
-      <nav class="d-none d-lg-block  col-3   -my-5  px-2 py-1  text-right  position-fixed  print--hidden">
+      <nav class="d-none d-lg-block  col-3   -my-5  px-2 py-2  text-right  position-fixed  print--hidden">
         <ul></ul>
         <small>
           Go to <a href="{{ site.github.url }}/">Index</a>
