@@ -203,10 +203,14 @@
         background-color: #ddd7;
       }
       section div.highlighter-rouge {
-        padding: 0.5em 1.25em  1px;  /* non-zero value required for bottom */
+        padding: 0.75em 1.25em  1px;  /* non-zero value required for bottom */
       }
       section div.highlighter-rouge > div > pre {
         padding-bottom: 0.5em;
+      }
+      section div.highlighter-rouge  code {  /* :not() doesn't work as expected */
+        border-radius: 0px;
+        background-color: transparent;
       }
       /* for Print to PDF */
       section pre { border: none; }
