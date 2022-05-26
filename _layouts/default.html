@@ -422,7 +422,10 @@
                 let dirParentEl = document.createElement('div');
                 rootEl.appendChild(dirParentEl);
                 let dirLabel = document.createElement('h3');
-                dirLabel.innerText = dir.replace(/-/g, ' ').replace(/\s*([A-Z0-9]+)/g, ' $1').trim();
+                dirLabel.innerText = dir.replace(/[-_]/g, ' ')
+                                      .replace(/([A-Z0-9]+)([A-Z0-9][a-z])/g, '$1 $2')  // UIClass -> UI Class
+                                      .replace(/\s*([A-Z0-9]+)/g, ' $1')  // PascalCase -> Pascal Case
+                                      .trim();
                 dirParentEl.appendChild(dirLabel);
                 dirEl = document.createElement('ul');
                 dirEl.id = dirId;
