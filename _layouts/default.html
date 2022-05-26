@@ -45,12 +45,20 @@
           topAnchorEl.classList.add('d-none');
           document.querySelector('section').insertBefore(topAnchorEl, document.querySelector('section').children[0]);
         }
+        // find top-most header tag.
+        let topMostHeaderTag = 'h1';
+        for (let i = 1; i <= 6; i++) {
+          if ($("section h"+i).length == 0) continue;
+          topMostHeaderTag = 'h' + i;
+          break;
+        }
+        // do it
         $("section h1, section h2, section h3, section h4, section h5, section h6").each(function() {
           let anchorName = escape(this.innerText.toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,'');
           $("nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='#" + anchorName + "'>" + $(this).text() + "</a></li>");
           $(this).attr("id",anchorName);
           $("nav ul li:first-child a").parent().addClass("active");
-          $("nav ul li:last-child").css("font-size", 'h1' == this.tagName.toLowerCase() ? "1.0em" : "0.825em");
+          $("nav ul li:last-child").css("font-size", topMostHeaderTag == this.tagName.toLowerCase() ? "1.0em" : "0.825em");
         });
         $("nav ul li, section").on("click", "a", function(event) {
           let targetEl = $($(this).attr("href"));
@@ -262,7 +270,7 @@
         .print--page-break::before {
           content: ""; /* empty string required */
           display: block;
-          height: 6.0rem; /* wapper margin+padding + section margin+padding */
+          -height: 6.0rem; /* ???? wapper margin+padding + section margin+padding */
           margin-bottom: var(--header-height);
         }
         .print--page-break { break-before: page; }
@@ -478,7 +486,7 @@
           <hr class="my-5" />
         {%- endif -%}
         {%- if false -%}
-        <h1>Heading 1 : 見出し１</h1>
+        <h2>H2 : 見出し１</h2>
         <p>Test Body</p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -497,7 +505,7 @@
           Here is page break for print.
           <div class="print--page-break"></div>
         </p>
-        <h2>Heading 2 : 見出し２</h2>
+        <h3>H3 : 見出し２</h3>
         <p>テスト本文</p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
