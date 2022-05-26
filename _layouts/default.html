@@ -192,16 +192,19 @@
         margin-bottom: 0.5em;
       }
 
+      section code {
+        display: inline-block;
+        padding: 0em 0.4em;
+      }
       section .highlighter-rouge {
         border-radius: 0.25em;
         background-color: #ddd7;
       }
-      section code.highlighter-rouge {
-        display: inline-block;
-        padding: 0em 0.4em;
-      }
       section div.highlighter-rouge {
-        padding: 0.5em 1.25em;
+        padding: 0.5em 1.25em  1px;  /* non-zero value required for bottom */
+      }
+      section div.highlighter-rouge > div > pre {
+        padding-bottom: 0.5em;
       }
       /* for Print to PDF */
       section pre { border: none; }
