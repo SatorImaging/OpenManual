@@ -103,7 +103,8 @@ https://qiita.com/sator_imaging/items/91f4156216831c3760df
 
 #### 制作・著作
 
-Copyright © Sator Imaging, all rights reserved.
+Copyright &copy;2022 Sator Imaging, all rights reserved.
+
 VRM and UniVRM are licensed under the MIT License.
 
 
