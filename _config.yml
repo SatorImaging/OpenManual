@@ -5,7 +5,7 @@ plugins:
 markdown: CommonMarkGhPages
 commonmark:
   options: ["UNSAFE", "SMART", "FOOTNOTES"]
-  extensions: ["strikethrough", "autolink", "table", "tagfilter"]
+  extensions: ["strikethrough", "autolink", "table", "-xxx-tagfilter"]
 kramdown:
   syntax_highlighter_opts:
     guess_lang: true
