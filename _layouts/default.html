@@ -462,8 +462,8 @@
                 dirEl.id = dirId;
                 dirParentEl.appendChild(dirEl);
               }
-              // remove default and create new one
-              let linkEl = document.querySelector('#page-links--default');//.getElementsByTagName('li')[0];
+              // remove existing li element and create new one
+              let linkEl = document.querySelector('#page-links--default').getElementsByTagName('li')[0];
               if (linkEl) linkEl.remove();
 
               linkEl = document.createElement('li');
