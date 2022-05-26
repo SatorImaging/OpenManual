@@ -162,7 +162,9 @@
       section h4 { font-size: 1.3rem; }
       section h5 { font-size: 1.2rem; }
       section h6 { font-size: 1.1rem; }
-      section > *:first-child {
+      section > *:first-child,
+      section > *:first-child *
+      {
         margin-top: 0.0rem;
       }
 
@@ -231,7 +233,7 @@
       :root {
           /* need offset: header + spacer in header */
           /* m-1/p-1: 0.25rem  2: 0.5rem  3: 1.0rem  4: 1.5rem  5: 3.0rem */
-          --header-height: 11.5rem;  /* 8.5 + 3 */
+          --header-height: 14.5rem;  /* 8.5 + 3 + 3 */
       }
       .header-spacer {
           margin-bottom: var(--header-height);
@@ -385,7 +387,7 @@
     <div class="header-spacer"></div>
 
     
-    <div id="section-contents" class="py-5   row no-gutters">
+    <div id="section-contents" class="-py-5   row no-gutters">
       <!-- spacer behind table of contents, need to place main section next to toc -->
       <div class="col-0 col-sm-0 col-md-1 col-lg-3"></div>
       <nav class="d-none d-lg-block  col-3   -my-5  p-2  text-right  position-fixed  print--hidden">
