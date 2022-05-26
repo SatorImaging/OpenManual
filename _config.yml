@@ -1,24 +1,30 @@
 theme: jekyll-theme-minimal
 plugins:
-  - jekyll-last-modified-at # plugins can be loaded if it's in whitelist, this is not in.
+  - jekyll-last-modified-at   # plugins can be loaded if it's in whitelist, this is not in.
+  - jekyll-commonmark-ghpages
+markdown: CommonMarkGhPages
+commonmark:
+  options: ["UNSAFE", "SMART", "FOOTNOTES"]
+  extensions: ["strikethrough", "autolink", "table", "tagfilter"]
 kramdown:
   syntax_highlighter_opts:
     guess_lang: true
 timezone: 'Asia/Tokyo'
 
+
 title: 
 description: 
 show_downloads: false
-google_analytics: 
+google_analytics:   # hard-coded in default.html
 favicon: "https://www.sator-imaging.com/favicon.ico"
 logo_src: "https://avatars.githubusercontent.com/u/45192683"
 logo_href: 
 logo_background: 
 
+
 defaults:
-  -
-    scope:
-      path: "" # an empty string here means all files in the project
+  - scope:
+      path: ""   # an empty string here means all files in the project
     values:
       layout: "default"
       author:
