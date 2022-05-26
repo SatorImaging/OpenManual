@@ -416,8 +416,8 @@
               let defaultEl = document.querySelector('#page-links--older-smartphone');
               if (defaultEl) defaultEl.remove();
               let rootEl = document.querySelector('#page-links');
-              let dirId = '#page-links--'+escape(dir.toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,'');
-              let dirEl = document.querySelector(dirId);
+              let dirId = 'page-links--'+escape(dir.toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,'');
+              let dirEl = document.querySelector('#'+dirId);
               if(!dirEl) {
                 let dirParentEl = document.createElement('div');
                 rootEl.appendChild(dirParentEl);
