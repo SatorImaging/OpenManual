@@ -270,8 +270,8 @@
         .print--page-break::before {
           content: ""; /* empty string required */
           display: block;
-          height: 1px; /* 6.0rem???? wapper margin+padding + section margin+padding */
-          -margin-bottom: var(--header-height);
+          height: 0px; /* 6.0rem???? wapper margin+padding + section margin+padding */
+          margin-bottom: var(--header-height);
         }
         .print--page-break { break-before: page; }
         .print--hidden { visibility: hidden; }
@@ -399,7 +399,17 @@
       <!-- spacer behind table of contents, need to place main section next to toc -->
       <div class="col-0 col-sm-0 col-md-1 col-lg-3"></div>
       <nav class="d-none d-lg-block  col-3   -my-5  px-2 py-2  text-right  position-fixed  print--hidden">
-        <ul></ul>
+        <ul></ul><!-- placeholder for table of contents -->
+        <div id="printing-button">
+          <script>
+            // show printing button if ready to print
+            document.addEventListener('DOMContentLoaded', (event) => {
+              if ($("section .print--page-break").length > 0) {
+                $("#printing-button").html('<a href="javascript: window.print();" style="font-size: 1.5em; text-decoration: none;">&#128424;</a>');
+              }
+            });
+          </script>
+        </div>
         <small>
           Go to <a href="{{ site.github.url }}/">Index</a>
           <br />
@@ -419,10 +429,7 @@
       </nav>
       <section class="col-12 col-sm-12 col-md-10 col-lg-7  px-5 px-md-3 px-lg-4   -my-5 -border">
         {%- if page.url == '/' -%}
-          <div id="page-links">
-            <h1 id="page-links--older-smartphone">Open Manual Index</h1>
-          </div>
-          <script>
+          <script> // auto-generate page index
             function AddLink(dir, url, date, title, lang, snippet) {
               dir = dir.replace(/^\//, '').replace(/\/$/, '');
 
@@ -465,6 +472,9 @@
               }
             }
           </script>
+          <div id="page-links">
+            <h1 id="page-links--older-smartphone">Open Manual Index</h1>
+          </div>
           <ul id="page-links--default">
             {%- for page in site.pages -%}
               {%- if page.title -%}
