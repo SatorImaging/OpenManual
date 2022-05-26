@@ -2,7 +2,7 @@ theme: jekyll-theme-minimal
 plugins:
   - jekyll-last-modified-at   # plugins can be loaded if it's in whitelist, this is not in.
   - jekyll-commonmark-ghpages
-markdown: CommonMarkGhPages-disabled
+markdown: CommonMarkGhPages
 commonmark:
   options: ["UNSAFE", "SMART", "FOOTNOTES"]
   extensions: ["strikethrough", "autolink", "table", "-xxx-tagfilter"]
