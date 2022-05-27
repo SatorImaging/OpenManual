@@ -58,7 +58,7 @@
           $("nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='#" + anchorName + "'>" + $(this).text() + "</a></li>");
           $(this).attr("id",anchorName);
           $("nav ul li:first-child a").parent().addClass("active");
-          $("nav ul li:last-child").css("font-size", topMostHeaderTag == this.tagName.toLowerCase() ? "1.0em" : "0.825em");
+          $("nav ul li:last-child").addClass(this.tagName.toLowerCase() == topMostHeaderTag ? "font-large" : "font-small");
         });
         $("nav ul li, section").on("click", "a", function(event) {
           let targetEl = $($(this).attr("href"));
@@ -132,6 +132,14 @@
         text-overflow: ellipsis;
         -overflow: hidden;
       }
+      nav ul li.font-large,
+      #printing-button a
+      {
+        font-size: 1.1em;
+      }
+      nav ul li.font-small {
+        font-size: 0.825em;
+      }
 
 
 
@@ -191,7 +199,8 @@
       }
 
       #page-links li,
-      section li
+      section li,
+      section li > p
       {
         margin-bottom: 0.5em;
       }
@@ -425,7 +434,7 @@
             // show printing button if ready to print
             document.addEventListener('DOMContentLoaded', (event) => {
               if ($("section .print--page-break").length > 0) {
-                $("#printing-button").html('<small>Ready for</small> &#128424; <a href="javascript: window.print();" style="font-size: 1.0em; text-decoration: none;">A4 Print</a>');
+                $("#printing-button").html('<small>Ready for</small> &#128424; <a href="javascript: window.print();" style="text-decoration: none;">A4 Print</a>');
               }
             });
           </script>
