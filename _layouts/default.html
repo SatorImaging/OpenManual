@@ -371,6 +371,14 @@
                 if (!isExists) {
                   // english special, try again with no language extension
                   if ('en' == lang) UrlExists(null, url_noext, UpdateHeaderFlagLink);
+                  // README.md special
+                  if (!lang) {
+                    if (url_noext.search(/README$/) > -1 || url_noext.search(/\/$/) > -1) {
+                      url_noext = url_noext.replace(/\/$/, '/README');
+                      url_noext = url_noext.replace(/README$/, 'index');
+                      UrlExists(null, url_noext, UpdateHeaderFlagLink);
+                    }
+                  }
                   return;
                 }
                 lang = lang ?? 'en';
@@ -531,7 +539,7 @@
             }
           </script>
           <ul id="page-links--default">
-            {%- for page in (site.pages | sort: "date" | reverse) -%}
+            {%- for page in (site.pages | sort: "date", "first") -%}
               {%- if page.title -%}
                 <li><a href="{{ site.github.url }}{{ page.url }}">{{ page.title }}</a></li>
                 <script>
