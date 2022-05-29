@@ -381,8 +381,7 @@
                   }
                   return;
                 }
-                lang = lang ?? 'en';
-                let rootEl = $('#header--lang-' + lang);
+                let rootEl = $('#header--lang-' + (lang ?? 'en'));
                 $(rootEl).removeClass('print--d-none');  // show link in PDF if exists.
                 $(rootEl).children('a')[0].href = (lang ? url_noext+'.'+lang : url_noext) + '.html';
                 $($(rootEl).children('a')[0]).append('<small class="ml-1">' + lang.toUpperCase() + '</small>');
@@ -540,7 +539,7 @@
             }
           </script>
           <ul id="page-links--default">
-            {%- for page in (site.pages | sort: "date", "first" | reverse) -%}
+            {%- for page in (site.pages | sort) -%}
               {%- if page.title -%}
                 <li><a href="{{ site.github.url }}{{ page.url }}">{{ page.title }}</a></li>
                 <script>
