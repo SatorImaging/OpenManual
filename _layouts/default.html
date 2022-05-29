@@ -390,6 +390,12 @@
                 document.write('   <span id="header--lang-'+tlang+'" class="print--d-none  header--lang"><a href="'+turl+'"><span class="flag-icon flag-icon-'+tcountry.toLowerCase()+' -flag-icon-squared"></span></a></span>');
                 // replace from google translate to github page if exists.
                 let turl_github = surl.href.replace(/\.[^\/]+$/, '') + '.' + tlang + '.html'; // not .md
+                // english special, no language extension
+                if ('en' == tlang) {
+                  UrlExists(turl_github, isExists => {
+                    if (!isExists) turl_github = surl.href.replace(/\.[^\/]+$/, '') + '.html'; // not .md
+                  });
+                }
                 UrlExists(turl_github, (isExists) => {
                   if(isExists) {
                     let rootEl = $('#header--lang-'+tlang);
@@ -479,6 +485,10 @@
 
               dir = dir == "" ? "Miscellaneous" : dir;
               lang = lang.split('-')[0];
+              if ('' == lang) {  // lang from filename.
+                lang = url.match(/[^\/]+$/).replace(/\.[^\.]+$/, '');
+                lang = lang.match(/[^\.]+$/);
+              }
               // remove default h1 tag
               let defaultEl = document.querySelector('#page-links--older-smartphone');
               if (defaultEl) defaultEl.remove();
@@ -515,7 +525,7 @@
             }
           </script>
           <ul id="page-links--default">
-            {%- for page in site.pages -%}
+            {%- for page in site.pages | sort: "date", "last" -%}
               {%- if page.title -%}
                 <li><a href="{{ site.github.url }}{{ page.url }}">{{ page.title }}</a></li>
                 <script>
@@ -523,7 +533,7 @@
                           '{{ site.github.url }}{{ page.url }}',
                           '{{ page.date | date: "%b-%d-%Y" }}',
                           '{{ page.title }}',
-                          "{{ page.lang | default: site.lang | default: 'en-US' }}",
+                          "{{ page.lang | default: site.lang | default: '' }}",
                           "{{ page.lang | default: site.lang | default: 'en-US' }}".split('-')[0] == 'en'
                             ? '{{ page.excerpt | default: page.content | strip_html | truncatewords: 20 }}'
                             : '{{ page.excerpt | default: page.content | strip_html | truncatewords: 3 }}'
@@ -597,7 +607,7 @@
 
     <div class="print--hidden   fixed-bottom  text-right  px-2  small  text-black-50   d-none d-lg-block">
       <script>
-        let res = {"Mobile":[576,1280],"Tablet":[768,1280],"Laptop":[1200,1200],"A4 Print":[905,1280]};//[678,960][905,1280],"4x3":[1600,1200],"16x9":[1920,1080]
+        let res = {"Mobile":[576,800],"Tablet":[768,960],"Laptop":[1200,1200],"A4 Print":[905,1280]};//[678,960][905,1280],"4x3":[1600,1200],"16x9":[1920,1080]
         for(let key in res) {
           document.write("<a href=\"javascript: url=new URL(location); url.search='?m=" + key.replace(/ /g, '-').toLowerCase() + "'; window.open(url,'_blank','innerWidth="+res[key][0]+",innerHeight="+res[key][1]+",left="+Math.floor((screen.width-res[key][0])*0.5)+"')\">"+key+"</a>");
           if(key != Object.keys(res)[Object.keys(res).length-1]) document.write(' | ');
