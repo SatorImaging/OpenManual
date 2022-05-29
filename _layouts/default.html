@@ -404,6 +404,7 @@
                     $($(rootEl).children('a')[0]).append('<small class="ml-1">' + tlang.toUpperCase() + '</small>');
                   }
                 });
+                console.log(turl_github);
               }
             </script>
           </span>
@@ -525,7 +526,7 @@
             }
           </script>
           <ul id="page-links--default">
-            {%- for page in site.pages | sort: "date", "last" -%}
+            {%- for page in (site.pages | sort: "date") -%}
               {%- if page.title -%}
                 <li><a href="{{ site.github.url }}{{ page.url }}">{{ page.title }}</a></li>
                 <script>
