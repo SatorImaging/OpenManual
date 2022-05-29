@@ -373,8 +373,8 @@
                   if ('en' == lang) UrlExists(null, url_noext, UpdateHeaderFlagLink);
                   // README.md special
                   if (!lang) {
-                    if (url_noext.search(/README$/) > -1 || url_noext.search(/\/$/) > -1) {
-                      url_noext = url_noext.replace(/\/$/, '/README');
+                    if (url_noext.search(/README$/) > -1) {// || url_noext.search(/\/$/) > -1) {
+                      //url_noext = url_noext.replace(/\/$/, '/README');
                       url_noext = url_noext.replace(/README$/, 'index');
                       UrlExists(null, url_noext, UpdateHeaderFlagLink);
                     }
@@ -412,6 +412,7 @@
                 document.write('   <span id="header--lang-'+tlang+'" class="print--d-none  header--lang"><a href="'+turl+'"><span class="flag-icon flag-icon-'+tcountry.toLowerCase()+' -flag-icon-squared"></span></a></span>');
                 // replace from google translate to github page if exists.
                 let turl_github_noext = surl.href.replace(/\.[^\/]+$/, '');
+                turl_github_noext = turl_github_noext.replace(/\/$/, '/README');  // if ends with / => /README
                 // let turl_github = turl_github_nolang + '.' + tlang + '.html'; // not .md
                 UrlExists(tlang, turl_github_noext, UpdateHeaderFlagLink);
               }
@@ -539,7 +540,7 @@
             }
           </script>
           <ul id="page-links--default">
-            {%- for page in (site.pages | sort: "date", "first") -%}
+            {%- for page in (site.pages | sort: "date", "last") -%}
               {%- if page.title -%}
                 <li><a href="{{ site.github.url }}{{ page.url }}">{{ page.title }}</a></li>
                 <script>
