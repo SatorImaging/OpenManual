@@ -381,9 +381,11 @@
                   }
                   return;
                 }
-                let rootEl = $('#header--lang-' + (lang ?? 'en'));
+                let url = (lang ? url_noext+'.'+lang : url_noext) + '.html';
+                lang = lang ?? 'en';  // fix lang after url building.
+                let rootEl = $('#header--lang-' + lang);
                 $(rootEl).removeClass('print--d-none');  // show link in PDF if exists.
-                $(rootEl).children('a')[0].href = (lang ? url_noext+'.'+lang : url_noext) + '.html';
+                $(rootEl).children('a')[0].href = url;
                 $($(rootEl).children('a')[0]).append('<small class="ml-1">' + lang.toUpperCase() + '</small>');
               }
               // write links
