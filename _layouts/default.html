@@ -354,20 +354,34 @@
             <script>
               // check url existance
               // https://stackoverflow.com/questions/333634/http-head-request-in-javascript-ajax
-              function UrlExists(url, callback)
+              function UrlExists(lang, url_noext, callback)
               {
                 let http = new XMLHttpRequest();
-                http.open('HEAD', url);
+                http.open('HEAD', (lang ? url_noext+'.'+lang : url_noext) + '.html');
                 http.onreadystatechange = function() {
                   if (this.readyState == this.DONE) {
-                    callback(this.status != 404);
+                    callback(lang, url_noext, this.status != 404);
                   }
                 };
                 http.send();
               }
+              function UpdateHeaderFlagLink(lang, url_noext, isExists)
+              {
+                console.log((lang ? url_noext+'.'+lang : url_noext) + '.html');
+                if (!isExists) {
+                  // english special, try again with no language extension
+                  if ('en' == lang) UrlExists(null, url_noext, UpdateHeaderFlagLink);
+                  return;
+                }
+                lang = lang ?? 'en';
+                let rootEl = $('#header--lang-' + lang);
+                $(rootEl).removeClass('print--d-none');  // show link in PDF if exists.
+                $(rootEl).children('a')[0].href = (lang ? url_noext+'.'+lang : url_noext) + '.html';
+                $($(rootEl).children('a')[0]).append('<small class="ml-1">' + lang.toUpperCase() + '</small>');
+              }
               // write links
               let testMode = location.protocol == 'file:';
-              let surl = new URL(testMode ? 'https://satorimaging.github.io/OpenManual/index.en.html' : '{{ site.github.url }}{{ page.url }}');
+              let surl = new URL(testMode ? 'https://satorimaging.github.io/OpenManual/index.html' : '{{ site.github.url }}{{ page.url }}');
               let slang = testMode ? 'en' : '{{ page.lang | default: site.lang | default: "en-US" }}';
               
               //
@@ -389,22 +403,9 @@
                 let turl = surl.protocol + '//' + surl.hostname.split('.').join('-') + '.translate.goog' + surl.pathname + '?_x_tr_sl=' + slang + '&_x_tr_tl=' + tlang;
                 document.write('   <span id="header--lang-'+tlang+'" class="print--d-none  header--lang"><a href="'+turl+'"><span class="flag-icon flag-icon-'+tcountry.toLowerCase()+' -flag-icon-squared"></span></a></span>');
                 // replace from google translate to github page if exists.
-                let turl_github = surl.href.replace(/\.[^\/]+$/, '') + '.' + tlang + '.html'; // not .md
-                // english special, no language extension
-                if ('en' == tlang) {
-                  UrlExists(turl_github, isExists => {
-                    if (!isExists) turl_github = surl.href.replace(/\.[^\/]+$/, '') + '.html'; // not .md
-                  });
-                }
-                UrlExists(turl_github, (isExists) => {
-                  if(isExists) {
-                    let rootEl = $('#header--lang-'+tlang);
-                    $(rootEl).removeClass('print--d-none');  // show link in PDF.
-                    $(rootEl).children('a')[0].href = turl_github;
-                    $($(rootEl).children('a')[0]).append('<small class="ml-1">' + tlang.toUpperCase() + '</small>');
-                  }
-                });
-                console.log(turl_github);
+                let turl_github_noext = surl.href.replace(/\.[^\/]+$/, '');
+                // let turl_github = turl_github_nolang + '.' + tlang + '.html'; // not .md
+                UrlExists(tlang, turl_github_noext, UpdateHeaderFlagLink);
               }
             </script>
           </span>
@@ -492,7 +493,7 @@
                   lang = lang[0].replace(/\.[^\.]+$/, '');
                   lang = lang.match(/[^\.]+$/);
                 }
-                lang = lang ? lang[0] : '';
+                lang = lang ? lang[0] : 'en';
               }
               // remove default h1 tag
               let defaultEl = document.querySelector('#page-links--older-smartphone');
@@ -530,7 +531,7 @@
             }
           </script>
           <ul id="page-links--default">
-            {%- for page in (site.pages | sort: "date") -%}
+            {%- for page in (site.pages | sort: "date" | reverse) -%}
               {%- if page.title -%}
                 <li><a href="{{ site.github.url }}{{ page.url }}">{{ page.title }}</a></li>
                 <script>
