@@ -487,8 +487,12 @@
               dir = dir == "" ? "Miscellaneous" : dir;
               lang = lang.split('-')[0];
               if ('' == lang) {  // lang from filename.
-                lang = url.match(/[^\/]+$/).replace(/\.[^\.]+$/, '');
-                lang = lang.match(/[^\.]+$/);
+                lang = url.match(/[^\/]+$/);
+                if (lang) {
+                  lang = lang[0].replace(/\.[^\.]+$/, '');
+                  lang = lang.match(/[^\.]+$/);
+                }
+                lang = lang ? lang[0] : '';
               }
               // remove default h1 tag
               let defaultEl = document.querySelector('#page-links--older-smartphone');
