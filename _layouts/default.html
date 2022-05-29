@@ -398,6 +398,7 @@
                   lang = lang.match(/[^\.]+$/);
                 }
                 lang = lang ? lang[0] : 'en';
+                if (lang.length != 2) lang = 'en';
                 return lang;
               }
               //
@@ -405,7 +406,7 @@
               //
               let testMode = location.protocol == 'file:';
               let surl = new URL(testMode ? 'https://satorimaging.github.io/OpenManual/index.html' : '{{ site.github.url }}{{ page.url }}');
-              let slang = testMode ? 'en' : '{{ page.lang | default: "" }}';
+              let slang = testMode ? '' : '{{ page.lang | default: "" }}';
               
               //
               //  TODO: multi-language in one document
@@ -420,7 +421,7 @@
               // multi-language feature not yet implemented
 
               slang = slang.split('-')[0]; // no country code.
-              slang = slang ?? GetLanguageFromURL(surl);
+              slang = slang ? slang : GetLanguageFromURL(surl.pathname);
               for(let lang_country of ["en-US", "ja-JP", "zh-CN"])
               {
                 let [tlang, tcountry] = lang_country.split('-');
@@ -512,7 +513,7 @@
 
               dir = dir == "" ? "Miscellaneous" : dir;
               lang = lang.split('-')[0];
-              lang = lang ?? GetLanguageFromURL(url);
+              lang = lang ? lang : GetLanguageFromURL(url);
               // remove default h1 tag
               let defaultEl = document.querySelector('#page-links--older-smartphone');
               if (defaultEl) defaultEl.remove();
