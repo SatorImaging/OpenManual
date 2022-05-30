@@ -55,7 +55,7 @@
         // do it
         $("section h1, section h2, section h3, section h4, section h5, section h6").each(function() {
           let anchorName = escape(this.innerText.toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,'');
-          $("nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='#" + anchorName + "'>" + $(this).text() + "</a></li>");
+          $("nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='#" + anchorName + "'>" + $(this).text().replace(/）$/, '') + "</a></li>");
           $(this).attr("id",anchorName);
           $("nav ul li:first-child a").parent().addClass("active");
           $("nav ul li:last-child").addClass(this.tagName.toLowerCase() == topMostHeaderTag ? "font-large" : "font-small");
@@ -577,7 +577,7 @@
           <hr class="my-5" />
         {%- endif -%}
         {%- if false -%}
-        <h2>H2 : 見出し１</h2>
+        <h2>H2 : 見出し１ （最後の閉じカッコは Nav 非表示）</h2>
         <p>Test Body</p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -596,7 +596,7 @@
           Here is page break for print.
           <div class="print--page-break"></div>
         </p>
-        <h3>H3 : 見出し２</h3>
+        <h3>H3 : 見出し２ （最後の閉じカッコは Nav 非表示）</h3>
         <p>テスト本文</p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
