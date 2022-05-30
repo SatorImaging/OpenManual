@@ -277,11 +277,7 @@
       :root {
         /* need offset: header + spacer in header */
         /* m-1/p-1: 0.25rem  2: 0.5rem  3: 1.0rem  4: 1.5rem  5: 3.0rem */
-        --header-height: 14.5rem;  /* 8.5 + 3 + 3 */
-      }
-      .header-spacer {
-        -height: var(--header-height);
-        -margin-bottom: var(--header-height);
+        --header-height: 11.5rem;  /* 8.5 + 3 */
       }
       @media screen
       {
@@ -304,11 +300,15 @@
         @page {
           margin: 0px;
         }
+        #header-spacer {
+          height: var(--header-height) !important;
+          margin: 0px !important;   /* due to print preview script implementation */
+          padding: 0px !important;  /* due to print preview script implementation */
+        }
         .print--page-break::before {
           content: ""; /* empty string required */
           display: block;
           height: var(--header-height);  /* 6.0rem???? wapper margin+padding + section margin+padding */
-          -margin-bottom: var(--header-height);
         }
         .print--page-break { break-before: page; }
         .print--hidden { visibility: hidden; }
@@ -342,13 +342,12 @@
 
 
     <!-- spacer - keep same height with header + spacer in header -->
-    <div class="header-spacer" style="width: 100%; background-color: black;">
-      <div class="pt-2 pt-sm-3 pt-md-4 pt-lg-5  pb-0 pb-md-2 pb-lg-4">&nbsp;</div>
+    <div id="header-spacer" class="pt-2 pt-sm-3 pt-md-4 pt-lg-5  pb-1 pb-md-4 pb-lg-5  mb-1">
       <h1 class="my-2">&nbsp;</h1>
       <p class="my-1">&nbsp;</p>
     </div>
     <!-- header -->
-    <header class="pt-2 pt-sm-3 pt-md-4 pt-lg-5  pb-0 pb-md-2 pb-lg-4     fixed-top  row  no-gutters   bg-light  -border-bottom">
+    <header class="pt-2 pt-sm-3 pt-md-4 pt-lg-5  pb-1 pb-md-4 pb-lg-5  mb-1     fixed-top  row  no-gutters   bg-light  -border-bottom">
       <!-- spacer same with toc -->
       <div class="col-0 col-sm-0 col-md-1 col-lg-2"></div>
       <div class="col-10 col-sm-10 col-md-9 col-lg-8   px-5 px-md-3 px-lg-4   -border">
@@ -555,7 +554,7 @@
             }
           </script>
           <ul id="page-links--default">
-            {%- for page in (site.pages | sort) -%}
+            {% for page in (site.pages | sort: "date", "first" | reverse) %}
               {%- if page.title -%}
                 <li><a href="{{ site.github.url }}{{ page.url }}">{{ page.title }}</a></li>
                 <script>
@@ -628,7 +627,7 @@
       </section>
     </div>
 
-    <footer class="bg-light  fixed-bottom  -row  text-secondary  -border-top  py-1 py-md-2 py-lg-3">
+    <footer class="bg-light  fixed-bottom  -row  text-secondary  border-top  py-1 py-md-2 py-lg-3">
       <p class="px-5  my-0 my-lg-1  text-center  text-truncate">
         <small class="d-none d-sm-inline">Copyright</small>
         &copy; {{ site.time | date: "%Y" }} Sator Imaging, all rights reserved.
@@ -659,9 +658,17 @@
         options[k] = v;
       });
       if(options['m'] == 'a4-print') {
-        $('*').each(function() {
+        $('*').each(function()
+        {
+          if (this.id == 'header-spacer') {
+            $(this).css('height', 'var(--header-height)');
+            $(this).css('margin', '0px');
+            $(this).css('padding', '0px');
+            $(this).css('overflow', 'hidden');
+            return;
+          }
           for(let p of ['font-size', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left']) {
-            if('font-size' == p && !['body','h1','h2','h3','h4','h5','h6'].includes(this.tagName.toLowerCase())) {
+            if ('font-size' == p && !['body','h1','h2','h3','h4','h5','h6'].includes(this.tagName.toLowerCase())) {
               continue;
             }
             let value = $(this).css(p).replace(/[^0-9]*$/, '');
