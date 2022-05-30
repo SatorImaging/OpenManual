@@ -663,10 +663,6 @@
       if(options['m'] == 'a4-print') {
         $('*').each(function()
         {
-          if (this.id == 'footer') {
-            $(this).css('border', 'none');
-            return;
-          }
           if (this.id == 'header-spacer') {
             $(this).css('height', 'var(--header-height)');
             $(this).css('margin', '0px');
