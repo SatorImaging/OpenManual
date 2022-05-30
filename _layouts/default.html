@@ -305,6 +305,9 @@
           margin: 0px !important;   /* due to print preview script implementation */
           padding: 0px !important;  /* due to print preview script implementation */
         }
+        #footer {
+          border: none !important;
+        }
         .print--page-break::before {
           content: ""; /* empty string required */
           display: block;
@@ -627,7 +630,7 @@
       </section>
     </div>
 
-    <footer class="bg-light  fixed-bottom  -row  text-secondary  border-top  py-1 py-md-2 py-lg-3">
+    <footer id="footer" class="bg-light  fixed-bottom  -row  text-secondary  border-top  py-1 py-md-2 py-lg-3">
       <p class="px-5  my-0 my-lg-1  text-center  text-truncate">
         <span class="d-none d-sm-inline">Copyright</span>
         &copy; {{ site.time | date: "%Y" }} Sator Imaging, all rights reserved.
@@ -660,6 +663,10 @@
       if(options['m'] == 'a4-print') {
         $('*').each(function()
         {
+          if (this.id == 'footer') {
+            $(this).css('border', 'none');
+            return;
+          }
           if (this.id == 'header-spacer') {
             $(this).css('height', 'var(--header-height)');
             $(this).css('margin', '0px');
@@ -667,6 +674,7 @@
             $(this).css('overflow', 'hidden');
             return;
           }
+          // do it
           for(let p of ['font-size', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left']) {
             if ('font-size' == p && !['body','h1','h2','h3','h4','h5','h6'].includes(this.tagName.toLowerCase())) {
               continue;
