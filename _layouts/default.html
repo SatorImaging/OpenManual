@@ -67,11 +67,12 @@
         if (0 > sectionFirstEl?.tagName.search(/[hH][1-6]/) && !sectionFirstEl?.querySelector('h1, h2, h3, h4, h5, h6')) {
           let topAnchorEl = document.createElement(topMostHeaderTag);
           topAnchorEl.innerText = document.querySelector('header h1').innerText;
-          //topAnchorEl.classList.add('d-none');
           document.querySelector('section').insertBefore(topAnchorEl, document.querySelector('section').children[0]);
+          // hide first heading if img next to.
+          if (0 <= sectionFirstEl?.tagName.search(/img/i) || sectionFirstEl?.querySelector('img')) {
+            topAnchorEl.classList.add('d-none');
+          }
         }
-        // hide first heading
-        ////document.querySelector('section h1, section h2, section h3, section h4, section h5, section h6').classList.add('d-none');
         // do it
         var autoAnchorNo = 1;
         $("section h1, section h2, section h3, section h4, section h5, section h6").each(function() {
