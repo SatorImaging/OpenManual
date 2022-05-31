@@ -127,7 +127,7 @@
       nav ul li {
         list-style: none;
         -white-space: nowrap;
-        line-height: 1.1em;
+        line-height: 1.25em;
         margin-bottom: 0.4em;
         text-overflow: ellipsis;
         -overflow: hidden;
@@ -571,8 +571,8 @@
                           '{{ page.title }}',
                           lang,
                           lang == 'en'
-                            ? '{{ page.excerpt | default: page.content | newline_to_br | replace: "<br />", " " | strip_html | strip_newlines  | truncatewords: 28 }}'
-                            : '{{ page.excerpt | default: page.content | newline_to_br | replace: "<br />", " " | strip_html | strip_newlines  | truncate: 150 }}'
+                            ? '{{ page.excerpt | default: page.content | newline_to_br | replace: "<br />", " " | strip_html | strip_newlines | truncatewords: 28 }}'
+                            : '{{ page.excerpt | default: page.content | newline_to_br | replace: "<br />", " " | strip_html | strip_newlines | truncate: 150 }}'
                   );
                 </script>
               {%- endif -%}
