@@ -560,12 +560,12 @@
               {%- if page.title -%}
                 <li><a href="{{ site.github.url }}{{ page.url }}">{{ page.title }}</a></li>
                 <script>
-                  let url = '{{ site.github.url }}{{ page.url }}';
+                  let pageUrl = '{{ site.github.url }}{{ page.url }}';
                   let lang = "{{ page.lang | default: '' }}";
                   lang = lang.split('-')[0];
-                  lang = lang ? lang : GetLanguageFromURL(url);
+                  lang = lang ? lang : GetLanguageFromURL(pageUrl);
                   AddLink('{{ page.dir }}',
-                          url,
+                          pageUrl,
                           '{{ page.date | date: "%b-%d-%Y" }}',
                           '{{ page.title }}',
                           lang,
