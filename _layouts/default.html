@@ -36,6 +36,22 @@
 
     <script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
     <script>
+      // Get Language from URL
+      function GetLanguageFromURL(url)
+      {
+        let lang = url.match(/[^\/]+$/);
+        if (lang) {
+          lang = lang[0].replace(/\.[^\.]+$/, '');
+          lang = lang.match(/[^\.]+$/);
+        }
+        lang = lang ? lang[0] : 'en';
+        if (lang.length != 2) lang = 'en';
+        return lang;
+      }
+      var pageLang = "{{ page.lang | default: '' }}";
+      pageLang = pageLang.split('-')[0];
+      pageLang = pageLang ? pageLang : GetLanguageFromURL(location.pathname);
+
       // https://github.com/pages-themes/leap-day/blob/master/assets/js/main.js
       // modified to support non-english characters.
       $(function() {
@@ -59,6 +75,10 @@
           $(this).attr("id",anchorName);
           $("nav ul li:first-child a").parent().addClass("active");
           $("nav ul li:last-child").addClass(this.tagName.toLowerCase() == topMostHeaderTag ? "font-large" : "font-small");
+          // english special
+          if (pageLang == 'en' && this.tagName.toLowerCase() != topMostHeaderTag) {
+            $(this).css('font-weight', '600');
+          }
         });
         $("nav ul li, section").on("click", "a", function(event) {
           let targetEl = $($(this).attr("href"));
@@ -165,7 +185,7 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
-        font-weight: 600;
+        font-weight: bold;  /* 600 */
         color: #495057; /*#343a40;*/
         background: linear-gradient(transparent 70%, #cde7 70%);
         width: fit-content;
@@ -261,7 +281,7 @@
         font-family: "FontAwesome";
         color: #d0d8e0;
         font-size: 2em;
-        font-weight: 900;
+        font-weight: bold;  /* 900 */
       }
       blockquote p {
       }
@@ -399,18 +419,6 @@
                 $(rootEl).removeClass('print--d-none');  // show link in PDF if exists.
                 $(rootEl).children('a')[0].href = url;
                 $($(rootEl).children('a')[0]).append('<small class="ml-1">' + lang.toUpperCase() + '</small>');
-              }
-              // Get Language from URL
-              function GetLanguageFromURL(url)
-              {
-                let lang = url.match(/[^\/]+$/);
-                if (lang) {
-                  lang = lang[0].replace(/\.[^\.]+$/, '');
-                  lang = lang.match(/[^\.]+$/);
-                }
-                lang = lang ? lang[0] : 'en';
-                if (lang.length != 2) lang = 'en';
-                return lang;
               }
               //
               // write links
@@ -561,16 +569,16 @@
               {%- if page.title -%}
                 <li><a href="{{ site.github.url }}{{ page.url }}">{{ page.title }}</a></li>
                 <script>
-                  var pageUrl = '{{ site.github.url }}{{ page.url }}';
-                  var lang = "{{ page.lang | default: '' }}";
-                  lang = lang.split('-')[0];
-                  lang = lang ? lang : GetLanguageFromURL(pageUrl);
+                  var docUrl = '{{ site.github.url }}{{ page.url }}';
+                  var docLang = "{{ page.lang | default: '' }}";
+                  docLang = docLang.split('-')[0];
+                  docLang = docLang ? docLang : GetLanguageFromURL(docUrl);
                   AddLink('{{ page.dir }}',
-                          pageUrl,
+                          docUrl,
                           '{{ page.date | date: "%b-%d-%Y" }}',
                           '{{ page.title }}',
-                          lang,
-                          lang == 'en'
+                          docLang,
+                          docLang == 'en'
                             ? '{{ page.excerpt | default: page.content | newline_to_br | replace: "<br />", " " | strip_html | strip_newlines | truncatewords: 28 }}'
                             : '{{ page.excerpt | default: page.content | newline_to_br | replace: "<br />", " " | strip_html | strip_newlines | truncate: 150 }}'
                   );
