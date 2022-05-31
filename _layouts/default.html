@@ -55,12 +55,6 @@
       // https://github.com/pages-themes/leap-day/blob/master/assets/js/main.js
       // modified to support non-english characters.
       $(function() {
-        if(-1 < document.querySelector('section').children[0].tagName.search(/[pP]/)) {
-          let topAnchorEl = document.createElement('h6');
-          topAnchorEl.innerText = '↑ Page Top';
-          topAnchorEl.classList.add('d-none');
-          document.querySelector('section').insertBefore(topAnchorEl, document.querySelector('section').children[0]);
-        }
         // find top-most header tag.
         let topMostHeaderTag = 'h1';
         for (let i = 1; i <= 6; i++) {
@@ -68,6 +62,15 @@
           topMostHeaderTag = 'h' + i;
           break;
         }
+        // insert heading
+        if(0 > document.querySelector('section').children[0].tagName.search(/[hH][1-6]/)) {
+          let topAnchorEl = document.createElement(topMostHeaderTag);
+          topAnchorEl.innerText = document.querySelector('header h1').innerText;
+          //topAnchorEl.classList.add('d-none');
+          document.querySelector('section').insertBefore(topAnchorEl, document.querySelector('section').children[0]);
+        }
+        // hide first heading
+        document.querySelector('section h1, section h2, section h3, section h4, section h5, section h6').classList.add('d-none');
         // do it
         $("section h1, section h2, section h3, section h4, section h5, section h6").each(function() {
           let anchorName = escape(this.innerText.toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,'');
@@ -199,7 +202,9 @@
       section h5 { font-size: 1.2rem; }
       section h6 { font-size: 1.1rem; }
       section > *:first-child,
-      section > *:first-child *
+      section > *:first-child *,
+      section > *:nth-child(2),
+      section > *:nth-child(2) *
       {
         margin-top: 0.0rem;
       }
