@@ -570,8 +570,8 @@
                           '{{ page.title }}',
                           lang,
                           lang == 'en'
-                            ? '{{ page.excerpt | default: page.content | strip_html | truncatewords: 25 }}'
-                            : '{{ page.excerpt | default: page.content | strip_html | truncatewords: 5 }}'
+                            ? '{{ page.excerpt | default: page.content | strip_html | strip_newlines | truncatewords: 25 }}'
+                            : '{{ page.excerpt | default: page.content | strip_html | strip_newlines | truncate: 100 }}'
                   );
                 </script>
               {%- endif -%}
