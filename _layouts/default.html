@@ -63,7 +63,8 @@
           break;
         }
         // insert first heading if not exists
-        if(0 > document.querySelector('section').children[0].tagName.search(/[hH][1-6]/)) {
+        let sectionFirstEl = document.querySelector('section').children[0];
+        if (0 > sectionFirstEl.tagName.search(/[hH][1-6]/) || !sectionFirstEl.querySelector('h1 h2 h3 h4 h5 h6')) {
           let topAnchorEl = document.createElement(topMostHeaderTag);
           topAnchorEl.innerText = document.querySelector('header h1').innerText;
           //topAnchorEl.classList.add('d-none');
