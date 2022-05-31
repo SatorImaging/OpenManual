@@ -545,6 +545,7 @@
               if (linkEl) linkEl.remove();
 
               linkEl = document.createElement('li');
+              linkEl.classList.add('text-muted');
               let country = {'en':'us','ja':'jp','zh':'cn'}[lang] ?? 'un';
               linkEl.innerHTML = '<a href="'+url+'">' + title + '</a>&nbsp;   <span class="flag-icon flag-icon-'+country+'"></span>   <small class="text-black-50">'+date+'</small><br /><small>' + snippet + '</small>';
               dirEl.appendChild(linkEl);
