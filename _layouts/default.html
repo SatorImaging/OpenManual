@@ -571,8 +571,8 @@
                           '{{ page.title }}',
                           lang,
                           lang == 'en'
-                            ? '{{ page.excerpt | default: page.content | strip_html | strip_newlines | truncatewords: 30 }}'
-                            : '{{ page.excerpt | default: page.content | strip_html | strip_newlines | truncate: 150 }}'
+                            ? '{{ page.excerpt | default: page.content | truncatewords: 28 | strip_html | strip_newlines }}'
+                            : '{{ page.excerpt | default: page.content | truncate: 150     | strip_html | strip_newlines }}'
                   );
                 </script>
               {%- endif -%}
