@@ -125,10 +125,8 @@
         });
         // animated scroll to anchor with header offset
         $("nav ul li, section").on("click", "a", function(event) {
-          let targetEl = $($(this).attr("href"));
-          if (!targetEl) {
-            targetEl = $(decodeURIComponent($(this).attr("href")));
-          }
+          // encoded string causes error. always decode.
+          let targetEl = $(decodeURIComponent($(this).attr("href")));
           if (!targetEl) return;
           var position = $(targetEl).offset().top - $("header").outerHeight(true) - 4; // magic number
           $("html, body").animate({scrollTop: position}, 400);
