@@ -34,7 +34,41 @@
       </script>
     {%- endif -%}
 
+    <!-- TODO: jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3341541-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-3341541-1');
+    </script>
+
+    <!-- TODO: Bootstrap CDN update if required -->
+    <link crossorigin='anonymous' rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' />
+
+    <!-- TODO: syntax hilighter stylesheet, pygments compatible -->
+    <link crossorigin="anonymous" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.css" integrity="sha256-63+ycHutvQKL4YAIsEEXm1MLug7+FbK/ZB1ufUWFfoc=" />
+
+    <!-- TODO: Font Awesome CDN update if required -->
+    <script crossorigin='anonymous' src='https://kit.fontawesome.com/a54fde8722.js'></script>
+
+    <!-- TODO: flag icons css -->
+    <link crossorigin="anonymous" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/css/flag-icons.min.css" integrity="sha512-UwbBNAFoECXUPeDhlKR3zzWU3j8ddKIQQsDOsKhXQGdiB5i3IHEXr9kXx82+gaHigbNKbTDp3VY/G6gZqva6ZQ==" />
+
+    <!-- TODO: Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600;900&display=swap" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100;300;600;900&display=swap' rel='stylesheet' />
+
+    <!-- TODO: Overlay Scrollbars -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.2/css/OverlayScrollbars.min.css" integrity="sha512-jN4O0AUkRmE6Jwc8la2I5iBmS+tCDcfUd1eq8nrZIBnDKTmCp5YxxNN1/aetnAH32qT+dDbk1aGhhoaw5cJNlw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.2/js/OverlayScrollbars.min.js" integrity="sha512-5UqQ4jRiUk3pxl9wZxAtep5wCxqcoo6Yu4FI5ufygoOMV2I2/lOtH1YjKdt3FcQ9uhcKFJapG0HAQ0oTC5LnOw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- script -->
     <script>
       // Get Language from URL
       function GetLanguageFromURL(url)
@@ -95,37 +129,104 @@
           $(this).parent().addClass("active");
           event.preventDefault();
         });
+        // nav height = 100vh - header - footer - 4px (magic number??? top/bottom border height x 2, header & footer)
+        $("nav").css('height', 'calc(100vh - 4px - ' + $("#header-spacer").outerHeight() + 'px - '+ $("#footer").outerHeight() +'px)');
+        OverlayScrollbars(document.querySelectorAll("nav"), {
+          className: "os-theme-thin-dark",
+        });
       });
     </script>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3341541-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-3341541-1');
-    </script>
-
-    <!-- TODO: Bootstrap CDN update if required -->
-    <link crossorigin='anonymous' rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' />
-
-    <!-- TODO: syntax hilighter stylesheet, pygments compatible -->
-    <link crossorigin="anonymous" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.css" integrity="sha256-63+ycHutvQKL4YAIsEEXm1MLug7+FbK/ZB1ufUWFfoc=" />
-
-    <!-- TODO: Font Awesome CDN update if required -->
-    <script crossorigin='anonymous' src='https://kit.fontawesome.com/a54fde8722.js'></script>
-
-    <!-- TODO: flag icons css -->
-    <link crossorigin="anonymous" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/css/flag-icons.min.css" integrity="sha512-UwbBNAFoECXUPeDhlKR3zzWU3j8ddKIQQsDOsKhXQGdiB5i3IHEXr9kXx82+gaHigbNKbTDp3VY/G6gZqva6ZQ==" />
-
-    <!-- TODO: Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600;900&display=swap" rel="stylesheet" />
-    <link href='https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100;300;600;900&display=swap' rel='stylesheet' />
-
 
     <!-- stylesheet -->
+    <style type='text/css'>
+      /*
+      os-theme-thin-dark
+      */
+      .os-theme-thin-dark > .os-scrollbar-horizontal {
+          right: 14px;
+          height: 14px;
+          padding: 0px 6px;
+      }
+      .os-theme-thin-dark > .os-scrollbar-vertical {
+          bottom: 14px;
+          width: 14px;
+          padding: 6px 0px;
+      }
+      .os-theme-thin-dark.os-host-rtl > .os-scrollbar-horizontal {
+          left: 14px;
+          right: 0;
+      }
+      .os-theme-thin-dark > .os-scrollbar-corner {
+          height: 14px;
+          width: 14px;
+          background-color: transparent;
+      }
+      .os-theme-thin-dark > .os-scrollbar > .os-scrollbar-track {
+          background: transparent;
+      }
+      .os-theme-thin-dark > .os-scrollbar-horizontal > .os-scrollbar-track:before,
+      .os-theme-thin-dark > .os-scrollbar-vertical > .os-scrollbar-track:before {
+          content: '';
+          display: block;
+          position: absolute;
+          background: #4950570f;  /* same with H1~H6 text's color */
+      }
+      .os-theme-thin-dark > .os-scrollbar-horizontal > .os-scrollbar-track:before,
+      .os-theme-thin-dark > .os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle:before {
+          left: 0;
+          right: 0;
+          height: 2px;
+          top: 50%;
+          margin-top: -1px;
+      }
+      .os-theme-thin-dark > .os-scrollbar-vertical > .os-scrollbar-track:before,
+      .os-theme-thin-dark > .os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle:before {
+          top: 0;
+          bottom: 0;
+          width: 2px;
+          left: 50%;
+          margin-left: -1px;
+      }
+      .os-theme-thin-dark > .os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle:before {
+          content: '';
+          display: block;
+          position: absolute;
+          background: #49505732;  /* same with H1~H6 text's color */
+          border-radius: 10px;
+      }
+      .os-theme-thin-dark > .os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle:hover:before,
+      .os-theme-thin-dark > .os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle.active:before {
+          height: 4px;
+          margin-top: -2px;
+      }
+      .os-theme-thin-dark > .os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle:hover:before,
+      .os-theme-thin-dark > .os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle.active:before {
+          width: 4px;
+          margin-left: -2px;
+      }
+      .os-theme-thin-dark > .os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle:hover:before,
+      .os-theme-thin-dark > .os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle:hover:before {
+          background: #49505780;  /* same with H1~H6 text's color */
+      }
+      .os-theme-thin-dark > .os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle.active:before,
+      .os-theme-thin-dark > .os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle.active:before {
+          background: #495057;  /* same with H1~H6 text's color */
+      }
+      .os-theme-thin-dark > .os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle {
+          height: 100%;
+          min-width: 30px;
+      }
+      .os-theme-thin-dark > .os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle {
+          width: 100%;
+          min-height: 30px;
+      }
+      .os-theme-thin-dark.os-host-transition > .os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle:before {
+          transition: height 0.3s, margin-top 0.3s, background 0.2s;
+      }
+      .os-theme-thin-dark.os-host-transition > .os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle:before {
+          transition: width 0.3s, margin-left 0.3s, background 0.2s;
+      }
+    </style>
     <style type='text/css'>
       body {
         font-weight: 300;
@@ -488,7 +589,7 @@
     <div id="section-contents" class="-py-5   row  no-gutters">
       <!-- spacer behind table of contents, need to place main section next to toc -->
       <div class="col-0 col-sm-0 col-md-1 col-lg-3"></div>
-      <nav class="d-none d-lg-block  col-3   -my-5  px-2 py-1  text-right  position-fixed  print--hidden">
+      <nav class="d-none d-lg-block  col-3   -my-5   pl-2 pr-3  py-1  text-right  position-fixed  print--hidden">
         <ul></ul><!-- placeholder for table of contents -->
         <div id="printing-button">
           <script>
@@ -517,7 +618,7 @@
           VS Code on <a href="https://github.dev/{{ site.github.repository_nwo }}">Repository</a>
         </small>
       </nav>
-      <section class="col-12 col-sm-12 col-md-10 col-lg-7  px-5 px-md-3 px-lg-4   -my-5 -border">
+      <section class="col-12 col-sm-12 col-md-10 col-lg-7   px-5 px-md-3  pl-lg-3 pr-lg-4   -my-5 -border">
         {%- if page.url == '/' -%}
           <div id="page-links"><!-- this div tag must be the first child of section tag -->
             <h1 id="page-links--older-smartphone">Open Manual Index</h1>
@@ -593,33 +694,33 @@
           <hr class="my-5" />
         {%- endif -%}
         {%- if false -%}
-        <h2>H2 : 見出し１ （最後の閉じカッコは Nav 非表示）</h2>
-        <p>Test Body</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <blockquote>
+          <h2>H2 : 見出し１ （最後の閉じカッコは Nav 非表示）</h2>
+          <p>Test Body</p>
           <p>
-            Here is blockquote.<br />
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </p>
-          <p>Second Paragraph.</p>
-          <cite>Cite from Wikipedia</cite>
-        </blockquote>
-        <p>Test Body</p>
-        <p>Test Body</p>
-        <p>
-          Here is page break for print.
-          <div class="print--page-break"></div>
-        </p>
-        <h3>H3 : 見出し２ （最後の閉じカッコは Nav 非表示）</h3>
-        <p>テスト本文</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <p>
-          <p>Rouge <code class="language-plaintext highlighter-rouge">inline-code</code></p>
-          <div class="language-yaml highlighter-rouge"><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**</span>
+          <blockquote>
+            <p>
+              Here is blockquote.<br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p>Second Paragraph.</p>
+            <cite>Cite from Wikipedia</cite>
+          </blockquote>
+          <p>Test Body</p>
+          <p>Test Body</p>
+          <p>
+            Here is page break for print.
+            <div class="print--page-break"></div>
+          </p>
+          <h3>H3 : 見出し２ （最後の閉じカッコは Nav 非表示）</h3>
+          <p>テスト本文</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <p>
+            <p>Rouge <code class="language-plaintext highlighter-rouge">inline-code</code></p>
+            <div class="language-yaml highlighter-rouge"><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**</span>
 <span class="cm"> * Does a thing</span>
 <span class="cm"> */</span>
 <span class="kd">function</span> <span class="nx">helloWorld</span><span class="p">(</span><span class="nx">param1</span><span class="p">,</span> <span class="nx">param2</span><span class="p">)</span> <span class="p">{</span>
@@ -634,11 +735,38 @@
 
   <span class="c1">// @TODO comment</span>
 <span class="p">}</span></code></pre></div></div>
-        </p>
-        <div class="print--page-break"></div>
-        <p>
-          The third page.
-        </p>
+          </p>
+          <div class="print--page-break"></div>
+          <p>
+            The third page.
+          </p>
+          <h4>H4 : Nav Scrollbar Test START</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test</h4>
+          <h4>H4 : Nav Scrollbar Test END</h4>
         {%- endif -%}
         {{ content }}
         <!-- spacer for screen -->
