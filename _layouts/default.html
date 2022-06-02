@@ -74,9 +74,8 @@
           }
         }
         // do it
-        //var autoAnchorNo = 1;
         $("section h1, section h2, section h3, section h4, section h5, section h6").each(function() {
-          let anchorName = this.innerText.toLowerCase().replace(/\s/g, '-').replace(/[\(\)\[\]（）「」【】・／]/g, ''); //'AutoAnchor-' + autoAnchorNo++;
+          let anchorName = encodeURIComponent(this.innerText.toLowerCase().replace(/\s/g, '-').replace(/[\(\)\[\]（）「」【】・]/g, ''));
           $("nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='#" + anchorName + "'>" + $(this).text().replace(/）$/, '') + "</a></li>");
           $(this).attr("id",anchorName);
           $("nav ul li:first-child a").parent().addClass("active");
