@@ -107,9 +107,11 @@
             topAnchorEl.classList.add('d-none');
           }
         }
+        // GitHub Flavored Markdown Spec - https://github.github.com/gfm/#ascii-punctuation-character
+        const gfmPunctuation = /[^\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\\\]\^\_\`\{\|\}\~\p{Connector_Punctuation}\p{Dash_Punctuation}\p{Close_Punctuation}\p{Final_Punctuation}\p{Initial_Punctuation}\p{Other_Punctuation}\p{Open_Punctuation}]/gu;
         // auto anchor & nav links creation
         $("section h1, section h2, section h3, section h4, section h5, section h6").each(function() {
-          let anchorName = /*encodeURIComponent*/(this.innerText.toLowerCase().replace(/\s/g, '-').replace(/[\(\)\[\]（）「」【】・]/g, ''));
+          let anchorName = this.innerText.toLowerCase().replace(gfmPunctuation, '').replace(/\p{Space_Separator}/gu, '-');
           $("nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='#" + anchorName + "'>" + $(this).text().replace(/）$/, '') + "</a></li>");
           $(this).attr("id",anchorName);
           $("nav ul li:first-child a").parent().addClass("active");
@@ -120,7 +122,7 @@
           }
         });
         // animated scroll to anchor with header offset
-        $("nav ul li, section").on("click", "a", function(event) {
+        $("nav ul li, section, section *").on("click", "a", function(event) {
           let targetEl = $($(this).attr("href"));
           if (!targetEl) return;
           var position = $(targetEl).offset().top - $("header").outerHeight(true) - 4; // magic number
