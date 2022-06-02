@@ -108,7 +108,7 @@
           }
         }
         // GitHub Flavored Markdown Spec - https://github.github.com/gfm/#ascii-punctuation-character
-        const gfmPunctuationAscii = /[\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\\\\]\^\_\`\{\|\}\~]/g;
+        const gfmPunctuationAscii = /[\!\"\#\$\%\&\'\(\)\*\+\,\.\/\:\;\<\=\>\?\@\[\\\\]\^\_\`\{\|\}\~]/g;  // don't remove -'s
         const gfmPunctuationUnicode = /[\p{Connector_Punctuation}\p{Dash_Punctuation}\p{Close_Punctuation}\p{Final_Punctuation}\p{Initial_Punctuation}\p{Other_Punctuation}\p{Open_Punctuation}]/gu;
         // auto anchor & nav links creation
         $("section h1, section h2, section h3, section h4, section h5, section h6").each(function() {
@@ -123,8 +123,11 @@
           }
         });
         // animated scroll to anchor with header offset
-        $("nav ul li, section, section *").on("click", "a", function(event) {
+        $("nav ul li, section").on("click", "a", function(event) {
           let targetEl = $($(this).attr("href"));
+          if (!targetEl) {
+            targetEl = $(decodeURIComponent($(this).attr("href")));
+          }
           if (!targetEl) return;
           var position = $(targetEl).offset().top - $("header").outerHeight(true) - 4; // magic number
           $("html, body").animate({scrollTop: position}, 400);
@@ -172,7 +175,7 @@
           content: '';
           display: block;
           position: absolute;
-          background: #49505710;  /* same with H1~H6 text's color */
+          background: #49505708;  /* same with H1~H6 text's color */
       }
       .os-theme-thin-dark > .os-scrollbar-horizontal > .os-scrollbar-track:before,
       .os-theme-thin-dark > .os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle:before {
@@ -194,7 +197,7 @@
           content: '';
           display: block;
           position: absolute;
-          background: #49505728;  /* same with H1~H6 text's color */
+          background: #49505718;  /* same with H1~H6 text's color */
           border-radius: 10px;
       }
       .os-theme-thin-dark > .os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle:hover:before,
