@@ -73,7 +73,7 @@
             topAnchorEl.classList.add('d-none');
           }
         }
-        // do it
+        // auto anchor & nav links creation
         $("section h1, section h2, section h3, section h4, section h5, section h6").each(function() {
           let anchorName = encodeURIComponent(this.innerText.toLowerCase().replace(/\s/g, '-').replace(/[\(\)\[\]（）「」【】・]/g, ''));
           $("nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='#" + anchorName + "'>" + $(this).text().replace(/）$/, '') + "</a></li>");
@@ -85,6 +85,7 @@
             $(this).css('font-weight', '600');
           }
         });
+        // animated scroll to anchor with header offset
         $("nav ul li, section").on("click", "a", function(event) {
           let targetEl = $($(this).attr("href"));
           if (!targetEl) return;
