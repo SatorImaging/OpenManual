@@ -74,9 +74,9 @@
           }
         }
         // do it
-        var autoAnchorNo = 1;
+        //var autoAnchorNo = 1;
         $("section h1, section h2, section h3, section h4, section h5, section h6").each(function() {
-          let anchorName = 'AutoAnchor-' + autoAnchorNo++; //escape(this.innerText.toLowerCase().replace(/ /g, '-')).replace(/[^\w-]+/g,'');
+          let anchorName = escape(this.innerText.toLowerCase().replace(/\s/g, '-')).replace(/[^\w-]+/g,''); //'AutoAnchor-' + autoAnchorNo++;
           $("nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='#" + anchorName + "'>" + $(this).text().replace(/）$/, '') + "</a></li>");
           $(this).attr("id",anchorName);
           $("nav ul li:first-child a").parent().addClass("active");
@@ -263,6 +263,7 @@
       section b,
       section strong
       {
+        color: #495057;  /* same with H1~H6 text's color */
         font-weight: bold;
       }
       section img {
