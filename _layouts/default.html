@@ -109,7 +109,7 @@
         }
         // auto anchor & nav links creation
         $("section h1, section h2, section h3, section h4, section h5, section h6").each(function() {
-          let anchorName = encodeURIComponent(this.innerText.toLowerCase().replace(/\s/g, '-').replace(/[\(\)\[\]（）「」【】・]/g, ''));
+          let anchorName = /*encodeURIComponent*/(this.innerText.toLowerCase().replace(/\s/g, '-').replace(/[\(\)\[\]（）「」【】・]/g, ''));
           $("nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='#" + anchorName + "'>" + $(this).text().replace(/）$/, '') + "</a></li>");
           $(this).attr("id",anchorName);
           $("nav ul li:first-child a").parent().addClass("active");
@@ -137,7 +137,7 @@
       });
     </script>
 
-    <!-- stylesheet -->
+    <!-- stylesheet for OverlayScrollbars.js -->
     <style type='text/css'>
       /*
       os-theme-thin-dark
@@ -169,7 +169,7 @@
           content: '';
           display: block;
           position: absolute;
-          background: #4950570f;  /* same with H1~H6 text's color */
+          background: #49505710;  /* same with H1~H6 text's color */
       }
       .os-theme-thin-dark > .os-scrollbar-horizontal > .os-scrollbar-track:before,
       .os-theme-thin-dark > .os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle:before {
@@ -191,7 +191,7 @@
           content: '';
           display: block;
           position: absolute;
-          background: #49505732;  /* same with H1~H6 text's color */
+          background: #49505728;  /* same with H1~H6 text's color */
           border-radius: 10px;
       }
       .os-theme-thin-dark > .os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle:hover:before,
@@ -227,6 +227,7 @@
           transition: width 0.3s, margin-left 0.3s, background 0.2s;
       }
     </style>
+    <!-- stylesheet -->
     <style type='text/css'>
       body {
         font-weight: 300;
