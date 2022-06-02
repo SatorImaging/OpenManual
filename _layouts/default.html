@@ -108,8 +108,8 @@
           }
         }
         // GitHub Flavored Markdown Spec - https://github.github.com/gfm/#ascii-punctuation-character
-        const gfmPunctuationAscii = /[^\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\\\\]\^\_\`\{\|\}\~]/g;
-        const gfmPunctuationUnicode = /[^\p{Connector_Punctuation}\p{Dash_Punctuation}\p{Close_Punctuation}\p{Final_Punctuation}\p{Initial_Punctuation}\p{Other_Punctuation}\p{Open_Punctuation}]/gu;
+        const gfmPunctuationAscii = /[\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\\\\]\^\_\`\{\|\}\~]/g;
+        const gfmPunctuationUnicode = /[\p{Connector_Punctuation}\p{Dash_Punctuation}\p{Close_Punctuation}\p{Final_Punctuation}\p{Initial_Punctuation}\p{Other_Punctuation}\p{Open_Punctuation}]/gu;
         // auto anchor & nav links creation
         $("section h1, section h2, section h3, section h4, section h5, section h6").each(function() {
           let anchorName = this.innerText.toLowerCase().replace(gfmPunctuationAscii, '').replace(gfmPunctuationUnicode, '').replace(/\p{Space_Separator}/gu, '-');
