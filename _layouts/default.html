@@ -112,7 +112,8 @@
         const gfmPunctuationUnicode = /[\p{Connector_Punctuation}\p{Dash_Punctuation}\p{Close_Punctuation}\p{Final_Punctuation}\p{Initial_Punctuation}\p{Other_Punctuation}\p{Open_Punctuation}]/gu;
         // auto anchor & nav links creation
         $("section h1, section h2, section h3, section h4, section h5, section h6").each(function() {
-          let anchorName = this.innerText.toLowerCase().replace(gfmPunctuationAscii, '').replace(gfmPunctuationUnicode, '').replace(/\p{Space_Separator}/gu, '-');
+          // replace - to space first due to gfmPunctuationUnicode removes -'s.
+          let anchorName = this.innerText.toLowerCase().replace(/\-/g, ' ').replace(gfmPunctuationAscii, '').replace(gfmPunctuationUnicode, '').replace(/\p{Space_Separator}/gu, '-');
           $("nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='#" + anchorName + "'>" + $(this).text().replace(/）$/, '') + "</a></li>");
           $(this).attr("id",anchorName);
           $("nav ul li:first-child a").parent().addClass("active");
