@@ -108,7 +108,7 @@
           }
         }
         // GitHub Flavored Markdown Spec - https://github.github.com/gfm/#ascii-punctuation-character
-        const gfmPunctuationAscii = /[\!\"\#\$\%\&\'\(\)\*\+\,\.\/\:\;\<\=\>\?\@\[\\\\]\^\_\`\{\|\}\~]/g;  // don't remove -'s
+        const gfmPunctuationAscii = /[\!\"\#\$\%\&\'\(\)\*\+\,\.\/\:\;\<\=\>\?\@\[\\\]\^\_\`\{\|\}\~]/g;  // don't remove -'s
         const gfmPunctuationUnicode = /[\p{Connector_Punctuation}\p{Dash_Punctuation}\p{Close_Punctuation}\p{Final_Punctuation}\p{Initial_Punctuation}\p{Other_Punctuation}\p{Open_Punctuation}]/gu;
         // auto anchor & nav links creation
         $("section h1, section h2, section h3, section h4, section h5, section h6").each(function() {
@@ -128,14 +128,15 @@
           // encoded string causes error. always decode.
           let targetEl = $(decodeURIComponent($(this).attr("href")));
           if (!targetEl) return;
-          var position = $(targetEl).offset().top - $("header").outerHeight(true) - 4; // magic number
-          $("html, body").animate({scrollTop: position}, 400);
+          var position = $(targetEl).offset().top - $("#header").outerHeight(true);
+          position -= $("html, body").scrollTop() - $("#header").offset().top;
+          $("html, body").animate({scrollTop: position + 'px'}, 400);
           $("nav ul li a").parent().removeClass("active");
           $(this).parent().addClass("active");
           event.preventDefault();
         });
         // nav height = 100vh - header - footer - 4px (magic number??? top/bottom border height x 2, header & footer)
-        $("nav").css('height', 'calc(100vh - 4px - ' + $("#header-spacer").outerHeight() + 'px - '+ $("#footer").outerHeight() +'px)');
+        $("nav").css('height', 'calc(100vh - ' + $("#header").outerHeight(true) + 'px - '+ $("#footer").outerHeight(true) +'px)');
         OverlayScrollbars(document.querySelectorAll("nav"), {
           className: "os-theme-thin-dark",
         });
@@ -476,12 +477,12 @@
 
 
     <!-- spacer - keep same height with header + spacer in header -->
-    <div id="header-spacer" class="pt-2 pt-sm-3 pt-md-4 pt-lg-5  pb-1 pb-md-4 pb-lg-5  mb-1">
+    <div id="header-spacer" class="pt-2 pt-sm-3 pt-md-4 pt-lg-5  pb-3 pb-md-4 pb-lg-5  mb-1">
       <h1 class="my-2">&nbsp;</h1>
       <p class="my-1">&nbsp;</p>
     </div>
     <!-- header -->
-    <header class="pt-2 pt-sm-3 pt-md-4 pt-lg-5  pb-1 pb-md-4 pb-lg-5  mb-1     fixed-top  row  no-gutters   bg-light  -border-bottom">
+    <header class="pt-2 pt-sm-3 pt-md-4 pt-lg-5  pb-3 pb-md-4 pb-lg-5  mb-1     fixed-top  row  no-gutters   bg-light  -border-bottom" id="header">
       <!-- spacer same with toc -->
       <div class="col-0 col-sm-0 col-md-1 col-lg-2"></div>
       <div class="col-10 col-sm-10 col-md-9 col-lg-8   px-5 px-md-3 px-lg-4   -border">
@@ -743,36 +744,38 @@
 <span class="p">}</span></code></pre></div></div>
           </p>
           <div class="print--page-break"></div>
+          <h4>H4 : 見出し３ （最後の閉じカッコは Nav 非表示）</h4>
           <p>
             The third page.
           </p>
-          <h4>H4 : Nav Scrollbar Test START</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test</h4>
-          <h4>H4 : Nav Scrollbar Test END</h4>
+          <h5>H5 : Nav-Scrollbar { Test? } / [START]</h5>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
+          <h5>H5 : Nav-Scrollbar &lt; Test! | [ END ]</h5>
         {%- endif -%}
         {{ content }}
         <!-- spacer for screen -->
@@ -780,12 +783,12 @@
       </section>
     </div>
 
-    <footer id="footer" class="bg-light  fixed-bottom  -row  text-secondary  border-top  py-1 py-md-2 py-lg-3">
-      <p class="px-5  my-0 my-lg-1  text-center  text-truncate">
+    <footer id="footer" class="bg-light  fixed-bottom  -row  text-secondary  border-top  py-1 py-md-2 py-lg-2">
+      <p class="px-5  my-0 my-lg-0  text-center  text-truncate">
         <span class="d-none d-sm-inline">Copyright</span>
         &copy; {{ site.time | date: "%Y" }} Sator Imaging, all rights reserved.
       </p>
-      <p class="d-none d-md-block  px-5  my-0 my-lg-1  text-center  text-truncate  print--hidden">
+      <p class="d-none d-md-block  px-5  my-0 my-lg-0  text-center  text-truncate  print--hidden">
         <small><a href="{{ site.github.repository_url }}">{{ site.github.repository_nwo }}</a> &mdash; {{ site.github.project_tagline }}</small>
       </p>
     </footer>
