@@ -128,9 +128,8 @@
           // encoded string causes error. always decode.
           let targetEl = $(decodeURIComponent($(this).attr("href")));
           if (!targetEl) return;
-          var position = $(targetEl).offset().top - $("#header").outerHeight(true);
-          position += $("html, body").scrollTop() - $("#header").offset().top;
-          $("html, body").animate({scrollTop: position + 'px'}, 400);
+          var position = $(targetEl).offset().top - document.querySelector("#header").getBoundingClientRect().height;
+          $("html").animate({scrollTop: position + 'px'}, 400);
           $("nav ul li a").parent().removeClass("active");
           $(this).parent().addClass("active");
           event.preventDefault();
