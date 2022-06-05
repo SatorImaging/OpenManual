@@ -247,6 +247,10 @@
         font-weight: 100;
         -font-family: 'M PLUS 1p', sans-serif;
         font-size: 2.5rem;
+        max-width: 100vw;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
 
       .header--lang  a {
@@ -481,7 +485,7 @@
       <p class="my-1">&nbsp;</p>
     </div>
     <!-- header -->
-    <header class="pt-2 pt-sm-3 pt-md-4 pt-lg-5  pb-3 pb-md-4 pb-lg-5  mb-1     fixed-top  row  no-gutters   bg-light  -border-bottom" id="header">
+    <header id="header" class="pt-2 pt-sm-3 pt-md-4 pt-lg-5  pb-3 pb-md-4 pb-lg-5  mb-1     fixed-top  row  no-gutters   bg-light">
       <!-- spacer same with toc -->
       <div class="col-0 col-sm-0 col-md-1 col-lg-2"></div>
       <div class="col-10 col-sm-10 col-md-9 col-lg-8   px-5 px-md-3 px-lg-4   -border">
