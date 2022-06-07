@@ -242,19 +242,19 @@
         position: relative;
       }
 
+      header,
+      section,
+      footer
+      {
+        max-width: 100vw;
+        overflow: hidden;
+      }
+
 
       header h1 {
         font-weight: 100;
         font-size: 2.5rem;
         -font-family: 'M PLUS 1p', sans-serif;
-        width: 100%;
-        max-width: 100%;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        overflow-x: hidden;
-        word-break: break-all;
-        line-break: strict;
       }
 
       .header--lang  a {
@@ -264,11 +264,12 @@
       .spacer,
       nav ul li {
         list-style: none;
-        -white-space: nowrap;
         line-height: 1.25em;
         margin-bottom: 0.4em;
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
         text-overflow: ellipsis;
-        -overflow: hidden;
       }
       nav ul li.font-large,
       #printing-button a
@@ -299,14 +300,14 @@
       section h5,
       section h6
       {
+        width: fit-content;
         max-width: 100%;
+        overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        overflow: hidden;
         font-weight: bold;  /* 600 */
         color: #495057; /*#343a40;*/
         background: linear-gradient(transparent 70%, #cde7 70%);
-        width: fit-content;
         margin-top: 2.0rem;
         margin-bottom: 1.3rem;
       }
@@ -316,11 +317,6 @@
       section h4 { font-size: 1.3rem; }
       section h5 { font-size: 1.2rem; }
       section h6 { font-size: 1.1rem; }
-      section > *:first-child,
-      section > *:first-child *
-      {
-        margin-top: 0.0rem;
-      }
 
       #page-links ul,
       #page-links ol
@@ -420,6 +416,11 @@
       }
       @media screen
       {
+        section > *:first-child,
+        section > *:first-child *
+        {
+          margin-top: 0.0rem;
+        }
         .print--page-break::before {
           content: "------ 8< ------ PAGE BREAK FOR PDF ------ 8< ------";
           width: 100%;
@@ -461,7 +462,7 @@
   <body>
 
     <!-- background fill need for PDF print -->
-    <div id="background-fill" class="w-100 h-100 bg-light  position-fixed" style="top: 0px; left: 0px;"></div>
+    <div id="background-fill" class="vw-100 vh-100  bg-light   position-fixed" style="top: 0px; left: 0px; z-index: -2022;"></div>
 
 
     {%- if page.logo_src or site.logo_src -%}
@@ -723,10 +724,6 @@
           </blockquote>
           <p>Test Body</p>
           <p>Test Body</p>
-          <p>
-            Here is page break for print.
-            <div class="print--page-break"></div>
-          </p>
           <h3>H3 : 見出し２ （最後の閉じカッコは Nav 非表示）</h3>
           <p>テスト本文</p>
           <p>
@@ -750,7 +747,10 @@
   <span class="c1">// @TODO comment</span>
 <span class="p">}</span></code></pre></div></div>
           </p>
-          <div class="print--page-break"></div>
+          <p>
+            Here is page break for print.
+            <div class="print--page-break"></div>
+          </p>
           <h4>H4 : 見出し３ （最後の閉じカッコは Nav 非表示）</h4>
           <p>
             The third page.
@@ -795,8 +795,8 @@
         <span class="d-none d-sm-inline">Copyright</span>
         &copy; {{ site.time | date: "%Y" }} Sator Imaging, all rights reserved.
       </p>
-      <p class="d-none d-md-block  px-5  my-0 my-lg-0  text-center  text-truncate  print--hidden">
-        <small><a href="{{ site.github.repository_url }}">{{ site.github.repository_nwo }}</a> &mdash; {{ site.github.project_tagline }}</small>
+      <p class="d-none d-md-block  px-5  my-0 my-lg-0  text-center  text-truncate">
+        <small class="print--d-none"><a href="{{ site.github.repository_url }}">{{ site.github.repository_nwo }}</a> &mdash; {{ site.github.project_tagline }}</small>
       </p>
     </footer>
 
@@ -823,6 +823,10 @@
       if(options['m'] == 'a4-print') {
         $('*').each(function()
         {
+          if (this.id == 'header' || this.id == 'footer') {
+            $(this).removeClass('bg-light');
+            $(this).css('background-color', '#f8f9fa80');
+          }
           if (this.id == 'header-spacer') {
             $(this).css('height', 'var(--header-height)');
             $(this).css('margin', '0px');
@@ -830,7 +834,19 @@
             $(this).css('overflow', 'hidden');
             return;
           }
+          if (this.id == 'header') {
+            $(this).css('height', 'var(--header-height)');
+            $(this).css('border-bottom', '1px dashed #ddd');
+            return;
+          }
           // do it
+          if ($(this).hasClass('print--hidden')) {
+            $(this).addClass('invisible');//.css('visibility', 'hidden');
+          }
+          if ($(this).hasClass('print--d-none')) {
+            $(this).addClass('d-none');//.css('display', 'none');
+          }
+          // dpi control
           for(let p of ['font-size', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left']) {
             if ('font-size' == p && !['body','h1','h2','h3','h4','h5','h6'].includes(this.tagName.toLowerCase())) {
               continue;
@@ -845,7 +861,7 @@
           let fn = function() { setTimeout(x => {
             $(this).css('width', $(this).outerWidth(true)*0.875+'px');
           }, 128)};
-          fn();
+          //fn();  ???
           this.addEventListener("load", fn);
         });
       }
