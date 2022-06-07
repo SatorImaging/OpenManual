@@ -292,6 +292,12 @@
         border: 1px solid #e8e8e8;
       }
 
+      section > *:first-child,
+      section > *:first-child *
+      {
+        margin-top: 0.0rem;
+      }
+
       section img { max-width: 100%; }
       section h1,
       section h2,
@@ -416,11 +422,6 @@
       }
       @media screen
       {
-        section > *:first-child,
-        section > *:first-child *
-        {
-          margin-top: 0.0rem;
-        }
         .print--page-break::before {
           content: "------ 8< ------ PAGE BREAK FOR PDF ------ 8< ------";
           width: 100%;
@@ -452,6 +453,9 @@
           content: ""; /* empty string required */
           display: block;
           height: var(--header-height);  /* 6.0rem???? wapper margin+padding + section margin+padding */
+        }
+        .print--page-break + * {
+          margin-top: 0px;
         }
         .print--page-break { break-before: page; }
         .print--hidden { visibility: hidden; }
