@@ -799,8 +799,8 @@
         <span class="d-none d-sm-inline">Copyright</span>
         &copy; {{ site.time | date: "%Y" }} Sator Imaging, all rights reserved.
       </p>
-      <p class="d-none d-md-block  px-5  my-0 my-lg-0  text-center  text-truncate">
-        <small class="print--d-none"><a href="{{ site.github.repository_url }}">{{ site.github.repository_nwo }}</a> &mdash; {{ site.github.project_tagline }}</small>
+      <p class="d-none d-md-block  px-5  my-0 my-lg-0  text-center  text-truncate   print--hidden">
+        <small id="footer--project-descriptoin"><a href="{{ site.github.repository_url }}">{{ site.github.repository_nwo }}</a> &mdash; {{ site.github.project_tagline }}</small>
       </p>
     </footer>
 
@@ -841,6 +841,10 @@
           if (this.id == 'header') {
             $(this).css('height', 'var(--header-height)');
             $(this).css('border-bottom', '1px dashed #ddd');
+            return;
+          }
+          if (this.id == 'footer--project-description') {
+            $(this).addClass('d-none');
             return;
           }
           // do it
