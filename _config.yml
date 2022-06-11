@@ -16,8 +16,8 @@ title:
 description: 
 show_downloads: false
 google_analytics:   # hard-coded in default.html
-favicon: "https://www.sator-imaging.com/favicon.ico"
-logo_src: "https://avatars.githubusercontent.com/u/45192683"
+favicon:
+logo_src:
 logo_href: 
 logo_background: 
 
@@ -28,4 +28,4 @@ defaults:
     values:
       layout: "default"
       author:
-        - "Sator Imaging"
+        - "@SatorImaging"

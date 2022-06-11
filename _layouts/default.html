@@ -14,7 +14,7 @@
     {% include head-custom.html %}
 
     {% if page.favicon or site.favicon %}
-      {% assign favicon_href = page.favicon | default: site.favicon %}
+      {% assign favicon_href = page.favicon | default: site.favicon | default: 'https://www.sator-imaging.com/favicon.ico' %}
       <link rel='icon' type='image/x-icon' href='{{ favicon_href }}' />
     {% endif %}
 
@@ -471,7 +471,7 @@
       <div class="col-2 col-sm-2 col-md-2 col-lg-2   pl-0 pl-sm-0 pl-md-0   fixed-top   ml-auto"  style="z-index: 9999;">
         <a target="_blank" href='{{ page.logo_href | default: site.logo_href | default: "https://www.sator-imaging.com/" }}'>
           <div class="pt-3 pt-md-4  px-0  pb-2 pb-md-3   ml-0 ml-md-2 ml-lg-2" style='width: fit-content; border-radius: 0px 0px 5% 5%; overflow: hidden; background: {{ logo_background }};'>
-            <img style='width: 12.5vw; max-width: 7rem;' src='{{ page.logo_src | default: site.logo_src }}' />
+            <img style='width: 12.5vw; max-width: 7rem;' src='{{ page.logo_src | default: site.logo_src | default: "https://avatars.githubusercontent.com/u/45192683" }}' />
           </div>
         </a>
       </div>
