@@ -3,7 +3,7 @@ title: "VRM Tool Kit 取扱説明書"
 lang: ja
 date: 2022-05-30
 author:
-- "Sator Imaging"
+- "@sator-imaging"
 ---
 
 

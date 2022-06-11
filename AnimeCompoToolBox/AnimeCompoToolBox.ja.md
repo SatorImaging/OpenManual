@@ -3,7 +3,7 @@ title: "【AE】アニメの撮影用ツール"
 lang: ja
 date: 2021-12-01
 author:
-- "Sator Imaging"
+- "@sator-imaging"
 ---
 
 

@@ -579,8 +579,9 @@
             <span class="d-inline-block  ml-3">
               <small>written by</small>
               {% for author in page.author %}
+                {% assign author_github = author | replace_first '@', 'https://github.com/' %}
                 <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-                  <span itemprop="name">{{ author }}</span>
+                  <span itemprop="name">{{ author_github }}</span>
                 </span>
                 {% if forloop.last == false %}, {% endif %}
               {% endfor %}

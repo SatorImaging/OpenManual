@@ -3,7 +3,7 @@ title: "VRMはどのバージョンを使うべき？"
 lang: ja
 date: 2022-05-26
 author:
-- "Sator Imaging"
+- "@sator-imaging"
 ---
 
 
