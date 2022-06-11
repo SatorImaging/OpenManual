@@ -13,12 +13,12 @@
 
     {% include head-custom.html %}
 
-    {%- if page.favicon or site.favicon -%}
-      {%- assign favicon_href = page.favicon | default: site.favicon -%}
+    {% if page.favicon or site.favicon %}
+      {% assign favicon_href = page.favicon | default: site.favicon %}
       <link rel='icon' type='image/x-icon' href='{{ favicon_href }}' />
-    {%- endif -%}
+    {% endif %}
 
-    {%- if false -%}
+    {% if false %}
       <!-- jekyll commands are rendered as plain text in local environment so that remove those text from body and content element to achieve consistent layout in any environment. -->
       <script>
         document.addEventListener('DOMContentLoaded', (event) => {
@@ -32,7 +32,7 @@
           })
         });
       </script>
-    {%- endif -%}
+    {% endif %}
 
     <!-- TODO: jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
@@ -466,8 +466,8 @@
     <div id="background-fill" class="vw-100 vh-100  bg-light   position-fixed" style="top: 0px; left: 0px; z-index: -2022;"></div>
 
 
-    {%- if page.logo_src or site.logo_src -%}
-      {%- assign logo_background = page.logo_background | default: site.logo_background | default: "#00cce4" -%}
+    {% if page.logo_src or site.logo_src %}
+      {% assign logo_background = page.logo_background | default: site.logo_background | default: "#00cce4" %}
       <div class="col-2 col-sm-2 col-md-2 col-lg-2   pl-0 pl-sm-0 pl-md-0   fixed-top   ml-auto"  style="z-index: 9999;">
         <a target="_blank" href='{{ page.logo_href | default: site.logo_href | default: "https://www.sator-imaging.com/" }}'>
           <div class="pt-3 pt-md-4  px-0  pb-2 pb-md-3   ml-0 ml-md-2 ml-lg-2" style='width: fit-content; border-radius: 0px 0px 5% 5%; overflow: hidden; background: {{ logo_background }};'>
@@ -475,14 +475,14 @@
           </div>
         </a>
       </div>
-      {%- if false -%}
+      {% if false %}
         <script>
           let img = $("img")[$("img").length-1];
           img.src = 'https://avatars.githubusercontent.com/u/45192683';
           $(img).parent().css("background", "#00cce4");
         </script>
-      {%- endif -%}
-    {%- endif -%}
+      {% endif %}
+    {% endif %}
 
 
     <!-- spacer - keep same height with header + spacer in header -->
@@ -575,25 +575,25 @@
               }
             </script>
           </span>
-          {%- if page.author -%}
+          {% if page.author %}
             <span class="d-inline-block  ml-3">
               <small>written by</small>
               {% for author in page.author %}
                 <span itemprop="author" itemscope itemtype="http://schema.org/Person">
                   <span itemprop="name">{{ author }}</span>
                 </span>
-                {%- if forloop.last == false %}, {% endif -%}
+                {% if forloop.last == false %}, {% endif %}
               {% endfor %}
             </span>
-          {%- endif -%}
-          {%- if page.date -%}
+          {% endif %}
+          {% if page.date %}
             <span class="d-inline-block  ml-2">
               <small>on</small>
               <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
                 {{ page.date | date: "%b %-d, %Y" }}
               </time>
             </span>
-          {%- endif -%}
+          {% endif %}
         </p>
       </div>
     </header>
@@ -635,7 +635,7 @@
         </small>
       </nav>
       <section class="col-12 col-sm-12 col-md-10 col-lg-7   px-5 px-md-3  pl-lg-3 pr-lg-4   -my-5 -border">
-        {%- if page.url == '/' -%}
+        {% if page.url == '/' %}
           <div id="page-links"><!-- this div tag must be the first child of section tag -->
             <h1 id="page-links--older-smartphone">Open Manual Index</h1>
           </div>
@@ -687,7 +687,7 @@
           </script>
           <ul id="page-links--default">
             {% for page in (site.pages | sort: "date", "first" | reverse) %}
-              {%- if page.title -%}
+              {% if page.title %}
                 <li><a href="{{ site.github.url }}{{ page.url }}">{{ page.title }}</a></li>
                 <script>
                   var docUrl = '{{ site.github.url }}{{ page.url }}';
@@ -704,12 +704,12 @@
                             : '{{ page.excerpt | default: page.content | newline_to_br | replace: "<br />", " " | strip_html | strip_newlines | truncate: 150 }}'
                   );
                 </script>
-              {%- endif -%}
+              {% endif %}
             {% endfor %}
           </ul>
           <hr class="my-5" />
-        {%- endif -%}
-        {%- if false -%}
+        {% endif %}
+        {% if false %}
           <h2>H2 : 見出し１ （最後の閉じカッコは Nav 非表示）</h2>
           <p>Test Body</p>
           <p>
@@ -784,7 +784,7 @@
           <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
           <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
           <h5>H5 : Nav-Scrollbar &lt; Test! | [ END ]</h5>
-        {%- endif -%}
+        {% endif %}
         {{ content }}
         <!-- spacer for screen -->
         <div class="print--d-none  vh-100"></div>
