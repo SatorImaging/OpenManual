@@ -801,9 +801,9 @@
       </p>
     </footer>
 
-    <div class="print--hidden   fixed-bottom  text-right  px-2  ml-auto  small  text-black-50   d-none d-lg-block" style="width: fit-content;">
+    <div class="print--hidden   fixed-bottom  text-right  px-1  ml-auto  small  text-black-50   d-none d-lg-block" style="width: fit-content;">
       <script>
-        let res = {"Mobile":[576,800],"Tablet":[768,960],"Laptop":[1200,1200],"A4 Print":[905,1280]};//[678,960][905,1280],"4x3":[1600,1200],"16x9":[1920,1080]
+        let res = {"Mobile":[576,800],"Tablet":[768,960],"PC":[1200,1200],"A4 Print":[905,1280]};//[678,960][905,1280],"4x3":[1600,1200],"16x9":[1920,1080]
         for(let key in res) {
           document.write("<a href=\"javascript: url=new URL(location); url.search='?m=" + key.replace(/ /g, '-').toLowerCase() + "'; window.open(url,'_blank','innerWidth="+res[key][0]+",innerHeight="+res[key][1]+",left="+Math.floor((screen.width-res[key][0])*0.5)+"')\">"+key+"</a>");
           if(key != Object.keys(res)[Object.keys(res).length-1]) document.write(' | ');
@@ -826,7 +826,7 @@
         {
           if (this.id == 'header' || this.id == 'footer') {
             $(this).removeClass('bg-light');
-            $(this).css('background-color', '#f8f9faE8');
+            $(this).css('background-color', '#f8f9faC8');
           }
           if (this.id == 'header-spacer') {
             $(this).css('height', 'var(--header-height)');
