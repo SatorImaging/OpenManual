@@ -261,15 +261,14 @@
         -text-decoration: none;
       }
 
-      .spacer,
       nav ul li {
         list-style: none;
         line-height: 1.25em;
         margin-bottom: 0.4em;
         max-width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+        ---overflow: hidden;
+        ---white-space: nowrap;
+        ---text-overflow: ellipsis;
       }
       nav ul li.font-large,
       #printing-button a
@@ -403,8 +402,6 @@
         color: #d0d8e0;
         font-size: 2em;
         font-weight: bold;  /* 900 */
-      }
-      blockquote p {
       }
       blockquote cite {
         display: block;
@@ -799,12 +796,12 @@
         <span class="d-none d-sm-inline">Copyright</span>
         &copy; {{ site.time | date: "%Y" }} Sator Imaging, all rights reserved.
       </p>
-      <p class="d-none d-md-block  px-5  my-0 my-lg-0  text-center  text-truncate   print--hidden">
+      <p class="d-none d-md-block   px-5   my-0 my-lg-0   text-center  text-truncate   print--hidden">
         <small id="footer--project-description"><a href="{{ site.github.repository_url }}">{{ site.github.repository_nwo }}</a> &mdash; {{ site.github.project_tagline }}</small>
       </p>
     </footer>
 
-    <div class="print--hidden   fixed-bottom  text-right  px-2  small  text-black-50   d-none d-lg-block">
+    <div class="print--hidden   fixed-bottom  text-right  px-2  ml-auto  small  text-black-50   d-none d-lg-block" style="width: fit-content;">
       <script>
         let res = {"Mobile":[576,800],"Tablet":[768,960],"Laptop":[1200,1200],"A4 Print":[905,1280]};//[678,960][905,1280],"4x3":[1600,1200],"16x9":[1920,1080]
         for(let key in res) {
@@ -829,7 +826,7 @@
         {
           if (this.id == 'header' || this.id == 'footer') {
             $(this).removeClass('bg-light');
-            $(this).css('background-color', '#f8f9fa80');
+            $(this).css('background-color', '#f8f9faE8');
           }
           if (this.id == 'header-spacer') {
             $(this).css('height', 'var(--header-height)');
