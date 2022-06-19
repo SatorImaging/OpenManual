@@ -1,3 +1,14 @@
+---
+title: "タッチジェスチャー認識ライブラリ"
+lang: ja
+date: 2022-06-19
+author:
+- "@sator-imaging"
+---
+
+
+
+
 <p><a href="https://t.co/MplSzYxEX2?amp=1"><img src="https://dl.dropbox.com/s/bwnlx3zkvmu80zc/UnityTouchGestureRecognizer_Logo__1200x630.jpg" /></a></p>
 
 
