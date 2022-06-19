@@ -32,9 +32,6 @@ VRMの作成や調整、更新を継続的、頻繁に行う場合に特に有�
 
 
 
-<!--
-https://qiita.com/sator_imaging/items/91f4156216831c3760df
--->
 
 
 
@@ -71,14 +68,6 @@ https://qiita.com/sator_imaging/items/91f4156216831c3760df
    - 揺れ物（Spring Bone）のパラメーターだけではなく、モデルの割りやボーン数・位置の調整も含めてのトライ＆エラーを行うことが可能。
 
 
-<!--
-テクスチャの更新だけであれば、VRM の再セットアップ無しでファイルの上書き→VRMの再出力だけで済みますが、非破壊ワークフローによってそれがモデルデータ（Fbx）でも可能になります。
--->
-
-
-<!--
-- 本来なら大した作業ではないのに、モデルはそのままでテクスチャの更新だけにしよう、という後ろ向きな発想の防止。
--->
 
 
 
@@ -419,21 +408,6 @@ Fbx キャラクターを VRM として出力できるように調整した上�
 
 
 
-<!--
-### Blend Shape
-
-
-ブレンドシェイプに関する機能です。
-
-- **Update Blend Shape for VRM Export**
-
-   - VRM Blend Shape のパラメーターをエクスポート用に調整します。実行すると、Inspector を使っての調整が不可能になります。
-
-
-- **Revert Blend Shape for Inspector Preview**
-
-   - VRM Blend Shape のパラメーターを Inspector で作業できるように再調整します。
--->
 
 
 
