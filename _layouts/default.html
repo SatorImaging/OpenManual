@@ -411,6 +411,28 @@
         margin-bottom: 0.5em;
       }
 
+      /* https://fontawesome.com/v4/cheatsheet/ */
+      blockquote.tip::before {
+        content: "\f0eb";
+        color: mediumseagreen;
+      }
+      blockquote.note::before {
+        content: "\f27a";
+        color: skyblue;
+      }
+      blockquote.important::before {
+        content: "\f0f3";
+        color: mediumpurple;
+      }
+      blockquote.warning::before {
+        content: "\f06a";
+        color: orange
+      }
+      blockquote.caution::before {
+        content: "\f071";
+        color: mediumvioletred;
+      }
+
       sup.footnote-ref a::before {
         content: '#';
       }
@@ -817,25 +839,29 @@
         <script>
           for (const bq of document.querySelectorAll("#section-contents > section  blockquote > p"))
           {
-            let fa_icon = '';
-            //green
+            //let fa_icon = '';
+            let bq_class = '';
             if (bq.innerHTML.startsWith('[!TIP]'))
-            fa_icon = '<i class="fa-regular fa-lightbulb"></i>';
-            //blue
+              //fa_icon = '<i class="fa-regular fa-lightbulb"></i>';
+              bq_class = 'tip';
             else if (bq.innerHTML.startsWith('[!NOTE]'))
-              fa_icon = '<i class="fa-regular fa-message"></i>';
-            //purple
+              //fa_icon = '<i class="fa-regular fa-message"></i>';
+              bq_class = 'note';
             else if (bq.innerHTML.startsWith('[!IMPORTANT]'))
-              fa_icon = '<i class="fa-regular fa-bell"></i>';
-            // yellow
+              //fa_icon = '<i class="fa-regular fa-bell"></i>';
+              bq_class = 'important';
             else if (bq.innerHTML.startsWith('[!WARNING]'))
-              fa_icon = '<i class="fa-solid fa-circle-exclamation"></i>';
-            //red
+              //fa_icon = '<i class="fa-solid fa-circle-exclamation"></i>';
+              bq_class = 'warning';
             else if (bq.innerHTML.startsWith('[!CAUTION]'))
-              fa_icon = '<i class="fa-solid fa-triangle-exclamation"></i>';
+              //fa_icon = '<i class="fa-solid fa-triangle-exclamation"></i>';
+              bq_class = 'caution';
 
-            bq.innerHTML = fa_icon + bq.innerHTML.replace(/^\[\![^\]]+\]/, '');
-            //bq.parent.addClass();
+            if (bq_class == '')
+              continue;
+
+            bq.innerHTML = bq.innerHTML.replace(/^\[\![^\]]+\]/, '');
+            bq.parent.classList.add(bq_class);
           }
         </script>
       </section>
