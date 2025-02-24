@@ -680,10 +680,11 @@
                                       .trim();
 
                 // SP: update directory display label
-                switch (dirLabel)
+                switch (dirLabel.innerText)
                 {
+                  // NOTE: update `.innerText`
                   case "Svg Toolkit":
-                    dirLabel = "SVG Toolkit";
+                    dirLabel.innerText = "SVG Toolkit";
                     break;
                 }
 
