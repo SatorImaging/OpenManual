@@ -117,7 +117,7 @@ To set secondary color, enable Two-Tone and set Target option to `Has Fill or Op
 > [!TIP]
 > `Material Icons Two Tone` collection has gap between shapes. To solve the problem, add thin strokes to fill these gaps.
 
-![](images/StkToolkit_CorrectTwoToneGap.gif)
+![](images/StkToolkit_CorrectTwoToneGap_01.gif)
 
 
 ## Stroke Cap & Corner Mode
@@ -188,7 +188,7 @@ In SVG Toolkit development, we used this technique to merge multiple collection 
 
 > As you can see, 2 icons listed at bottom right of window override and ignore fill & stroke colors from operator.
 
-![Ignore Operator](images/StkBatcher_IgnoreOperator_01.png)
+![](images/StkBatcher_IgnoreOperator_01.png)
 
 
 ### Further Reading
