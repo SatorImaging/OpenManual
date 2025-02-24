@@ -56,10 +56,11 @@ IN MARKDOWN PREVIEW BUT NOT IN RESULTING PAGE</strike>
 
 ### Customize Directory Label in Index Page
 
-See: https://github.com/SatorImaging/OpenManual/blob/master/_layouts/default.html#L682
+Search with `// SP: update directory display label` and update JavaScript.
+https://github.com/SatorImaging/OpenManual/blob/master/_layouts/default.html
 
 > [!WARNING]
-> DO NOT change directory name. it will make published URL unreachable.
+> DO NOT change directory name. it will make existing URL unreachable.
 
 
 ### About Jekyll Theme
