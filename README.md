@@ -54,6 +54,12 @@ IN MARKDOWN PREVIEW BUT NOT IN RESULTING PAGE</strike>
 
 
 
+### Customize Directory Label in Index Page
+
+See: https://github.com/SatorImaging/OpenManual/blob/master/_layouts/default.html#L682
+
+
+
 ### About Jekyll Theme
 
 Theme was designed by Sator Imaging.
