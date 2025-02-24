@@ -815,9 +815,27 @@
         <div class="print--d-none  vh-100"></div>
 
         <script>
-          for (const bq of $("blockquote > p"))
+          for (const bq of $("#section-contents > section  blockquote > p"))
           {
-            bq.innerHTML = '!! <i class="fa-regular fa-lightbulb"></i> !!' + bq.innerHTML;
+            let fa_icon = '';
+            //green
+            if (bq.innerHTML.startsWith('[!TIP]'))
+            fa_icon = '<i class="fa-regular fa-lightbulb"></i>';
+            //blue
+            else if (bq.innerHTML.startsWith('[!NOTE]'))
+              fa_icon = '<i class="fa-regular fa-message"></i>';
+            //purple
+            else if (bq.innerHTML.startsWith('[!IMPORTANT]'))
+              fa_icon = '<i class="fa-regular fa-bell"></i>';
+            // yellow
+            else if (bq.innerHTML.startsWith('[!WARNING]'))
+              fa_icon = '<i class="fa-solid fa-circle-exclamation"></i>';
+            //red
+            else if (bq.innerHTML.startsWith('[!CAUTION]'))
+              fa_icon = '<i class="fa-solid fa-triangle-exclamation"></i>';
+
+            bq.innerHTML = fa_icon + bq.innerHTML.replace(/^\[\![^\]]+\]/, '', i);
+            //bq.parent.addClass();
           }
         </script>
       </section>
