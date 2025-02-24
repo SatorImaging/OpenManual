@@ -56,7 +56,7 @@ IN MARKDOWN PREVIEW BUT NOT IN RESULTING PAGE</strike>
 
 ### Customize Directory Label in Index Page
 
-Search with `// SP: update directory display label` and update JavaScript.
+Search the following file with `// SP: update directory display label` and update JavaScript.
 https://github.com/SatorImaging/OpenManual/blob/master/_layouts/default.html
 
 > [!WARNING]
