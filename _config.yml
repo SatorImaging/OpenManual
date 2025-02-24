@@ -2,6 +2,7 @@ theme: jekyll-theme-minimal
 plugins:
   - jekyll-last-modified-at   # plugins can be loaded if it's in whitelist, this is not in.
   - jekyll-commonmark-ghpages
+  - jekyll-gfm-admonitions
 markdown: CommonMarkGhPages
 commonmark:
   options: ["UNSAFE", "SMART", "FOOTNOTES"]
