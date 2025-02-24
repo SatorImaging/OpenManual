@@ -834,7 +834,7 @@
             else if (bq.innerHTML.startsWith('[!CAUTION]'))
               fa_icon = '<i class="fa-solid fa-triangle-exclamation"></i>';
 
-            bq.innerHTML = fa_icon + bq.innerHTML.replace(/^\[\![^\]]+\]/, '', i);
+            bq.innerHTML = fa_icon + bq.innerHTML.replace(/^\[\![^\]]+\]/, '');
             //bq.parent.addClass();
           }
         </script>
