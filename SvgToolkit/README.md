@@ -12,14 +12,14 @@ author:
 
 
 <!-- omit in toc -->
-# Table of Contents
+## Table of Contents
 
 - [Changelog](#changelog)
 - [Getting Started](#getting-started)
     - [Tutorial Videos](#tutorial-videos)
 - [Additional Preset Libraries](#additional-preset-libraries)
     - [Game Icons - CC BY 3.0](#game-icons---cc-by-30)
-    - [Emoji One - MIT](#emoji-one---mit)
+    - [Emoji One](#emoji-one)
 - [In-Depth: **SVG Toolkit**](#in-depth-svg-toolkit)
     - [Canvas Coordinate System](#canvas-coordinate-system)
     - [Two-Tone Preset](#two-tone-preset)
@@ -91,7 +91,7 @@ You can install additional preset libraries. See repository description for lice
 https://github.com/sator-imaging/StkPreset-Game-Icons
 
 
-## Emoji One - MIT
+## Emoji One
 
 T.B.D.
 
@@ -227,8 +227,8 @@ JSON file with file extension `.stkcatalog`, with the following properties.
 - licenseTitle: `string?`
 - licenseTerms: `stirng?`
 - icons: `Icon[]?`
-    - p: `string?` preset file ***p***ath in `.zip` archive
-    - t: `string?` comma separated ***t***ags
+    - p: `string?` preset file **p**ath in `.zip` archive
+    - t: `string?` comma separated **t**ags
     - XmlString: `string?` must be *omitted* for read-only presets
 
 > [!TIP]
