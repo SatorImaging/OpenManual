@@ -65,3 +65,21 @@ See: https://github.com/SatorImaging/OpenManual/blob/master/_layouts/default.htm
 ### About Jekyll Theme
 
 Theme was designed by Sator Imaging.
+
+
+### Tests
+
+> [!TIP]
+> TIP
+
+> [!NOTE]
+> NOTE
+
+> [!WARNING]
+> WARNING
+
+> [!IMPORTANT]
+> IMPORTANT
+
+> [!CAUTION]
+> CAUTION
