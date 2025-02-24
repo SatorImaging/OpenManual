@@ -809,9 +809,17 @@
           <h6>H6 : Nav-Scrollbar =&gt; (#Test)</h6>
           <h5>H5 : Nav-Scrollbar &lt; Test! | [ END ]</h5>
         {% endif %}
+
         {{ content }}
         <!-- spacer for screen -->
         <div class="print--d-none  vh-100"></div>
+
+        <script>
+          for (const bq of $("blockquote > p"))
+          {
+            bq.innerHTML = '!! <i class="fa-regular fa-lightbulb"></i> !!' + bq.innerHTML;
+          }
+        </script>
       </section>
     </div>
 
