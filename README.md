@@ -75,11 +75,11 @@ Theme was designed by Sator Imaging.
 > [!NOTE]
 > NOTE
 
-> [!WARNING]
-> WARNING
-
 > [!IMPORTANT]
 > IMPORTANT
+
+> [!WARNING]
+> WARNING
 
 > [!CAUTION]
 > CAUTION
