@@ -11,7 +11,8 @@ author:
 ![](images/SVGTK_UnityAS__FullHD_1080p.png)
 
 
-<p><details lang="en" __open><summary>Table of Contents</summary>
+<!-- omit in toc -->
+# Table of Contents
 
 - [Changelog](#changelog)
 - [Getting Started](#getting-started)
@@ -23,7 +24,7 @@ author:
     - [Canvas Coordinate System](#canvas-coordinate-system)
     - [Two-Tone Preset](#two-tone-preset)
         - [How To: Gap Correction](#how-to-gap-correction)
-    - [Stroke Cap \& Corner Mode](#stroke-cap--corner-mode)
+    - [Stroke Mode](#stroke-mode)
 - [In-Depth: **Batcher**](#in-depth-batcher)
     - [Tips \& Notes](#tips--notes)
         - [Multiple Visual Styles](#multiple-visual-styles)
@@ -41,7 +42,7 @@ author:
         - [Two-Tone Collection](#two-tone-collection)
     - [Batcher Collection `.stkbatchop`](#batcher-collection-stkbatchop)
 
-<!------- End of Details EN Tag -------></details></p>
+
 
 
 
@@ -120,13 +121,17 @@ To set secondary color, enable Two-Tone and set Target option to `Has Fill or Op
 ![](images/StkToolkit_CorrectTwoToneGap_01.gif)
 
 
-## Stroke Cap & Corner Mode
+## Stroke Mode
 
-| Cap Mode | Corner Mode |
-|:--------:|:-----------:|
-| ![](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes/svg_stroke_linecap_example.png) | ![](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes/svg_stroke_linejoin_example.png)
+<!-- omit in toc -->
+### Cap Mode
+![](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes/svg_stroke_linecap_example.png)
 
-> Image courtesy of MDN
+<!-- omit in toc -->
+### Corner Mode
+![](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes/svg_stroke_linejoin_example.png)
+
+&ast; Image courtesy of MDN (https://developer.mozilla.org/en-US/docs/Web/SVG)
 
 
 
