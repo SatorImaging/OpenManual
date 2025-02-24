@@ -58,6 +58,8 @@ IN MARKDOWN PREVIEW BUT NOT IN RESULTING PAGE</strike>
 
 See: https://github.com/SatorImaging/OpenManual/blob/master/_layouts/default.html#L682
 
+> [!WARNING]
+> DO NOT change directory name. it will make published URL unreachable.
 
 
 ### About Jekyll Theme
