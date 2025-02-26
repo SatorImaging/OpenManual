@@ -68,7 +68,7 @@ https://github.com/SatorImaging/OpenManual/blob/master/_layouts/default.html
 Theme was designed by Sator Imaging.
 
 
-### Tests
+#### Theme Tests
 
 > [!TIP]
 > TIP
