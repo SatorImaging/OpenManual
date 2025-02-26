@@ -1,14 +1,14 @@
 ---
 title: "SVG Toolkit"
 lang: en
-date: 2025-02-24
+date: 2025-02-26
 author:
 - "@sator-imaging"
 ---
 
 
 
-![](images/SVGTK_UnityAS__FullHD_1080p.png)
+![](images/SvgToolkit_Hero.png)
 
 
 <!-- omit in toc -->
@@ -26,6 +26,7 @@ author:
         - [How To: Gap Correction](#how-to-gap-correction)
     - [Stroke Mode](#stroke-mode)
 - [In-Depth: **Batcher**](#in-depth-batcher)
+    - [Batcher Collection File](#batcher-collection-file)
     - [Tips \& Notes](#tips--notes)
         - [Multiple Visual Styles](#multiple-visual-styles)
         - [Best Export Size](#best-export-size)
@@ -139,6 +140,16 @@ To set secondary color, enable Two-Tone and set Target option to `Has Fill or Op
 
 # In-Depth: **Batcher**
 
+## Batcher Collection File
+
+Batcher collection file stores *snapshot* of added SVG icon presets.
+
+It means that when source *.svg* preset is updated, added icon *DON'T* get changed so that you need to add updated icon to Batcher and remove older one manually, by finding item with `Duplicates` filter.
+
+> [!TIP]
+> With this behavior, you can copy & paste SVG source code directly from website to add it to Batcher collection on the fly. No need to save it in your local storage. (take care about SVG license)
+
+
 ## Tips & Notes
 
 ### Multiple Visual Styles
@@ -246,7 +257,7 @@ SVG Toolkit will always load content as SVG so that file extension for files in 
 
 ### Strokes Collection
 
-SVG Toolkit will treat the preset as a stroke collection if it has ` stroke=\"` (white space included) in the root `<svg>` tag.
+SVG Toolkit will treat the preset as a stroke collection if it has ` stroke=\"` (leading one white space included) in the root `<svg>` tag.
 
 > [!NOTE]
 > SVG Toolkit does *NOT* validate that preset is correctly setted up.
