@@ -68,10 +68,10 @@ Before watching tutorial videos, open SVG Toolkit window by selecting menu in Un
 ## Tutorial Videos
 
 > [!TIP]
-> 🇯🇵 日本語字幕、中国語・韓国語機械翻訳あり。  
-> 🇨🇳 提供日语字幕和中文/韩文机器翻译。  
-> 🇰🇷 일본어 자막과 중국어/한국어 기계 번역이 제공됩니다.  
-> 🇺🇸 Japanese subtitles and Chinese/Korean machine-translations are available.  
+> 🇯🇵<span class="flag-icon flag-icon-jp -flag-icon-squared"></span> 日本語字幕、中国語・韓国語機械翻訳あり。  
+> 🇨🇳<span class="flag-icon flag-icon-cn -flag-icon-squared"></span> 提供日语字幕和中文/韩文机器翻译。  
+> 🇰🇷<span class="flag-icon flag-icon-kr -flag-icon-squared"></span> 일본어 자막과 중국어/한국어 기계 번역이 제공됩니다.  
+> 🇺🇸<span class="flag-icon flag-icon-us -flag-icon-squared"></span> Japanese subtitles and Chinese/Korean machine-translations are available.  
 
 | Part 1 | Part 2 |
 |:------:|:------:|
