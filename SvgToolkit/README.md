@@ -8,7 +8,7 @@ author:
 
 
 
-![](images/SvgToolkit_Hero.png)
+[![](images/SvgToolkit_Hero.png)](https://assetstore.unity.com/packages/tools/gui/svg-toolkit-311201?aid=1011l89HG)
 
 
 <!-- omit in toc -->
@@ -37,8 +37,11 @@ author:
     - [Output Path Format Tokens](#output-path-format-tokens)
 - [Format Specification](#format-specification)
     - [Custom Preset Library](#custom-preset-library)
-        - [Catalog `.stkcatalog`](#catalog-stkcatalog)
-        - [Presets `.stkpresets`](#presets-stkpresets)
+        - [Catalog File `.stkcatalog`](#catalog-file-stkcatalog)
+        - [Presets Archive `.stkpresets`](#presets-archive-stkpresets)
+        - [Technical Notes](#technical-notes)
+    - [SVG Template](#svg-template)
+        - [Preset Type](#preset-type)
         - [Strokes Collection](#strokes-collection)
         - [Two-Tone Collection](#two-tone-collection)
     - [Batcher Collection `.stkbatchop`](#batcher-collection-stkbatchop)
@@ -68,10 +71,10 @@ Before watching tutorial videos, open SVG Toolkit window by selecting menu in Un
 ## Tutorial Videos
 
 > [!TIP]
-> <span class="flag-icon flag-icon-jp -flag-icon-squared"></span> 日本語字幕、中国語・韓国語機械翻訳あり。  
+> <span class="flag-icon flag-icon-jp -flag-icon-squared"></span> 日本語字幕と中国語／韓国語の機械翻訳があります。  
 > <span class="flag-icon flag-icon-cn -flag-icon-squared"></span> 提供日语字幕和中文/韩文机器翻译。  
 > <span class="flag-icon flag-icon-kr -flag-icon-squared"></span> 일본어 자막과 중국어/한국어 기계 번역이 제공됩니다.  
-> <span class="flag-icon flag-icon-us -flag-icon-squared"></span> Japanese subtitles and Chinese/Korean machine-translations are available.  
+> <span class="flag-icon flag-icon-us -flag-icon-squared"></span> English/Japanese subtitles and Chinese/Korean machine-translations are available.  
 
 | Part 1 | Part 2 |
 |:------:|:------:|
@@ -185,7 +188,7 @@ It means that when source *.svg* preset is updated, added icon *DON'T* get chang
 For example, adding `style="stroke:none"` will ignore all of stroke settings in operator.
 
 ```svg
-<svg... style="stroke: none">
+<svg ... style="stroke: none">
     <!-- preset contents -->
 </svg>
 ```
@@ -194,7 +197,7 @@ For example, adding `style="stroke:none"` will ignore all of stroke settings in 
 In same way, you can add `style="fill:red"` to override fill colors in operator settings.
 
 ```svg
-<svg... style="fill: red">
+<svg ... style="fill: red">
     <!-- preset contents -->
 </svg>
 ```
@@ -231,7 +234,10 @@ You can see the following reference to understand SVG markup language & CSS styl
 
 Preset library consists of the following 2 files.
 
-### Catalog `.stkcatalog`
+To allow placing preset files anywhere in Unity project, SVG Toolkit assigns unique file extension to generic file format.
+
+
+### Catalog File `.stkcatalog`
 
 JSON file with file extension `.stkcatalog`, with the following properties.
 
@@ -246,14 +252,56 @@ JSON file with file extension `.stkcatalog`, with the following properties.
 > If both license properties are filled, SVG Toolkit shows confirmation dialog in preset browser.
 
 
-### Presets `.stkpresets`
+### Presets Archive `.stkpresets`
 
-Generic Zip archive containing SVG preset files.
+Generic Zip archive containing SVG template files.
+
 SVG Toolkit will always load content as SVG so that file extension for files in zip archive can be omitted.
 
 > [!NOTE]
-> SVG Toolkit expects preset to have no fill, stroke or opacity attributes on SVG elements.
+> SVG Toolkit expects preset to have no fill, stroke or opacity attributes on SVG elements except for two-tone preset.
 
+
+### Technical Notes
+
+> [!TIP]
+> Zip archive without compression is recommended for faster performance.
+
+> [!NOTE]
+> If pair of catalog and preset archive which has same file name is not found, it won't be loaded.
+
+
+#### File Load Priority
+
+If same title preset is found in both `Assets/` folder and `Packages/` folder, file in `Packages/` folder is priority.
+
+If multiple same title presets are found in same folder hierarchy, *all presets* won't be loaded.
+
+
+
+## SVG Template
+
+Here is minimal requirement of svg template.
+- `<svg>` root with `viewBox` attribute.
+
+```svg
+<svg viewBox="0 0 16 16">
+</svg>
+```
+
+
+### Preset Type
+
+Preset type is determined by the attribute `data-svgtoolkit` on the root `<svg>` element.
+
+- Available Types: `emoji-color` | `emoji-bw` | `two-tone` | `strokes`
+    - `two-tone` and `strokes` can be omitted. see below for details.
+
+```svg
+<svg ... data-svgtoolkit="emoji-color">
+    <!-- preset contents -->
+</svg>
+```
 
 ### Strokes Collection
 
@@ -269,6 +317,7 @@ For two-tone preset, add `fill` and/or `opacity` (recommended) attribute to shap
 
 > [!NOTE]
 > Two-Tone Target option has option for `style` attribute but it should not be used. It is designed to use with *.svg* files exported from Affinity Designer, Adobe Illustrator or other drawing applications.
+
 
 
 ## Batcher Collection `.stkbatchop`
