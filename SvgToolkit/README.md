@@ -78,7 +78,7 @@ Before watching tutorial videos, open SVG Toolkit window by selecting menu in Un
 
 | Part 1 | Part 2 |
 |:------:|:------:|
-| [![](https://img.youtube.com/vi/W_nWeXuXP_A/maxresdefault.jpg)](https://www.youtube.com/watch?v=W_nWeXuXP_A) | [![](https://img.youtube.com/vi/gQIjbI0yLcA/maxresdefault.jpg)](https://www.youtube.com/watch?v=gQIjbI0yLcA)
+| [![](https://img.youtube.com/vi/W_nWeXuXP_A/maxresdefault.jpg)](https://www.youtube.com/watch?v=W_nWeXuXP_A&t=16s) | [![](https://img.youtube.com/vi/gQIjbI0yLcA/maxresdefault.jpg)](https://www.youtube.com/watch?v=gQIjbI0yLcA&t=22s)
 | **Toolkit** | **Batcher** |
 
 
