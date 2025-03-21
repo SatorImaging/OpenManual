@@ -8,7 +8,7 @@ author:
 
 
 
-[![](images/SvgToolkit_Hero.png)](https://assetstore.unity.com/packages/tools/gui/svg-toolkit-311201?aid=1011l89HG)
+[![](images/SVGTK_UnityAS__FullHD_1080p.jpg)](https://assetstore.unity.com/packages/tools/gui/svg-toolkit-311201?aid=1011l89HG)
 
 
 <!-- omit in toc -->
