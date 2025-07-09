@@ -1,0 +1,63 @@
+name: static import
+
+on:
+  schedule:
+  - cron: '0 * * * *'
+
+  workflow_dispatch:
+
+env:
+  # listed in precedence order
+  GH_TOKEN: ${{ github.token }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: [ '10.0.x' ]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup .NET ${{ matrix.dotnet-version }}
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
+
+    - name: Install
+      run: |
+        dotnet tool install SatorImaging.DotnetTool.StaticImport -g --prerelease
+
+    - name: Env
+      run: |
+        env
+
+    - name: Migrate
+      run: |
+        REPO=AppWindowUtility
+        mkdir -p ${{ REPO }} && pushd $_
+          static-import -i  \
+            "github:sator-imaging@${{ REPO }}/main/README.md"  \
+            "github:sator-imaging@${{ REPO }}/main/README.ja.md"
+        popd
+
+        REPO=CSharp-TarArchiver
+        mkdir -p ${{ REPO }} && pushd $_
+          static-import -i  -f \
+            "github:sator-imaging@${{ REPO }}/main/README.md"
+        popd
+
+        REPO=Copy-to-Another-Repository
+        mkdir -p ${{ REPO }} && pushd $_
+          static-import -i  \
+            "github:sator-imaging@${{ REPO }}/main/README.md"
+        popd
+
+        REPO=FastOcean-Unity
+        mkdir -p ${{ REPO }} && pushd $_
+          static-import -i  \
+            "github:sator-imaging@${{ REPO }}/main/README.md"
+        popd
