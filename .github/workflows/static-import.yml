@@ -38,26 +38,26 @@ jobs:
     - name: Migrate
       run: |
         REPO=AppWindowUtility
-        mkdir -p ${{ REPO }} && pushd $_
+        mkdir -p ${REPO} && pushd $_
           static-import -i  \
-            "github:sator-imaging@${{ REPO }}/main/README.md"  \
-            "github:sator-imaging@${{ REPO }}/main/README.ja.md"
+            "github:sator-imaging@${REPO}/main/README.md"  \
+            "github:sator-imaging@${REPO}/main/README.ja.md"
         popd
 
         REPO=CSharp-TarArchiver
-        mkdir -p ${{ REPO }} && pushd $_
+        mkdir -p ${REPO} && pushd $_
           static-import -i  -f \
-            "github:sator-imaging@${{ REPO }}/main/README.md"
+            "github:sator-imaging@${REPO}/main/README.md"
         popd
 
         REPO=Copy-to-Another-Repository
-        mkdir -p ${{ REPO }} && pushd $_
+        mkdir -p ${REPO} && pushd $_
           static-import -i  \
-            "github:sator-imaging@${{ REPO }}/main/README.md"
+            "github:sator-imaging@${REPO}/main/README.md"
         popd
 
         REPO=FastOcean-Unity
-        mkdir -p ${{ REPO }} && pushd $_
+        mkdir -p ${REPO} && pushd $_
           static-import -i  \
-            "github:sator-imaging@${{ REPO }}/main/README.md"
+            "github:sator-imaging@${REPO}/main/README.md"
         popd
