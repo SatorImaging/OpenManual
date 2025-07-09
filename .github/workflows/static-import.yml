@@ -46,7 +46,7 @@ jobs:
 
         REPO=CSharp-TarArchiver
         mkdir -p ${REPO} && pushd $_
-          static-import -i  -f \
+          static-import -f -i  \
             "github:sator-imaging@${REPO}/main/README.md"
         popd
 
