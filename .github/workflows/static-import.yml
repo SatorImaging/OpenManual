@@ -19,8 +19,8 @@ jobs:
         dotnet-version: [ '10.0.x' ]
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+    #- name: Checkout
+    #  uses: actions/checkout@v4
 
     - name: Setup .NET ${{ matrix.dotnet-version }}
       uses: actions/setup-dotnet@v4
@@ -37,6 +37,26 @@ jobs:
 
     - name: Migrate
       run: |
+        git config --global user.name  "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+        # プッシュしたら自動的にリモートリポジトリを追跡するように設定する
+        git config --global --add --bool push.autoSetupRemote true
+
+
+        git fetch
+
+        BRANCH=static-import
+
+        ## リポジトリのスイッチに失敗したら新しく作る（-c）
+        #git switch ${BRANCH} || git switch -c ${BRANCH}
+
+        ## リモートからプル（新しく作った場合は失敗するので || true する）
+        #git pull || true
+
+
+        ### main ###
+
         REPO=AppWindowUtility
         mkdir -p ${REPO} && pushd $_
           static-import -f -i  \
@@ -61,3 +81,9 @@ jobs:
           static-import -f -i  \
             "github:sator-imaging@${REPO}/main/README.md"
         popd
+
+
+        # 失敗しても全部正常終了させる！
+        git commit -m "Static Import" || true
+        git push || true
+        gh pr create -B main -t '${BRANCH}' -b '' || true
