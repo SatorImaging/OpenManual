@@ -49,7 +49,7 @@ jobs:
         BRANCH=static-import
 
         ## リポジトリのスイッチに失敗したら新しく作る（-c）
-        git switch '${BRANCH}' || git switch -c '${BRANCH}'
+        git switch "${BRANCH}" || git switch -c "${BRANCH}"
 
         ## リモートからプル（新しく作った場合は失敗するので || true する）
         git pull || true
@@ -88,4 +88,4 @@ jobs:
         # 失敗しても全部正常終了させる！
         git commit -m "Static Import" || true
         git push || true
-        gh pr create -B master -title '${BRANCH}' --body '' || true
+        gh pr create -B master -title "${BRANCH}" --body '' || true
