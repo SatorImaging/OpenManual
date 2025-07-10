@@ -88,4 +88,4 @@ jobs:
         # 失敗しても全部正常終了させる！
         git commit -m "Static Import" || true
         git push || true
-        gh pr create -B master -title "${BRANCH}" --body '' || true
+        gh pr create -B master --title "${BRANCH}" --body '' || true
